@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppThemeMD" parent="AppTheme">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/md_grey_300</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="colorControlNormal">@color/md_grey_500</item>
+        <item name="colorControlActivated">@color/color_accent</item>
+        <item name="colorControlHighlight">@color/color_accent</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+</resources>
