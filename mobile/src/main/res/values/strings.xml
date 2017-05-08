@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Deepur</string>
+
+    <!-- LOGIN -->
+    <string name="activity_login_email">Email</string>
+    <string name="activity_login_password">Password</string>
+    <string name="login_loading">Loading</string>
+    <string name="activity_login_sign_in">Sign in</string>
+    <string name="activity_login_sign_out">Sign out</string>
+    <string name="activity_login_verify_email">Verify</string>
+    <string name="activity_login_create_account">Create Account</string>
 </resources>

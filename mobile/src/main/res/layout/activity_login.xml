@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/activity_login_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/textColor_secondary_black"
+        android:hint="@string/activity_login_email"/>
+
+    <EditText
+        android:id="@+id/activity_login_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberPassword"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/textColor_secondary_black"
+        android:hint="@string/activity_login_password"/>
+
+    <TextView
+        android:id="@+id/activity_login_create_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/activity_login_sign_in"
+        android:padding="8dp"
+        android:fontFamily="sans-serif"
+        android:background="@color/color_accent"/>
+
+    <TextView
+        android:id="@+id/activity_login_sign_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/activity_login_sign_in"
+        android:padding="8dp"
+        android:elevation="2dp"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/color_accent"
+        android:background="@color/md_white_1000"/>
+
+    <LinearLayout
+        android:id="@+id/signed_in_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/activity_login_sign_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:background="@color/color_accent"
+            android:text="@string/activity_login_sign_out" />
+
+        <Button
+            android:id="@+id/activity_login_verify_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:background="@color/color_accent"
+            android:text="@string/activity_login_verify_email"/>
+
+    </LinearLayout>
+
+</LinearLayout>
