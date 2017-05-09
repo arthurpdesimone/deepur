@@ -9,7 +9,9 @@ import android.view.View;
 
 import butterknife.ButterKnife;
 
+import static com.ruiriot.deepur.Constants.PERMISSIONS_REQUEST_CAMERA;
 import static com.ruiriot.deepur.Event.post;
+import static com.ruiriot.deepur.Event.register;
 
 /**
  * Created by ruiri on 09-May-17.
@@ -21,6 +23,7 @@ public class BaseActivity extends AppCompatActivity implements ActivityCompat.On
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        register(this);
         ButterKnife.bind(this);
     }
 
@@ -29,14 +32,16 @@ public class BaseActivity extends AppCompatActivity implements ActivityCompat.On
 
         if (grantResults.length > 0){
 
-        }else {
-            post(new BaseException());
-        }
-
-        if (requestCode == Constants.PERMISSIONS_REQUEST_CAMERA){
             switch (requestCode){
+                case (PERMISSIONS_REQUEST_CAMERA): {
+
+                    break;
+                }
 
             }
+
+        }else {
+            post(new BaseException());
         }
     }
 

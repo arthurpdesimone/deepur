@@ -19,10 +19,9 @@ public class LoginPictureActivity extends BaseActivity{
 
     Intent intent;
     String userEmail;
-    String userName;
     Context context;
 
-    @BindView(R.id.activity_login_user_email)
+    @BindView(R.id.activity_login_picture_user_email)
     TextView userEmailText;
 
     @BindView(R.id.activity_login_picture_user_image)
@@ -30,6 +29,9 @@ public class LoginPictureActivity extends BaseActivity{
 
     @BindView(R.id.activity_login_picture_add)
     ImageView addPicture;
+
+    @BindView(R.id.activity_login_picture_user_name)
+    TextView userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,9 @@ public class LoginPictureActivity extends BaseActivity{
         intent = getIntent();
 
         userEmail = intent.getStringExtra(Intent.EXTRA_EMAIL);
-        userEmailText.setText(userEmail);
+        if (userEmail!= null){
+            userEmailText.setText(userEmail);
+        }
 
         addPicture.setOnClickListener(this);
 

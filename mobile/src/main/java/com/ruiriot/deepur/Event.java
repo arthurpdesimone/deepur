@@ -8,11 +8,7 @@ import com.google.common.eventbus.EventBus;
 
 final class Event {
 
-    private static Event event = new Event( );
-
     private static EventBus eventBus = new EventBus( );
-
-    private Event() { }
 
     public static void register(Object o){
         eventBus.register(o);

@@ -47,7 +47,7 @@
     </FrameLayout>
 
     <TextView
-        android:id="@+id/activity_login_user_name"
+        android:id="@+id/activity_login_picture_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/activity_login_frame_layout"
@@ -62,10 +62,10 @@
         android:fontFamily="sans-serif"/>
 
     <TextView
-        android:id="@+id/activity_login_user_email"
+        android:id="@+id/activity_login_picture_user_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/activity_login_user_name"
+        android:layout_below="@id/activity_login_picture_user_name"
         android:gravity="center"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="32dp"
