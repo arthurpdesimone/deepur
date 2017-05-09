@@ -1,9 +1,8 @@
 package com.ruiriot.deepur;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
-import android.support.multidex.MultiDex;
-import android.support.multidex.MultiDexApplication;
 import android.util.Log;
 
 import com.google.common.eventbus.Subscribe;
@@ -15,12 +14,12 @@ import static com.ruiriot.deepur.Event.register;
  * Created by ruiri on 09-May-17.
  */
 
-public class BaseApplication extends MultiDexApplication {
+public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
 
-        register(this);
+        //register(this);
     }
 
     @Subscribe
@@ -31,7 +30,7 @@ public class BaseApplication extends MultiDexApplication {
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
-        MultiDex.install(this);
+
     }
 
     @Override
