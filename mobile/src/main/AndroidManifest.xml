@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeMD">
 
-        <activity android:name=".LoginActivity"
+        <activity
+            android:name=".LoginActivity"
             android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,8 +24,12 @@
 
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppThemeMD"
-            android:label="@string/app_name">
+            android:theme="@style/AppThemeMD">
+        </activity>
+
+        <activity
+            android:name=".LoginPictureActivity"
+            android:theme="@style/AppThemeMD">
         </activity>
 
     </application>

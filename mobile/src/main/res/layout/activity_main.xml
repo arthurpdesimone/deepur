@@ -11,24 +11,38 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <TextView
+            android:id="@+id/activity_main_user_email"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="50sp"
-            android:text="OTRA ACTIVITY"
+            android:textSize="30sp"
             android:gravity="center"
-            android:textColor="@color/color_accent"
+            android:text="email"
+            android:layout_gravity="center"
+            android:textColor="@color/textColor_secondary_black"
             android:fontFamily="sans-serif-condensed"/>
 
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.AppBarLayout
         android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:paddingTop="24dp">
 
         <android.support.v7.widget.Toolbar
             android:layout_height="56dp"
             android:layout_width="match_parent"
+            app:contentInsetStart="0dp"
+            app:contentInsetEnd="0dp"
+            android:elevation="4dp"
             app:layout_scrollFlags="scroll|enterAlways">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:src="@drawable/ic_more_vert_black_24dp"/>
 
         </android.support.v7.widget.Toolbar>
 

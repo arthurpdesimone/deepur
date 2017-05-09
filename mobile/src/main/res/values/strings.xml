@@ -9,4 +9,8 @@
     <string name="activity_login_sign_out">Sign out</string>
     <string name="activity_login_verify_email">Verify</string>
     <string name="activity_login_create_account">Create Account</string>
+
+    <!-- LOGIN PICTURE -->
+    <string name="activity_login_picture_user_image">user image profile</string>
+
 </resources>

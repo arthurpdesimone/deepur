@@ -20,20 +20,21 @@ import com.google.firebase.auth.FirebaseUser;
 
 import org.w3c.dom.Text;
 
+import static com.ruiriot.deepur.utils.ActivityUtils.callActivity;
+
 /**
  * Created by Rui on 08/05/2017.
  */
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private FirebaseAuth mAuth;
     private static final String TAG = "EmailPassword";
     private EditText mEmailField;
     private EditText mPasswordField;
     private TextView mSignInButton;
     private TextView mSignOutButton;
     private TextView mCreateAccountButton;
-    private Intent intent;
+    FirebaseAuth mAuth;
 
     public ProgressDialog mProgressDialog;
 
@@ -61,6 +62,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null){
+            callActivity(this, LoginPictureActivity.class);
+        }
         updateUI(currentUser);
     }
 
@@ -106,7 +110,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
-                            callActivity();
+                            callActivity(LoginActivity.this, LoginPictureActivity.class);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
@@ -120,23 +124,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         // [END_EXCLUDE]
                     }
                 });
-    }
-
-    private void callActivity(){
-
-        final FirebaseUser user = mAuth.getCurrentUser();
-        String userEmail;
-
-        if (user != null){
-            userEmail = user.getEmail();
-            intent = new Intent(this, MainActivity.class);
-            intent.putExtra(Intent.EXTRA_EMAIL, userEmail);
-            startActivity(intent);
-        }else {
-            Toast.makeText(LoginActivity.this, "User not found.",
-                    Toast.LENGTH_SHORT).show();
-        }
-
     }
 
     private void signIn(String email, String password) {
@@ -156,7 +143,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
-                            callActivity();
+                            callActivity(LoginActivity.this, LoginPictureActivity.class);
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                         } else {
@@ -230,7 +217,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 Toast.makeText(LoginActivity.this,
                                         "Verification email sent to " + user.getEmail(),
                                         Toast.LENGTH_SHORT).show();
-                                callActivity();
+                                callActivity(LoginActivity.this, LoginPictureActivity.class);
                             } else {
                                 Log.e(TAG, "sendEmailVerification", task.getException());
                                 Toast.makeText(LoginActivity.this,
