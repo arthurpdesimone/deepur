@@ -2,19 +2,15 @@ package com.ruiriot.deepur.utils;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.ruiriot.deepur.R;
+import com.ruiriot.deepur.BaseActivity;
 
 /**
  * Created by ruiri on 08-May-17.
@@ -37,6 +33,29 @@ public abstract class ActivityUtils {
                     Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    static public void requestPermission(BaseActivity context, int requestCode, String... permissions){
+
+        for (String p : permissions ) {
+
+            int result = ContextCompat.checkSelfPermission(context.getApplicationContext(), p);
+
+            if (result != PackageManager.PERMISSION_GRANTED){
+                if (ActivityCompat.shouldShowRequestPermissionRationale(context, p)) {
+
+                } else {
+
+                    ActivityCompat.requestPermissions(context, permissions, requestCode);
+
+                }
+            }
+        }
+    }
+
+    static boolean isPermissionGranted(String[] permission, int[]requestCode){
+
+        return false;
     }
 
     static public void circleImage (Context context, ImageView imageView){

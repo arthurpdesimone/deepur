@@ -26,7 +26,7 @@ import static com.ruiriot.deepur.utils.ActivityUtils.callActivity;
  * Created by Rui on 08/05/2017.
  */
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends BaseActivity{
 
     private static final String TAG = "EmailPassword";
     private EditText mEmailField;
