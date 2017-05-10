@@ -11,9 +11,11 @@
         android:id="@+id/activity_login_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
         android:inputType="textEmailAddress"
         android:fontFamily="sans-serif"
         android:layout_margin="8dp"
+        android:textSize="14sp"
         android:textColor="@color/textColor_secondary_black"
         android:hint="@string/activity_login_email"/>
 
@@ -25,6 +27,7 @@
         android:inputType="numberPassword"
         android:fontFamily="sans-serif"
         android:layout_margin="8dp"
+        android:textSize="14sp"
         android:textColor="@color/textColor_secondary_black"
         android:hint="@string/activity_login_password"/>
 
@@ -35,9 +38,13 @@
         android:layout_below="@+id/activity_login_password"
         android:text="@string/activity_login_sign_in"
         android:padding="8dp"
-        android:layout_margin="8dp"
-        android:fontFamily="sans-serif"
-        android:background="@color/color_accent"/>
+        android:minWidth="156dp"
+        android:layout_margin="16dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:fontFamily="sans-serif-medium"
+        android:textAllCaps="true"
+        android:background="@drawable/bg_button"/>
 
     <TextView
         android:id="@+id/activity_login_create_account"
@@ -46,11 +53,13 @@
         android:layout_below="@+id/activity_login_sign_in"
         android:text="@string/activity_login_create_account"
         android:padding="8dp"
-        android:elevation="2dp"
         android:layout_margin="8dp"
+        android:minWidth="96dp"
         android:fontFamily="sans-serif"
-        android:textColor="@color/color_accent"
-        android:background="@color/md_white_1000"/>
+        android:layout_centerHorizontal="true"
+        android:textAllCaps="true"
+        android:textSize="12sp"
+        android:textColor="@color/textColor_primary_black"/>
 
     <LinearLayout
         android:id="@+id/signed_in_buttons"
@@ -58,6 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/activity_login_create_account"
         android:orientation="horizontal"
+        android:visibility="invisible"
         android:padding="16dp">
 
         <Button
