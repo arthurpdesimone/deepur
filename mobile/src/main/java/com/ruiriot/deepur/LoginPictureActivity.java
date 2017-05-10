@@ -1,16 +1,15 @@
 package com.ruiriot.deepur;
 
-import android.*;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.ruiriot.deepur.utils.ActivityUtils.requestPermission;
@@ -38,6 +37,8 @@ public class LoginPictureActivity extends BaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_picture);
 
+        ButterKnife.bind(this);
+
         intent = getIntent();
 
         userEmail = intent.getStringExtra(Intent.EXTRA_EMAIL);
@@ -46,7 +47,6 @@ public class LoginPictureActivity extends BaseActivity{
         }
 
         addPicture.setOnClickListener(this);
-
     }
 
     @Override

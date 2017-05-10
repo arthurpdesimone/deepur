@@ -19,12 +19,13 @@ import static com.ruiriot.deepur.Event.register;
 
 public class BaseActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback, View.OnClickListener{
 
+    int resourceLayout;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         register(this);
-        ButterKnife.bind(this);
     }
 
     @Override

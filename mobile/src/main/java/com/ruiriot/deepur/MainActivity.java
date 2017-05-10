@@ -17,9 +17,9 @@ public class MainActivity extends AppCompatActivity {
 
         intent = getIntent();
 
-        userEmail = intent.getStringExtra(Intent.EXTRA_EMAIL);
-        TextView userEmailText = (TextView) findViewById(R.id.activity_main_user_email);
-        userEmailText.setText(userEmail);
+//        userEmail = intent.getStringExtra(Intent.EXTRA_EMAIL);
+//        TextView userEmailText = (TextView) findViewById(R.id.activity_main_user_email);
+//        userEmailText.setText(userEmail);
 
     }
 }
