@@ -9,4 +9,5 @@ public interface Constants {
     String TAG_ERROR = "Error!";
 
     int PERMISSIONS_REQUEST_CAMERA = 0;
+    int PERMISSIONS_REQUEST_STORAGE = 1;
 }

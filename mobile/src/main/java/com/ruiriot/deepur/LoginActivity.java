@@ -1,12 +1,18 @@
 package com.ruiriot.deepur;
 
+import android.app.Activity;
+import android.app.Application;
 import android.app.ProgressDialog;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.ruiriot.deepur.utils.BlurEffectUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,6 +55,9 @@ public class LoginActivity extends BaseActivity{
     @ViewEvents(clickable = true)
     @BindView(R.id.activity_login_create_account)
     TextView mCreateAccountButton;
+
+    @BindView(R.id.activity_login_relative)
+    RelativeLayout blurryBg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +108,23 @@ public class LoginActivity extends BaseActivity{
         } else if (i == R.id.activity_login_verify_email) {
 
             sendEmailVerification();
+        }
+    }
+
+    private void blurView(){
+        final Application activity = getApplication();
+        final View content = findViewById(android.R.id.content).getRootView();
+        if (content.getWidth() > 0) {
+            Bitmap image = BlurEffectUtils.blur(content);
+            blurryBg.setBackgroundDrawable(new BitmapDrawable(activity.getResources(), image));
+        } else {
+            content.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    Bitmap image = BlurEffectUtils.blur(content);
+                    blurryBg.setBackgroundDrawable(new BitmapDrawable(activity.getResources(), image));
+                }
+            });
         }
     }
 

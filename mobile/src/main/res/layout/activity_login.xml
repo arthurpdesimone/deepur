@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    android:id="@+id/activity_login_relative"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="32dp"
     android:padding="8dp">
 
     <EditText
@@ -55,11 +55,11 @@
         android:padding="8dp"
         android:layout_margin="8dp"
         android:minWidth="96dp"
-        android:fontFamily="sans-serif"
+        android:fontFamily="sans-serif-medium"
         android:layout_centerHorizontal="true"
         android:textAllCaps="true"
         android:textSize="12sp"
-        android:textColor="@color/textColor_primary_black"/>
+        android:textColor="@color/color_accent"/>
 
     <LinearLayout
         android:id="@+id/signed_in_buttons"
@@ -96,13 +96,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="56dp"
-        android:padding="16dp">
+        android:layout_marginBottom="68dp">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/activity_login_stepper_step1"

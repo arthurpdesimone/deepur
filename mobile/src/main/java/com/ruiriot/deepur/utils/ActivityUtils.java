@@ -1,5 +1,6 @@
 package com.ruiriot.deepur.utils;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.ruiriot.deepur.BaseActivity;
+import com.ruiriot.deepur.R;
 
 /**
  * Created by ruiri on 08-May-17.
@@ -50,6 +52,28 @@ public abstract class ActivityUtils {
 
                 }
             }
+        }
+    }
+
+    static public void showProgressDialog(Context context) {
+
+        ProgressDialog mProgressDialog;
+
+        mProgressDialog = new ProgressDialog(context);
+        if (mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+        mProgressDialog.setMessage(context.getString(R.string.login_loading));
+        mProgressDialog.setIndeterminate(true);
+        mProgressDialog.show();
+    }
+
+    static public void hideProgressDialog(Context context) {
+
+        ProgressDialog mProgressDialog;
+        mProgressDialog = new ProgressDialog(context);
+        if (mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
         }
     }
 
