@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    tools:context="com.ruiriot.deepur.MainHeaderActivity">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/activity_main_header_user_image"
+        android:layout_width="@dimen/activity_main_header_user_image"
+        android:layout_height="@dimen/activity_main_header_user_image"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/menoa"/>
+
+    <TextView
+        android:id="@+id/activity_main_header_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/activity_main_header_user_image"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="18sp"
+        android:text="User Name"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="@color/textColor_secondary_black"
+        android:fontFamily="sans-serif"/>
+
+    <TextView
+        android:id="@+id/activity_main_header_user_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_main_header_user_name"
+        android:layout_toEndOf="@id/activity_main_header_user_image"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="16sp"
+        android:text="email@email.com"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="@color/textColor_secondary_black"
+        android:fontFamily="sans-serif-condensed-light"/>
+
+    <LinearLayout
+        android:id="@+id/activity_main_header_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_main_header_user_email"
+        android:layout_toEndOf="@id/activity_main_header_user_image"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_person_black_18dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_camera_alt_black_24dp"
+            android:padding="8dp"
+            android:text="12"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@color/textColor_secondary_black"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

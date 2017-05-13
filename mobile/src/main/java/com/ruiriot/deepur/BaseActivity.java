@@ -14,7 +14,7 @@ import static com.ruiriot.deepur.Event.post;
 import static com.ruiriot.deepur.Event.register;
 
 /**
- * Created by ruiri on 09-May-17.
+ * Created by ruiriot on 09-May-17.
  */
 
 public class BaseActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback, View.OnClickListener{

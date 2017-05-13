@@ -43,25 +43,27 @@
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.AppBarLayout
-        android:layout_height="wrap_content"
+        android:id="@+id/activity_main_app_bar"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:paddingTop="24dp">
 
         <android.support.v7.widget.Toolbar
-            android:layout_height="56dp"
+            android:id="@+id/activity_main_toolbar"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:contentInsetStart="0dp"
             app:contentInsetEnd="0dp"
             android:elevation="4dp"
             app:layout_scrollFlags="scroll|enterAlways">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:layout_margin="8dp"
-                android:clickable="true"
-                android:src="@drawable/ic_more_vert_black_24dp"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include layout="@layout/activity_main_header"/>
+
+            </RelativeLayout>
 
         </android.support.v7.widget.Toolbar>
 
