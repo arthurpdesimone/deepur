@@ -78,7 +78,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_camera_alt_black_24dp"
                     android:padding="8dp"
                     android:text="09"
                     android:textSize="16sp"
