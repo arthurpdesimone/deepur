@@ -5,9 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import butterknife.BindView;
+
 public class MainActivity extends AppCompatActivity {
 
-    String userEmail;
+    @BindView(R.id.activity_main_user_email)
+    TextView userEmailText;
+
+    @BindView(R.id.activity_main_user_name)
+    TextView userNameText;
     Intent intent;
 
     @Override
@@ -17,9 +23,14 @@ public class MainActivity extends AppCompatActivity {
 
         intent = getIntent();
 
-        userEmail = intent.getStringExtra(Intent.EXTRA_EMAIL);
-        TextView userEmailText = (TextView) findViewById(R.id.activity_main_user_email);
-        userEmailText.setText(userEmail);
+        String userEmail = intent.getStringExtra(Intent.EXTRA_EMAIL);
+        if (userEmail!= null){
+            userEmailText.setText(userEmail);
+        }
 
+        String userName = intent.getStringExtra(Intent.EXTRA_USER);
+        if (userName!= null){
+            userNameText.setText(userName);
+        }
     }
 }
