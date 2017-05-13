@@ -1,31 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.ruiriot.deepur.MainHeaderActivity">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/activity_main_header_user_image"
-        android:layout_width="@dimen/activity_main_header_user_image"
-        android:layout_height="@dimen/activity_main_header_user_image"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:src="@drawable/menoa"/>
+    <android.support.v7.widget.CardView
+        android:id="@+id/activity_main_header_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="2dp"
+        android:layout_margin="16dp"
+        app:cardUseCompatPadding="false">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/activity_main_header_user_image"
+                android:layout_width="@dimen/activity_main_header_user_image"
+                android:layout_height="@dimen/activity_main_header_user_image"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/menoa"/>
+
+            <LinearLayout
+                android:id="@+id/activity_main_header_ll_friends"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/activity_main_header_user_image"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:tint="@color/md_red_300"
+                    android:src="@drawable/ic_person_black_18dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_camera_alt_black_24dp"
+                    android:padding="8dp"
+                    android:text="12"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="@color/textColor_secondary_black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_main_header_ll_photos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/activity_main_header_user_image"
+                android:layout_toEndOf="@id/activity_main_header_ll_friends"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:tint="@color/md_red_300"
+                    android:src="@drawable/ic_photo_camera_black_18dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_camera_alt_black_24dp"
+                    android:padding="8dp"
+                    android:text="09"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="@color/textColor_secondary_black"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
 
     <TextView
         android:id="@+id/activity_main_header_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/activity_main_header_user_image"
+        android:layout_toEndOf="@id/activity_main_header_card"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         android:textSize="18sp"
         android:text="User Name"
@@ -39,11 +113,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/activity_main_header_user_name"
-        android:layout_toEndOf="@id/activity_main_header_user_image"
+        android:layout_toEndOf="@id/activity_main_header_card"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:textSize="16sp"
         android:text="email@email.com"
         android:maxLines="1"
@@ -52,31 +125,47 @@
         android:fontFamily="sans-serif-condensed-light"/>
 
     <LinearLayout
-        android:id="@+id/activity_main_header_ll"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/activity_main_header_user_email"
-        android:layout_toEndOf="@id/activity_main_header_user_image"
         android:orientation="vertical"
-        android:padding="8dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_person_black_18dp"/>
+        android:layout_below="@id/activity_main_header_user_email"
+        android:layout_toEndOf="@id/activity_main_header_card"
+        android:background="@color/md_pink_200">
 
         <TextView
+            android:id="@+id/activity_main_header_latest_post_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_camera_alt_black_24dp"
-            android:padding="8dp"
-            android:text="12"
-            android:textSize="16sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="24dp"
+            android:textSize="12sp"
             android:gravity="center"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/textColor_secondary_black"/>
+            android:text="@string/activity_main_header_latest_post_title"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="@color/textColor_primary_black"
+            android:alpha="0.6"
+            android:fontFamily="sans-serif-condensed"/>
+
+        <TextView
+            android:id="@+id/activity_main_header_latest_post_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="8dp"
+            android:textSize="12sp"
+            android:text="@string/lorem"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textColor="@color/textColor_secondary_black"
+            android:alpha="0.6"
+            android:fontFamily="sans-serif-condensed"/>
 
     </LinearLayout>
+
 
 </RelativeLayout>
