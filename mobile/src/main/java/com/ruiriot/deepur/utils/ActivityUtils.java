@@ -69,20 +69,6 @@ public abstract class ActivityUtils {
         }
     }
 
-    static public void extractColor(Context context, int res) {
-
-        Bitmap myBitmap = BitmapFactory.decodeResource(context.getResources(), res);
-
-        if (myBitmap != null && !myBitmap.isRecycled()) {
-
-            Palette.PaletteAsyncListener paletteListener = new Palette.PaletteAsyncListener() {
-                public void onGenerated(Palette palette) {
-                    Palette.Swatch vibrant = palette.getVibrantSwatch();
-                }
-            };
-        }
-    }
-
     static public void showProgressDialog(Context context) {
 
         ProgressDialog mProgressDialog;
