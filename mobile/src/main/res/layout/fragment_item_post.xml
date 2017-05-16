@@ -113,7 +113,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="sans-serif-condensed-light"
-                    android:text="19h32 - 20/12/2012"
+                    android:text="May, 20 19h25"
                     android:textColor="@color/textColor_secondary_black"
                     android:textSize="12sp" />
 
@@ -128,27 +128,50 @@
                     android:layout_marginTop="4dp"
                     android:ellipsize="end"
                     android:fontFamily="sans-serif-light"
-                    android:maxLines="2"
+                    android:maxLines="3"
                     android:text="@string/lorem"
                     android:textColor="@color/textColor_secondary_black"
                     android:textSize="14sp" />
 
-                <ImageView
-                    android:id="@+id/fragment_item_post_favorite"
+                <TextView
+                    android:id="@+id/fragment_item_post_love"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_below="@id/fragment_item_post_user_post"
                     android:layout_marginBottom="16dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/favorite"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/fragment_item_post_love"
+                    android:textColor="@color/red_500"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/fragment_item_post_love_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/fragment_item_post_user_post"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:alpha="0.6"
                     android:contentDescription="@string/favorite"
+                    android:drawablePadding="4dp"
+                    android:drawableStart="@drawable/ic_favorite_black_18dp"
+                    android:drawableTint="@color/red_500"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:gravity="center"
                     android:padding="8dp"
-                    android:background=""
-                    android:src="@drawable/ic_favorite_black_18dp"
-                    android:tint="@color/red_500" />
+                    android:text="23"
+                    android:textColor="@color/textColor_primary_black"
+                    android:textSize="16sp" />
 
             </RelativeLayout>
 

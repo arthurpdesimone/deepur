@@ -22,7 +22,7 @@
     <!-- ACTIVITY MAIN HEADER -->
     <string name="activity_main_header_latest_post_title">LATEST POST</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- ITEM POST -->
+    <string name="fragment_item_post_love">LOVE</string>
 
 </resources>
