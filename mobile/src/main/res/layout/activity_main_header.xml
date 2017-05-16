@@ -10,13 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="126dp"
-            android:src="@drawable/bg_wallpaper"
-            android:scaleType="centerCrop"
-            android:alpha="0.4"/>
-
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/activity_main_header_user_image"
             android:layout_width="@dimen/activity_main_header_user_image"

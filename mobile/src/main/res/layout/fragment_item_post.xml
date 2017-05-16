@@ -1,0 +1,159 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.ruiriot.deepur.ItemPostFragment">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/fragment_item_post_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/background_card"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="2dp"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/fragment_item_post_user_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@drawable/bg_upper_border" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/fragment_item_post_user_image"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/bg_round_grey"
+                    android:contentDescription="@string/activity_login_picture_user_image"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_person_black_48dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginEnd="72dp"
+                    android:layout_marginStart="72dp"
+                    android:layout_marginTop="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/fragment_item_post_user_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:text="User Name"
+                        android:textColor="@color/textColor_primary_black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/fragment_item_post_user_difficulty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="Depressed"
+                        android:textColor="@color/textColor_secondary_black"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/fragment_item_post_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="8dp"
+                    android:alpha="0.6"
+                    android:contentDescription="@string/options"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_more_vert_black_24dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fragment_item_post_user_header"
+                android:background="@color/md_grey_100">
+
+                <TextView
+                    android:id="@+id/fragment_item_post_user_post_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/activity_main_header_latest_post_title"
+                    android:textColor="@color/textColor_primary_black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/fragment_item_post_user_post_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="19h32 - 20/12/2012"
+                    android:textColor="@color/textColor_secondary_black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/fragment_item_post_user_post"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/fragment_item_post_user_post_title"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:ellipsize="end"
+                    android:fontFamily="sans-serif-light"
+                    android:maxLines="2"
+                    android:text="@string/lorem"
+                    android:textColor="@color/textColor_secondary_black"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/fragment_item_post_favorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/fragment_item_post_user_post"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:alpha="0.6"
+                    android:contentDescription="@string/favorite"
+                    android:padding="8dp"
+                    android:background=""
+                    android:src="@drawable/ic_favorite_black_18dp"
+                    android:tint="@color/red_500" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</FrameLayout>
