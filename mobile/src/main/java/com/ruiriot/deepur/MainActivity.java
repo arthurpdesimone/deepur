@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
             userNameText.setText(userName);
         }
 
-        Palette.Swatch swatch = extractColor(getApplicationContext(), R.id.activity_main_header_user_image);
+        /*Palette.Swatch swatch = extractColor(getApplicationContext(), R.id.activity_main_header_user_image);
         Log.i("SWATCH" , "" + swatch.getRgb());
-        userEmailText.setTextColor(swatch.getRgb());
+        userEmailText.setTextColor(swatch.getRgb());*/
     }
 }

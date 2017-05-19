@@ -83,10 +83,11 @@
             android:fontFamily="sans-serif-medium"
             android:text="@string/allow"
             android:padding="8dp"
-            android:minWidth="64dp"
+            android:layout_margin="8dp"
+            android:minWidth="96dp"
             android:gravity="center"
-            android:background="@drawable/ripple"
-            android:textColor="@color/color_accent"
+            android:background="@drawable/bg_button"
+            android:textColor="@color/textColor_secondary_black"
             android:textSize="14sp" />
 
     </RelativeLayout>

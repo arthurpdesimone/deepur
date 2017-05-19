@@ -79,7 +79,7 @@
         android:layout_marginBottom="60dp"
         android:minWidth="96dp"
         android:gravity="center"
-        android:textColor="@color/textColor_primary_black"
+        android:textColor="@color/color_accent"
         android:fontFamily="sans-serif-medium"
         android:text="@string/activity_login_next_button"
         android:padding="8dp"/>
