@@ -13,6 +13,7 @@
         android:id="@+id/fragment_choose_image_camera_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/ripple"
         android:orientation="horizontal">
 
         <ImageView
@@ -48,7 +49,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="16dp"
         android:layout_below="@id/fragment_choose_image_camera_button">
 
         <ImageView
@@ -66,7 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/fragment_choose_image_album_icon"
             android:layout_centerHorizontal="true"
-            android:layout_margin="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
             android:fontFamily="sans-serif"
             android:text="@string/album_permission"
             android:textColor="@color/textColor_secondary_black"
