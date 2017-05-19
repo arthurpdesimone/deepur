@@ -2,6 +2,7 @@ package com.ruiriot.deepur.utils;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -51,18 +52,18 @@ public abstract class ActivityUtils {
 
     }
 
-    static public void requestPermission(BaseActivity context, int requestCode, String... permissions){
+    static public void requestPermission(Context context, int requestCode, String... permissions){
 
         for (String p : permissions ) {
 
             int result = ContextCompat.checkSelfPermission(context.getApplicationContext(), p);
 
             if (result != PackageManager.PERMISSION_GRANTED){
-                if (ActivityCompat.shouldShowRequestPermissionRationale(context, p)) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) context.getApplicationContext(), p)) {
 
                 } else {
 
-                    ActivityCompat.requestPermissions(context, permissions, requestCode);
+                    ActivityCompat.requestPermissions((Activity) context.getApplicationContext(), permissions, requestCode);
 
                 }
             }

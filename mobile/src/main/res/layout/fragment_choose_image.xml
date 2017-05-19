@@ -38,14 +38,65 @@
 
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/textColor_primary_black"
+        android:alpha="0.1"
+        android:layout_below="@id/fragment_choose_image_camera_button"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_below="@id/fragment_choose_image_camera_button">
+
+        <ImageView
+            android:id="@+id/fragment_choose_image_album_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_photo_black_48dp"
+            android:alpha="0.6"
+            android:padding="16dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/fragment_choose_image_album_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fragment_choose_image_album_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="16dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/album_permission"
+            android:textColor="@color/textColor_secondary_black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/fragment_choose_image_album_button_permission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fragment_choose_image_album_text"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/allow"
+            android:padding="8dp"
+            android:minWidth="64dp"
+            android:gravity="center"
+            android:background="@drawable/ripple"
+            android:textColor="@color/color_accent"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <!--<android.support.v7.widget.RecyclerView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/fragment_choose_image_camera_button"
         android:orientation="horizontal">
 
 
-    </android.support.v7.widget.RecyclerView>
+    </android.support.v7.widget.RecyclerView>-->
 
 </RelativeLayout>
 
