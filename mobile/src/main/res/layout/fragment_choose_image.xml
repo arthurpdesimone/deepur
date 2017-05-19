@@ -1,0 +1,78 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ruiriot.deepur.fragment.ChooseImageFragment">
+
+    <android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:clipToPadding="true"
+            android:background="@color/background_card"
+            app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/color_accent"/>
+
+
+                <LinearLayout
+                    android:id="@+id/fragment_choose_image_camera_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/fragment_choose_image_camera_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_round"
+                        android:padding="8dp"
+                        android:layout_margin="16dp"
+                        android:src="@drawable/ic_photo_camera_black_18dp"/>
+
+                    <TextView
+                        android:id="@+id/fragment_choose_image_camera_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/open_camera"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_gravity="center"
+                        android:textSize="14sp"
+                        android:textColor="@color/textColor_primary_black"
+                        android:fontFamily="sans-serif"/>
+
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/fragment_choose_image_camera_button"
+                    android:orientation="horizontal">
+
+                    <include layout="@layout/fragment_choose_image_album"/>
+
+                </android.support.v7.widget.RecyclerView>
+
+            </RelativeLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</FrameLayout>

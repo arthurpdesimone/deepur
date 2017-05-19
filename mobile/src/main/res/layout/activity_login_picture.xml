@@ -27,12 +27,11 @@
             android:id="@+id/activity_login_picture_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="8dp"
             android:layout_gravity="bottom|end"
-            android:layout_margin="4dp"
+            android:layout_margin="8dp"
             app:fabSize="mini"
             app:backgroundTint="@color/md_grey_100"
-            app:rippleColor="@color/md_green_100"
+            app:rippleColor="@color/md_grey_300"
             android:src="@drawable/ic_camera_alt_black_24dp"/>
 
     </FrameLayout>
@@ -67,36 +66,36 @@
         android:textColor="@color/textColor_secondary_black"
         android:fontFamily="sans-serif-condensed-light"/>
 
-    <android.support.design.widget.FloatingActionButton
+    <TextView
         android:id="@+id/activity_login_picture_next_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/ic_chevron_right_black_24dp"
-        app:fabSize="normal"
-        app:backgroundTint="@color/md_grey_100"
-        app:rippleColor="@color/md_green_100"
+        android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="60dp"
-        android:elevation="2dp"
-        android:padding="10dp"/>
+        android:minWidth="96dp"
+        android:gravity="center"
+        android:textColor="@color/textColor_primary_black"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/activity_login_next_button"
+        android:padding="8dp"/>
 
     <LinearLayout
         android:id="@+id/activity_login_stepper"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="62dp"
         android:layout_alignParentBottom="true">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_gravity="center"
             android:gravity="center">
 
@@ -105,8 +104,10 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:text="1"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:textColor="@color/textColor_secondary_black"
                 android:fontFamily="sans-serif-condensed"
                 android:background="@drawable/bg_round_grey"/>
@@ -114,16 +115,17 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/activity_login_stepper_step2"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:text="2"
-                android:textSize="16sp"
+                android:textSize="14sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:gravity="center"
                 android:textColor="@color/textColor_secondary_black"
                 android:fontFamily="sans-serif-condensed"

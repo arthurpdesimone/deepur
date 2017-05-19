@@ -1,4 +1,4 @@
-package com.ruiriot.deepur;
+/*package com.ruiriot.deepur;
 
 import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
@@ -61,4 +61,4 @@ public class MainActivity extends WearableActivity {
             mClockView.setVisibility(View.GONE);
         }
     }
-}
+}*/

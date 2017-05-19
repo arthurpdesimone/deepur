@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
@@ -19,6 +20,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.ruiriot.deepur.fragment.ChooseImageFragment;
 
 import java.io.File;
 
@@ -50,7 +53,7 @@ public class LoginPictureActivity extends BaseActivity implements ActivityCompat
     TextView userName;
 
     @BindView(R.id.activity_login_picture_next_button)
-    FloatingActionButton nextButton;
+    TextView nextButton;
 
     private static final int TAKE_PICTURE = 1;
     int PERMISSIONS_CODE = 0;
@@ -80,6 +83,8 @@ public class LoginPictureActivity extends BaseActivity implements ActivityCompat
 
         if(i == R.id.activity_login_picture_add){
             requestPermission(this, Constants.PERMISSIONS_REQUEST_CAMERA , Manifest.permission.CAMERA);
+            BottomSheetDialogFragment bottomSheetDialogFragment = new ChooseImageFragment();
+            bottomSheetDialogFragment.show(getSupportFragmentManager(), bottomSheetDialogFragment.getTag());
         }
         if (i == R.id.activity_login_picture_next_button){
             showProgressDialog(this);
