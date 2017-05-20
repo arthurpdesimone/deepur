@@ -21,12 +21,13 @@
             <RelativeLayout
                 android:id="@+id/fragment_item_post_user_header"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@color/md_grey_100">
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:background="@drawable/bg_upper_border" />
+                    android:background="@color/color_accent" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/fragment_item_post_user_image"
@@ -88,8 +89,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/fragment_item_post_user_header"
-                android:background="@color/md_grey_100">
+                android:layout_below="@id/fragment_item_post_user_header">
 
                 <TextView
                     android:id="@+id/fragment_item_post_user_post_title"
@@ -123,7 +123,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/fragment_item_post_user_post_title"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="24dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="4dp"
@@ -142,6 +142,17 @@
                     android:src="@drawable/menoa"
                     android:layout_below="@id/fragment_item_post_user_post"
                     android:contentDescription="@string/activity_login_picture_user_image" />
+
+                <ImageView
+                    android:id="@+id/fragment_item_post_user_post_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_more_horiz_black_18dp"
+                    android:padding="6dp"
+                    android:layout_marginEnd="10dp"
+                    android:tint="@color/color_accent"
+                    android:layout_above="@id/fragment_item_post_user_post_photo"
+                    android:layout_alignParentEnd="true"/>
 
                 <TextView
                     android:id="@+id/fragment_item_post_love"

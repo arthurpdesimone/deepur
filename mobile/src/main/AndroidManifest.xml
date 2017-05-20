@@ -27,11 +27,14 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppThemeTransparent"></activity>
+            android:theme="@style/AppThemeMD">
+        </activity>
         <activity
             android:name=".LoginPictureActivity"
-            android:theme="@style/AppThemeMD"></activity>
-        <activity android:name=".MainHeaderActivity"></activity>
+            android:theme="@style/AppThemeMD">
+        </activity>
+        <activity
+            android:name=".MainHeaderActivity">
+        </activity>
     </application>
-
 </manifest>

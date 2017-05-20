@@ -73,6 +73,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+        android:drawableTint="@color/color_accent"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
@@ -81,6 +82,8 @@
         android:gravity="center"
         android:textColor="@color/color_accent"
         android:fontFamily="sans-serif-medium"
+        android:clickable="true"
+        android:background="@drawable/ripple"
         android:text="@string/activity_login_next_button"
         android:padding="8dp"/>
 
