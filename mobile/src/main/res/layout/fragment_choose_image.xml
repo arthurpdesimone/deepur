@@ -32,9 +32,9 @@
             android:layout_gravity="center"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
-            android:fontFamily="sans-serif"
+            android:fontFamily="sans-serif-medium"
             android:text="@string/open_camera"
-            android:textColor="@color/textColor_primary_black"
+            android:textColor="@color/textColor_secondary_black"
             android:textSize="14sp" />
 
     </LinearLayout>
@@ -69,7 +69,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:fontFamily="sans-serif"
+            android:fontFamily="sans-serif-light"
             android:text="@string/album_permission"
             android:textColor="@color/textColor_secondary_black"
             android:textSize="14sp" />
@@ -86,8 +86,8 @@
             android:layout_margin="8dp"
             android:minWidth="96dp"
             android:gravity="center"
-            android:background="@drawable/bg_button"
-            android:textColor="@color/textColor_secondary_black"
+            android:background="@drawable/ripple"
+            android:textColor="@color/color_accent"
             android:textSize="14sp" />
 
     </RelativeLayout>

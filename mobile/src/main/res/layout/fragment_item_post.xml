@@ -94,19 +94,6 @@
                 android:layout_below="@id/fragment_item_post_user_header">
 
                 <TextView
-                    android:id="@+id/fragment_item_post_user_post_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="sans-serif-condensed"
-                    android:text="@string/activity_main_header_latest_post_title"
-                    android:textColor="@color/textColor_primary_black"
-                    android:textSize="12sp" />
-
-                <TextView
                     android:id="@+id/fragment_item_post_user_post_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -124,14 +111,14 @@
                     android:id="@+id/fragment_item_post_user_post"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/fragment_item_post_user_post_title"
+                    android:layout_below="@id/fragment_item_post_user_post_date"
                     android:layout_marginBottom="24dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="8dp"
                     android:ellipsize="end"
-                    android:maxLines="2"
-                    android:fontFamily="sans-serif-light"
+                    android:maxLines="3"
+                    android:fontFamily="sans-serif"
                     android:text="@string/lorem"
                     android:textColor="@color/textColor_secondary_black"
                     android:textSize="14sp" />
