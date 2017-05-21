@@ -11,6 +11,7 @@
     <color name="textColor_secondary_black">#8a000000</color>
     <color name="textColor_primary_white">#ffffffff</color>
     <color name="textColor_secondary_white">#b3ffffff</color>
+    <color name="transparent">#80000000</color>
 
     <color name="red_text_color">@color/md_white_1000</color>
     <color name="indigo_text_color">@color/md_white_1000</color>

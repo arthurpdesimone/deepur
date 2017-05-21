@@ -3,9 +3,17 @@ package com.ruiriot.deepur.activity;
 import android.app.Application;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RectShape;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.graphics.Palette;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -71,6 +79,22 @@ public class LoginActivity extends BaseActivity{
 
         findViewById(R.id.activity_login_create_account).setOnClickListener(this);
         findViewById(R.id.activity_login_sign_in).setOnClickListener(this);
+
+        Bitmap image = BitmapFactory.decodeResource(getResources(),
+                R.drawable.bg_wallpaper);
+        Palette.from(image).generate(new Palette.PaletteAsyncListener() {
+            public void onGenerated(Palette palette) {
+                Palette.Swatch vibrantSwatch = palette.getVibrantSwatch();
+                if (vibrantSwatch != null) {
+                    Drawable drawable = getResources().getDrawable(R.drawable.bg_gradient_login);
+                    int color = vibrantSwatch.getRgb();
+                    int h = blurryBg.getHeight();
+                    ShapeDrawable mDrawable = new ShapeDrawable(new RectShape());
+                    mDrawable.getPaint().setShader(new LinearGradient(0, 0, 0, h, color, getResources().getColor(android.R.color.transparent), Shader.TileMode.REPEAT));
+                    blurryBg.setBackgroundDrawable(mDrawable);
+                }
+            }
+        });
 
     }
 

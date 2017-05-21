@@ -35,8 +35,5 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include
-        layout="@layout/base_recycler_view"/>
-
 </android.support.design.widget.CoordinatorLayout>
 

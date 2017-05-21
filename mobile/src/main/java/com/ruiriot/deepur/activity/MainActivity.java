@@ -11,7 +11,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-import static com.ruiriot.deepur.utils.ActivityUtils.getUserName;
 
 /**Receive email > Set email on TextView > getUserName > setUserName*/
 
@@ -39,9 +38,5 @@ public class MainActivity extends AppCompatActivity {
         if (userEmail!= null){
             userEmailText.setText(userEmail);
         }
-
-        /*Palette.Swatch swatch = extractColor(getApplicationContext(), R.id.activity_main_header_user_image);
-        Log.i("SWATCH" , "" + swatch.getRgb());
-        userEmailText.setTextColor(swatch.getRgb());*/
     }
 }
