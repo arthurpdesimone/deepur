@@ -1,4 +1,4 @@
-package com.ruiriot.deepur;
+package com.ruiriot.deepur.activity;
 
 import android.app.Activity;
 import android.content.ClipData;

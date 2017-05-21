@@ -1,4 +1,4 @@
-package com.ruiriot.deepur;
+package com.ruiriot.deepur.activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,7 +7,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import butterknife.ButterKnife;
+import com.ruiriot.deepur.exception.BaseException;
 
 import static com.ruiriot.deepur.Constants.PERMISSIONS_REQUEST_CAMERA;
 import static com.ruiriot.deepur.Event.post;

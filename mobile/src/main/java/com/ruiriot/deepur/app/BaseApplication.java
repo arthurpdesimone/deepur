@@ -1,4 +1,4 @@
-package com.ruiriot.deepur;
+package com.ruiriot.deepur.app;
 
 import android.app.Application;
 import android.content.Context;
@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.util.Log;
 
 import com.google.common.eventbus.Subscribe;
+import com.ruiriot.deepur.exception.BaseException;
 
 import static com.ruiriot.deepur.Constants.TAG_ERROR;
 import static com.ruiriot.deepur.Event.register;

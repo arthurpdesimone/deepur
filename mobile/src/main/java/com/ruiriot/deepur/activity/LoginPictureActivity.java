@@ -1,4 +1,4 @@
-package com.ruiriot.deepur;
+package com.ruiriot.deepur.activity;
 
 import android.Manifest;
 import android.content.Context;
@@ -15,6 +15,8 @@ import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.TextView;
 
+import com.ruiriot.deepur.Constants;
+import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.fragment.ChooseImageFragment;
 
 import java.io.File;

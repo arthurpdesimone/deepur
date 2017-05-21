@@ -35,41 +35,8 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/activity_main_user_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:gravity="center"
-                android:text="User Name"
-                android:textColor="@color/textColor_secondary_black"
-                android:fontFamily="sans-serif-condensed"/>
-
-            <TextView
-                android:id="@+id/activity_main_user_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/activity_main_user_name"
-                android:textSize="30sp"
-                android:gravity="center"
-                android:text="email"
-                android:layout_gravity="center"
-                android:textColor="@color/textColor_secondary_black"
-                android:fontFamily="sans-serif-condensed-light"/>
-
-        </RelativeLayout>
-
-    </android.support.v4.widget.NestedScrollView>
+    <include
+        layout="@layout/base_recycler_view"/>
 
 </android.support.design.widget.CoordinatorLayout>
 

@@ -1,4 +1,4 @@
-package com.ruiriot.deepur;
+package com.ruiriot.deepur.view;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

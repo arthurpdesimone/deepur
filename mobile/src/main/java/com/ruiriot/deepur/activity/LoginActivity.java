@@ -1,6 +1,5 @@
-package com.ruiriot.deepur;
+package com.ruiriot.deepur.activity;
 
-import android.app.Activity;
 import android.app.Application;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
@@ -21,6 +20,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.ruiriot.deepur.R;
+import com.ruiriot.deepur.view.ViewEvents;
 import com.ruiriot.deepur.utils.BlurEffectUtils;
 
 import butterknife.BindView;

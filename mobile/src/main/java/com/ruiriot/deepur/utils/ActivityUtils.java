@@ -7,24 +7,15 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.graphics.Palette;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.ruiriot.deepur.BaseActivity;
 import com.ruiriot.deepur.R;
-
-import java.util.LinkedList;
-import java.util.List;
 
 import static android.content.Context.ACCOUNT_SERVICE;
 import static com.google.android.gms.internal.zzt.TAG;

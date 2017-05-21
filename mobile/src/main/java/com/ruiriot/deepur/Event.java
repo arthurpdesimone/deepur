@@ -6,7 +6,7 @@ import com.google.common.eventbus.EventBus;
  * Created by ruiri on 09-May-17.
  */
 
-final class Event {
+public class Event {
 
     private static EventBus eventBus = new EventBus( );
 

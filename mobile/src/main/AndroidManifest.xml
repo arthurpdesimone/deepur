@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeMD">
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:theme="@style/AppThemeMD"
             android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
@@ -26,15 +26,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:theme="@style/AppThemeMD">
         </activity>
         <activity
-            android:name=".LoginPictureActivity"
+            android:name=".activity.LoginPictureActivity"
             android:theme="@style/AppThemeMD">
         </activity>
         <activity
-            android:name=".MainHeaderActivity">
+            android:name=".activity.MainHeaderActivity">
         </activity>
     </application>
 </manifest>

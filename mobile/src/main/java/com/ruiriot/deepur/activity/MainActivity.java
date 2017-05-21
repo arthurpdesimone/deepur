@@ -1,9 +1,11 @@
-package com.ruiriot.deepur;
+package com.ruiriot.deepur.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.ruiriot.deepur.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -15,8 +17,6 @@ import static com.ruiriot.deepur.utils.ActivityUtils.getUserName;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.activity_main_user_name)
-    TextView userNameText;
 
     @BindView(R.id.activity_main_header_user_image)
     CircleImageView userImage;
@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         String userEmail = intent.getStringExtra(Intent.EXTRA_EMAIL);
         if (userEmail!= null){
             userEmailText.setText(userEmail);
-            String userName = getUserName(this);
         }
 
         /*Palette.Swatch swatch = extractColor(getApplicationContext(), R.id.activity_main_header_user_image);

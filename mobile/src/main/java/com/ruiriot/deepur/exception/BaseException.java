@@ -1,4 +1,4 @@
-package com.ruiriot.deepur;
+package com.ruiriot.deepur.exception;
 
 /**
  * Created by ruiri on 09-May-17.
