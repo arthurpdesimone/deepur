@@ -21,7 +21,7 @@
             android:layout_height="156dp"
             android:contentDescription="@string/activity_login_picture_user_image"
             android:scaleType="centerCrop"
-            android:src="@drawable/menoa"/>
+            android:src="@drawable/ic_person_outline_black_48dp"/>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/activity_login_picture_add"

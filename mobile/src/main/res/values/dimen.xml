@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="activity_main_header_user_image">40dp</dimen>
+    <dimen name="activity_main_header_user_image">120dp</dimen>
 </resources>

@@ -81,7 +81,7 @@ public class LoginActivity extends BaseActivity{
         findViewById(R.id.activity_login_sign_in).setOnClickListener(this);
 
         Bitmap image = BitmapFactory.decodeResource(getResources(),
-                R.drawable.bg_wallpaper);
+                R.drawable.ic_person_black_48dp);
         Palette.from(image).generate(new Palette.PaletteAsyncListener() {
             public void onGenerated(Palette palette) {
                 Palette.Swatch vibrantSwatch = palette.getVibrantSwatch();

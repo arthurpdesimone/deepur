@@ -27,14 +27,14 @@
         </activity>
         <activity
             android:name=".activity.MainActivity"
-            android:theme="@style/AppThemeMD">
-        </activity>
+            android:theme="@style/AppThemeMD"></activity>
         <activity
             android:name=".activity.LoginPictureActivity"
-            android:theme="@style/AppThemeMD">
-        </activity>
+            android:theme="@style/AppThemeMD"></activity>
+        <activity android:name=".activity.MainHeaderActivity"></activity>
         <activity
-            android:name=".activity.MainHeaderActivity">
-        </activity>
+            android:name=".activity.ProfileActivity"
+            android:label="@string/title_activity_profile"></activity>
     </application>
+
 </manifest>
