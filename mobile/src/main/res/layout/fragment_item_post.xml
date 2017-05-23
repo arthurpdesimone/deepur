@@ -56,8 +56,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginBottom="16dp"
-                    android:layout_marginEnd="72dp"
-                    android:layout_marginStart="72dp"
+                    android:layout_marginEnd="68dp"
+                    android:layout_marginStart="68dp"
                     android:layout_marginTop="16dp"
                     android:orientation="vertical">
 
@@ -68,13 +68,14 @@
                         android:fontFamily="sans-serif"
                         android:text="User Name"
                         android:textColor="@color/textColor_primary_black"
+                        android:padding="4dp"
                         android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/fragment_item_post_user_difficulty"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:padding="4dp"
                         android:fontFamily="sans-serif-condensed-light"
                         android:text="Feeling happy"
                         android:textColor="@color/textColor_secondary_black"
