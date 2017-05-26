@@ -5,6 +5,7 @@
     <string name="options">OPTIONS</string>
     <string name="favorite">FAVORITE</string>
     <string name="open_camera">OPEN CAMERA</string>
+    <string name="attach">ATTACH</string>
     <string name="album_permission">To share an image, give deepur access to Media</string>
     <string name="allow">ALLOW</string>
 
@@ -28,6 +29,7 @@
     <!-- ITEM POST -->
     <string name="fragment_item_post_love">LOVE</string>
     <string name="fragment_new_item_post_edit_text">what\'s up?</string>
+    <string name="fragment_new_item_post_attached_files_text">ATTACHED FILES</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
