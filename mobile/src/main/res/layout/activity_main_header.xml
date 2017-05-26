@@ -15,39 +15,41 @@
             android:layout_width="@dimen/activity_main_header_user_image"
             android:layout_height="@dimen/activity_main_header_user_image"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_person_outline_black_48dp"/>
+            android:layout_margin="32dp"
+            android:src="@drawable/ic_person_black_48dp"
+            android:background="@drawable/bg_rectangle_rounded_corner"/>
 
-        <TextView
-            android:id="@+id/activity_main_header_user_name"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/activity_main_header_user_image"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="40dp"
-            android:textSize="18sp"
-            android:text="User Name"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textColor="@color/textColor_secondary_black"
-            android:fontFamily="sans-serif"/>
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/activity_main_header_user_image">
 
-        <TextView
-            android:id="@+id/activity_main_header_user_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/activity_main_header_user_name"
-            android:layout_toEndOf="@id/activity_main_header_user_image"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:textSize="16sp"
-            android:text="email@email.com"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textColor="@color/textColor_secondary_black"
-            android:fontFamily="sans-serif-condensed-light"/>
+            <TextView
+                android:id="@+id/activity_main_header_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="User Name"
+                android:layout_marginBottom="8dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="@color/text_color_primary"
+                android:fontFamily="sans-serif"/>
+
+            <TextView
+                android:id="@+id/activity_main_header_user_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="email@email.com"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="@color/text_color_secondary"
+                android:fontFamily="sans-serif-condensed-light"/>
+
+        </LinearLayout>
 
     </RelativeLayout>
 
@@ -82,7 +84,7 @@
                 android:textSize="16sp"
                 android:gravity="center"
                 android:fontFamily="sans-serif"
-                android:textColor="@color/textColor_secondary_black"/>
+                android:textColor="@color/text_color_secondary"/>
 
         </LinearLayout>
 
@@ -109,7 +111,7 @@
                 android:textSize="16sp"
                 android:gravity="center"
                 android:fontFamily="sans-serif"
-                android:textColor="@color/textColor_secondary_black"/>
+                android:textColor="@color/text_color_secondary"/>
 
         </LinearLayout>
 
@@ -131,7 +133,7 @@
                 android:text="@string/activity_main_header_latest_post_title"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:textColor="@color/textColor_primary_black"
+                android:textColor="@color/text_color_primary"
                 android:fontFamily="sans-serif-condensed"/>
 
             <TextView
@@ -146,7 +148,7 @@
                 android:text="@string/lorem"
                 android:maxLines="2"
                 android:ellipsize="end"
-                android:textColor="@color/textColor_secondary_black"
+                android:textColor="@color/text_color_secondary"
                 android:fontFamily="sans-serif-light"/>
 
         </LinearLayout>

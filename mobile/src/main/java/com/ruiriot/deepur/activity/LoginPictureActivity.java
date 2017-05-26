@@ -79,8 +79,6 @@ public class LoginPictureActivity extends BaseActivity implements ActivityCompat
 
         if(i == R.id.activity_login_picture_add){
             requestPermission(this, Constants.PERMISSIONS_REQUEST_CAMERA , Manifest.permission.CAMERA);
-            BottomSheetDialogFragment bottomSheetDialogFragment = new ChooseImageFragment();
-            bottomSheetDialogFragment.show(getSupportFragmentManager(), bottomSheetDialogFragment.getTag());
         }
         if (i == R.id.activity_login_picture_next_button){
             showProgressDialog(this);
@@ -101,6 +99,8 @@ public class LoginPictureActivity extends BaseActivity implements ActivityCompat
                 if (permission.equals(Manifest.permission.CAMERA)) {
                     if (grantResult == PackageManager.PERMISSION_GRANTED) {
 //                        takePhoto(userImageView);
+                        BottomSheetDialogFragment bottomSheetDialogFragment = new ChooseImageFragment();
+                        bottomSheetDialogFragment.show(getSupportFragmentManager(), bottomSheetDialogFragment.getTag());
                     } else {
                         requestPermission(this, Constants.PERMISSIONS_REQUEST_CAMERA , Manifest.permission.CAMERA);
                     }

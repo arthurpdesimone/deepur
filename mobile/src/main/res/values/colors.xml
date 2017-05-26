@@ -7,10 +7,8 @@
     <color name="background">@color/md_grey_50</color>
     <color name="background_card">@color/md_white_1000</color>
 
-    <color name="textColor_primary_black">#de000000</color>
-    <color name="textColor_secondary_black">#8a000000</color>
-    <color name="textColor_primary_white">#ffffffff</color>
-    <color name="textColor_secondary_white">#b3ffffff</color>
+    <color name="text_color_primary">#de000000</color>
+    <color name="text_color_secondary">#8a000000</color>
     <color name="transparent">#00000000</color>
 
     <color name="red_text_color">@color/md_white_1000</color>

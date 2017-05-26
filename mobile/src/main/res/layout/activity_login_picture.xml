@@ -21,7 +21,7 @@
             android:layout_height="156dp"
             android:contentDescription="@string/activity_login_picture_user_image"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_person_outline_black_48dp"/>
+            android:src="@drawable/ic_person_black_48dp"/>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/activity_login_picture_add"
@@ -48,7 +48,7 @@
         android:layout_marginRight="32dp"
         android:layout_marginBottom="8dp"
         android:text="User Name"
-        android:textColor="@color/textColor_secondary_black"
+        android:textColor="@color/text_color_secondary"
         android:fontFamily="sans-serif"/>
 
     <TextView
@@ -63,7 +63,7 @@
         android:layout_marginBottom="8dp"
         android:textSize="20sp"
         android:text="email"
-        android:textColor="@color/textColor_secondary_black"
+        android:textColor="@color/text_color_secondary"
         android:fontFamily="sans-serif-condensed-light"/>
 
     <TextView
@@ -111,7 +111,7 @@
                 android:gravity="center"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:textColor="@color/textColor_secondary_black"
+                android:textColor="@color/text_color_secondary"
                 android:fontFamily="sans-serif-condensed"
                 android:background="@drawable/bg_round_grey"/>
 
@@ -121,7 +121,7 @@
             android:layout_width="16dp"
             android:layout_height="1dp"
             android:layout_gravity="center"
-            android:background="@color/textColor_primary_black"
+            android:background="@color/text_color_primary"
             android:alpha="0.2"/>
 
         <LinearLayout
@@ -137,7 +137,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:gravity="center"
-                android:textColor="@color/textColor_secondary_black"
+                android:textColor="@color/text_color_secondary"
                 android:fontFamily="sans-serif-condensed"
                 android:background="@drawable/bg_round"/>
 

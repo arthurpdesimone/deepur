@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/background_card"
-        app:cardCornerRadius="1dp"
+        app:cardCornerRadius="2dp"
         app:cardElevation="2dp"
         app:cardUseCompatPadding="false">
 
@@ -35,11 +35,6 @@
                     android:tint="@color/md_green_700"
                     android:layout_margin="16dp"/>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/color_accent" />
-
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/fragment_item_post_user_image"
                     android:layout_width="40dp"
@@ -48,8 +43,7 @@
                     android:layout_margin="16dp"
                     android:background="@drawable/bg_round_grey"
                     android:contentDescription="@string/activity_login_picture_user_image"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_person_black_18dp" />
+                    android:scaleType="centerCrop"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -67,7 +61,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif"
                         android:text="User Name"
-                        android:textColor="@color/textColor_primary_black"
+                        android:textColor="@color/text_color_primary"
                         android:padding="4dp"
                         android:textSize="14sp" />
 
@@ -78,7 +72,7 @@
                         android:padding="4dp"
                         android:fontFamily="sans-serif-condensed-light"
                         android:text="Feeling happy"
-                        android:textColor="@color/textColor_secondary_black"
+                        android:textColor="@color/text_color_secondary"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -114,43 +108,44 @@
                     android:layout_marginTop="16dp"
                     android:fontFamily="sans-serif-condensed-light"
                     android:text="May, 20 19h25"
-                    android:textColor="@color/textColor_secondary_black"
+                    android:textColor="@color/text_color_secondary"
                     android:textSize="12sp" />
 
-                <TextView
-                    android:id="@+id/fragment_item_post_user_post"
+
+                <LinearLayout
+                    android:id="@+id/fragment_item_post_user_post_ll"
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/fragment_item_post_user_post_date"
-                    android:layout_marginBottom="24dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:ellipsize="end"
-                    android:maxLines="3"
-                    android:fontFamily="sans-serif"
-                    android:text="@string/lorem"
-                    android:textColor="@color/textColor_secondary_black"
-                    android:textSize="14sp" />
+                    android:padding="16dp">
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/color_accent" />
+
+                    <TextView
+                        android:id="@+id/fragment_item_post_user_post"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:layout_marginLeft="16dp"
+                        android:maxLines="3"
+                        android:fontFamily="sans-serif"
+                        android:text="@string/lorem"
+                        android:textColor="@color/text_color_secondary"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
 
                 <ImageView
                     android:id="@+id/fragment_item_post_user_post_photo"
                     android:layout_width="match_parent"
-                    android:layout_height="192dp"
-                    android:scaleType="centerCrop"
-                    android:layout_below="@id/fragment_item_post_user_post"
-                    android:contentDescription="@string/activity_login_picture_user_image" />
-
-                <ImageView
-                    android:id="@+id/fragment_item_post_user_post_more"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_more_horiz_black_18dp"
-                    android:padding="6dp"
-                    android:layout_marginEnd="10dp"
-                    android:tint="@color/color_accent"
-                    android:layout_above="@id/fragment_item_post_user_post_photo"
-                    android:layout_alignParentEnd="true"/>
+                    android:scaleType="centerCrop"
+                    android:layout_below="@id/fragment_item_post_user_post_ll"
+                    android:contentDescription="@string/activity_login_picture_user_image" />
 
                 <TextView
                     android:id="@+id/fragment_item_post_love"
@@ -165,7 +160,7 @@
                     android:padding="8dp"
                     android:minWidth="64dp"
                     android:text="@string/fragment_item_post_love"
-                    android:textColor="@color/color_accent"
+                    android:textColor="@color/red_500"
                     android:textSize="14sp" />
 
                 <TextView
@@ -187,8 +182,8 @@
                     android:gravity="center"
                     android:padding="8dp"
                     android:text="23"
-                    android:textColor="@color/textColor_primary_black"
-                    android:textSize="16sp" />
+                    android:textColor="@color/text_color_primary"
+                    android:textSize="12sp" />
 
             </RelativeLayout>
 

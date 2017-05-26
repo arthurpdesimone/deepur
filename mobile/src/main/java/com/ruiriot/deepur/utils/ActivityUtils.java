@@ -43,18 +43,18 @@ public abstract class ActivityUtils {
 
     }
 
-    static public void requestPermission(Context context, int requestCode, String... permissions){
+    static public void requestPermission(Activity context, int requestCode, String... permissions){
 
         for (String p : permissions ) {
 
             int result = ContextCompat.checkSelfPermission(context.getApplicationContext(), p);
 
             if (result != PackageManager.PERMISSION_GRANTED){
-                if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) context.getApplicationContext(), p)) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(context, p)) {
 
                 } else {
 
-                    ActivityCompat.requestPermissions((Activity) context.getApplicationContext(), permissions, requestCode);
+                    ActivityCompat.requestPermissions(context, permissions, requestCode);
 
                 }
             }
