@@ -10,6 +10,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.graphics.Palette;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -22,7 +23,7 @@ import butterknife.ButterKnife;
 
 /**Receive email > Set email on TextView > getUserName > setUserName*/
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
 
     @BindView(R.id.activity_main_header_user_image)
@@ -44,6 +45,13 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         intent = getIntent();
+
+        if (savedInstanceState == null) {
+            // Set the local night mode to some value
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            // Now recreate for it to take effect
+            recreate();
+        }
 
         String userEmail = intent.getStringExtra(Intent.EXTRA_EMAIL);
         if (userEmail!= null){

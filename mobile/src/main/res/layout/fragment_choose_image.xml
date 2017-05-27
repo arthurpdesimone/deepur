@@ -1,6 +1,7 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/background_card"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <View
@@ -23,7 +24,7 @@
             android:layout_margin="16dp"
             android:background="@drawable/bg_round"
             android:padding="8dp"
-            android:src="@drawable/ic_photo_camera_black_18dp" />
+            android:src="@drawable/ic_add_a_photo_white_18dp" />
 
         <TextView
             android:id="@+id/fragment_choose_image_camera_text"
