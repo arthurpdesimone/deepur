@@ -79,22 +79,22 @@ public class LoginActivity extends BaseActivity{
 
         findViewById(R.id.activity_login_create_account).setOnClickListener(this);
         findViewById(R.id.activity_login_sign_in).setOnClickListener(this);
-
-        Bitmap image = BitmapFactory.decodeResource(getResources(),
-                R.drawable.ic_person_black_48dp);
-        Palette.from(image).generate(new Palette.PaletteAsyncListener() {
-            public void onGenerated(Palette palette) {
-                Palette.Swatch vibrantSwatch = palette.getVibrantSwatch();
-                if (vibrantSwatch != null) {
-                    Drawable drawable = getResources().getDrawable(R.drawable.bg_gradient_login);
-                    int color = vibrantSwatch.getRgb();
-                    int h = blurryBg.getHeight();
-                    ShapeDrawable mDrawable = new ShapeDrawable(new RectShape());
-                    mDrawable.getPaint().setShader(new LinearGradient(0, 0, 0, h, color, getResources().getColor(android.R.color.transparent), Shader.TileMode.REPEAT));
-                    blurryBg.setBackgroundDrawable(mDrawable);
-                }
-            }
-        });
+//
+//        Bitmap image = BitmapFactory.decodeResource(getResources(),
+//                R.drawable.autumn);
+//        Palette.from(image).generate(new Palette.PaletteAsyncListener() {
+//            public void onGenerated(Palette palette) {
+//                Palette.Swatch vibrantSwatch = palette.getLightVibrantSwatch();
+//                if (vibrantSwatch != null) {
+//                    Drawable drawable = getResources().getDrawable(R.drawable.bg_gradient_login);
+//                    int color = vibrantSwatch.getRgb();
+//                    int h = blurryBg.getHeight();
+//                    ShapeDrawable mDrawable = new ShapeDrawable(new RectShape());
+//                    mDrawable.getPaint().setShader(new LinearGradient(0, 0, 0, h, getResources().getColor(android.R.color.transparent), color, Shader.TileMode.REPEAT));
+//                    blurryBg.setBackgroundDrawable(mDrawable);
+//                }
+//            }
+//        });
 
     }
 

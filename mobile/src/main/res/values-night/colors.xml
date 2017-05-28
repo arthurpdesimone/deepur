@@ -2,7 +2,7 @@
 <resources>
     <color name="color_primary">@color/md_grey_800</color>
     <color name="color_primary_dark">@color/md_grey_900</color>
-    <color name="color_accent">@color/md_amber_A700</color>
+    <color name="color_accent">@color/md_orange_A400</color>
 
     <color name="text_color_primary">#ffffffff</color>
     <color name="text_color_secondary">#b3ffffff</color>

@@ -28,14 +28,22 @@
 
     </android.support.design.widget.TextInputLayout>
 
+    <ImageView
+        android:id="@+id/activity_login_deepur_logo"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:padding="24dp"
+        android:src="@drawable/autumn"/>
+
     <TextView
         android:id="@+id/activity_login_deepur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
-        android:padding="32dp"
-        android:layout_marginBottom="32dp"
         android:textSize="44sp"
+        android:layout_margin="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/activity_login_deepur_logo"
         android:textColor="@color/text_color_primary"
         android:fontFamily="sans-serif-condensed-light"/>
 
@@ -73,9 +81,8 @@
         android:fontFamily="sans-serif-medium"
         android:textAllCaps="true"
         android:textSize="14sp"
-        android:elevation="2dp"
-        android:textColor="@color/text_color_primary_black"
-        android:background="@drawable/bg_button"/>
+        android:textColor="@color/text_color_primary"
+        android:background="@drawable/bg_button_round_stroke"/>
 
     <TextView
         android:id="@+id/activity_login_create_account"
@@ -86,6 +93,10 @@
         android:padding="8dp"
         android:layout_margin="8dp"
         android:minWidth="96dp"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowColor="@color/text_color_secondary"
+        android:shadowRadius="1"
         android:fontFamily="sans-serif-medium"
         android:layout_centerHorizontal="true"
         android:textAllCaps="true"
