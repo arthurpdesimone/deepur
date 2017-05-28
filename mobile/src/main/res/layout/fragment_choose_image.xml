@@ -24,7 +24,7 @@
             android:layout_margin="16dp"
             android:background="@drawable/bg_round"
             android:padding="8dp"
-            android:src="@drawable/ic_add_a_photo_white_18dp" />
+            android:src="@drawable/ic_add_a_photo_black_18dp" />
 
         <TextView
             android:id="@+id/fragment_choose_image_camera_text"

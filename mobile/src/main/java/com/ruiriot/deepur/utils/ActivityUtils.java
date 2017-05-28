@@ -7,6 +7,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -47,11 +49,14 @@ public abstract class ActivityUtils {
 
         for (String p : permissions ) {
 
-            int result = ContextCompat.checkSelfPermission(context.getApplicationContext(), p);
+            if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.M){
+                int result = ContextCompat.checkSelfPermission(context.getApplicationContext(), p);
+            }
 
-            if (result != PackageManager.PERMISSION_GRANTED){
+            if (requestCode != PackageManager.PERMISSION_GRANTED){
                 if (ActivityCompat.shouldShowRequestPermissionRationale(context, p)) {
 
+                    Log.i(TAG, "permission granted");
                 } else {
 
                     ActivityCompat.requestPermissions(context, permissions, requestCode);
@@ -82,38 +87,4 @@ public abstract class ActivityUtils {
             mProgressDialog.dismiss();
         }
     }
-
-    static public String getUserName(Context context) {
-        AccountManager manager = (AccountManager) context.getSystemService(ACCOUNT_SERVICE);
-        Account[] list = manager.getAccounts();
-
-        for (Account account : list) {
-            if (account.type.equals("com.google")) {
-                Log.d(TAG, "account = " + account.name);
-            }
-        }
-        return null;
-
-    }
-
-    static boolean isPermissionGranted(String[] permission, int[]requestCode){
-
-        return false;
-    }
-
-    static public void circleImage (Context context, ImageView imageView){
-
-        /*RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), drawable);
-        circularBitmapDrawable.setCircular(true);
-        imageView.setImageDrawable(circularBitmapDrawable);*/
-
-    }
-
-    /* public Bitmap getBitmap (Context context, int res){
-
-        Drawable myDrawable = context.getResources().getDrawable(res);
-        Bitmap myLogo = ((BitmapDrawable) myDrawable).getBitmap();
-        return myLogo;
-
-    } */
 }
