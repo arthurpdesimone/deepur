@@ -7,41 +7,30 @@
     android:background="@color/background"
     android:fitsSystemWindows="true">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/activity_main_app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:contentScrim="@color/color_accent"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/activity_main_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:contentInsetStart="0dp"
-                app:contentInsetEnd="0dp"
-                android:elevation="0dp"
-                app:elevation="0dp"
-                app:layout_collapseMode="parallax">
-
-                <include layout="@layout/activity_main_header"/>
-
-            </android.support.v7.widget.Toolbar>
-
-        </android.support.design.widget.CollapsingToolbarLayout>
-
-    </android.support.design.widget.AppBarLayout>
-
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <include layout="@layout/fragment_item_post"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/activity_main_header"/>
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/color_accent"
+                android:text="@string/stories"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"/>
+
+            <include layout="@layout/fragment_item_post"/>
+
+        </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
 
