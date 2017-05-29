@@ -16,7 +16,7 @@
             android:layout_width="@dimen/activity_main_header_user_image"
             android:layout_height="@dimen/activity_main_header_user_image"
             android:scaleType="centerCrop"
-            android:layout_margin="32dp"
+            android:layout_margin="16dp"
             android:src="@drawable/ic_person_black_48dp"
             android:background="@drawable/bg_rectangle_rounded_corner"/>
 
@@ -25,6 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_margin="14dp"
             android:layout_toEndOf="@id/activity_main_header_user_image">
 
             <TextView
@@ -51,6 +52,17 @@
                 android:fontFamily="sans-serif-condensed-light"/>
 
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/activity_main_header_settings_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_settings_black_24dp"
+            android:background="@drawable/bg_button_round_stroke"
+            android:padding="6dp"
+            android:tint="@color/color_accent"
+            android:layout_alignParentEnd="true"/>
 
     </RelativeLayout>
 

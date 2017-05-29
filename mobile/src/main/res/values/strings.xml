@@ -35,6 +35,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_profile">ProfileActivity</string>
+
+    <!-- ACTIVITY SETTINGS -->
+
     <string name="title_activity_settings">Settings</string>
+    <string name="activity_settings_day_night_title">Day&amp;Night mode</string>
+    <string name="activity_settings_day_night_description">This mode changes the lighting conditions whether it is day or night</string>
+    <string name="activity_settings_account_title">Account</string>
 
 </resources>

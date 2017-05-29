@@ -5,7 +5,7 @@ import android.app.Activity;
 
 import com.ruiriot.deepur.R;
 
-public class Settings extends Activity {
+public class SettingsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -37,7 +37,7 @@
             android:label="@string/title_activity_profile"
             android:theme="@style/AppThemeMD" />
         <activity
-            android:name=".activity.Settings"
+            android:name=".activity.SettingsActivity"
             android:label="@string/title_activity_settings"></activity>
     </application>
 

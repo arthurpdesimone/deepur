@@ -3,15 +3,10 @@ package com.ruiriot.deepur.activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.LinearGradient;
-import android.graphics.Shader;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RectShape;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.graphics.Palette;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,6 +15,8 @@ import com.ruiriot.deepur.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.ruiriot.deepur.utils.ActivityUtils.callActivity;
 
 /**Receive email > Set email on TextView > getUserName > setUserName*/
 
@@ -34,6 +31,9 @@ public class MainActivity extends BaseActivity {
 
     @BindView(R.id.activity_main_header_rl)
     RelativeLayout userBg;
+
+    @BindView(R.id.activity_main_header_settings_icon)
+    ImageView settingsButton;
 
     Intent intent;
 
@@ -65,6 +65,13 @@ public class MainActivity extends BaseActivity {
                 if (vibrantSwatch != null) {
                     userBg.setBackgroundColor(vibrantSwatch.getRgb());
                 }
+            }
+        });
+
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callActivity(getApplicationContext(), SettingsActivity.class);
             }
         });
     }
