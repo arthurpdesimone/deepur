@@ -78,6 +78,6 @@ public class BaseActivity extends AppCompatActivity implements ActivityCompat.On
     }
     static {
         AppCompatDelegate.setDefaultNightMode(
-                AppCompatDelegate.MODE_NIGHT_AUTO);
+                AppCompatDelegate.MODE_NIGHT_YES);
     }
 }

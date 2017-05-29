@@ -12,7 +12,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppThemeMD">
         <activity
@@ -30,12 +30,15 @@
             android:theme="@style/AppThemeMD" />
         <activity
             android:name=".activity.LoginPictureActivity"
-            android:theme="@style/AppThemeMD"/>
-        <activity android:name=".activity.MainHeaderActivity"/>
+            android:theme="@style/AppThemeMD" />
+        <activity android:name=".activity.MainHeaderActivity" />
         <activity
             android:name=".activity.ProfileActivity"
             android:label="@string/title_activity_profile"
             android:theme="@style/AppThemeMD" />
+        <activity
+            android:name=".activity.Settings"
+            android:label="@string/title_activity_settings"></activity>
     </application>
 
 </manifest>
