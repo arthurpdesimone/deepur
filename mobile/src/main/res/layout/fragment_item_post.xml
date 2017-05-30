@@ -144,37 +144,60 @@
                     android:contentDescription="@string/activity_login_picture_user_image"
                     android:scaleType="centerCrop" />
 
+                <View
+                    android:id="@+id/fragment_item_post_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/fragment_item_post_user_post_ll"
+                    android:background="@color/text_color_primary"
+                    android:alpha="0.1"/>
+
+                <TextView
+                    android:id="@+id/fragment_item_post_love_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/favorite"
+                    android:layout_gravity="center"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/text_color_primary"
+                    android:textSize="12sp"
+                    android:drawableStart="@drawable/ic_favorite_border_black_18dp"
+                    android:drawablePadding="6dp"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/fragment_item_post_love"
+                    android:layout_below="@id/fragment_item_post_user_post_photo"
+                    android:layout_margin="8dp"
+                    android:minWidth="64dp"
+                    android:clickable="true"
+                    android:background="@drawable/ripple"/>
+
                 <LinearLayout
-                    android:id="@+id/fragment_item_post_love_count_ll"
+                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/fragment_item_post_user_post_photo"
-                    android:padding="8dp"
-                    android:layout_margin="8dp"
-                    android:minWidth="64dp"
-                    android:gravity="center"
-                    android:clickable="true"
-                    android:background="@drawable/ripple">
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="16dp">
 
                     <ImageView
-                        android:id="@+id/fragment_item_post_love_count_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:id="@+id/fragment_item_post_love_count_icon"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
                         android:contentDescription="@string/favorite"
-                        android:layout_gravity="center"
-                        android:tint="@color/md_red_300"
-                        android:src="@drawable/ic_favorite_border_white_18dp" />
+                        android:background="@drawable/bg_round_love"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_favorite_black_18dp"/>
 
                     <TextView
                         android:id="@+id/fragment_item_post_love_count"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:contentDescription="@string/favorite"
-                        android:fontFamily="sans-serif-condensed"
-                        android:gravity="center"
+                        android:fontFamily="sans-serif-condensed-light"
                         android:layout_gravity="center"
-                        android:layout_marginStart="8dp"
                         android:text="23"
+                        android:layout_marginLeft="4dp"
                         android:textColor="@color/text_color_secondary"
                         android:textSize="12sp" />
 
