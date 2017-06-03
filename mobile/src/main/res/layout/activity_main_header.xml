@@ -145,7 +145,7 @@
                 android:text="@string/activity_main_header_latest_post_title"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:textColor="@color/text_color_primary"
+                android:textColor="@color/color_accent"
                 android:fontFamily="sans-serif-condensed"/>
 
             <TextView
@@ -155,7 +155,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:layout_marginTop="8dp"
                 android:textSize="14sp"
                 android:text="@string/lorem"
                 android:maxLines="2"

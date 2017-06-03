@@ -160,12 +160,13 @@
                     android:layout_gravity="center"
                     android:fontFamily="sans-serif-medium"
                     android:textColor="@color/text_color_primary"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:drawableStart="@drawable/ic_favorite_border_black_18dp"
                     android:drawablePadding="6dp"
                     android:gravity="center"
                     android:padding="8dp"
                     android:text="@string/fragment_item_post_love"
+                    android:alpha="0.6"
                     android:layout_below="@id/fragment_item_post_user_post_photo"
                     android:layout_margin="8dp"
                     android:minWidth="64dp"
@@ -187,7 +188,7 @@
                         android:contentDescription="@string/favorite"
                         android:background="@drawable/bg_round_love"
                         android:padding="4dp"
-                        android:src="@drawable/ic_favorite_black_18dp"/>
+                        android:src="@drawable/ic_favorite_white_18dp"/>
 
                     <TextView
                         android:id="@+id/fragment_item_post_love_count"

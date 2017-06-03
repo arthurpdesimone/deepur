@@ -13,22 +13,24 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <include layout="@layout/activity_main_header"/>
-            
+            <include layout="@layout/activity_main_header" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="@color/color_accent"
-                android:text="@string/stories"
                 android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"/>
+                android:layout_marginStart="16dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/stories"
+                android:textAllCaps="true"
+                android:textColor="@color/color_accent"
+                android:textSize="12sp" />
 
-            <include layout="@layout/fragment_item_post"/>
+            <include layout="@layout/fragment_item_post" />
 
         </LinearLayout>
 
