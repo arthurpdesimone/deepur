@@ -62,6 +62,7 @@
             android:inputType="numberPassword"
             android:fontFamily="sans-serif"
             android:textSize="14sp"
+            android:drawableEnd="@drawable/ic_eye_outline_18dp"
             android:textColor="@color/text_color_secondary"
             android:hint="@string/activity_login_password"/>
 
@@ -81,7 +82,7 @@
         android:fontFamily="sans-serif-medium"
         android:textAllCaps="true"
         android:textSize="14sp"
-        android:textColor="@color/text_color_primary"
+        android:textColor="@color/color_accent"
         android:background="@drawable/bg_button_round_stroke"/>
 
     <TextView
@@ -101,7 +102,7 @@
         android:layout_centerHorizontal="true"
         android:textAllCaps="true"
         android:textSize="12sp"
-        android:textColor="@color/color_accent"/>
+        android:textColor="@color/text_color_secondary"/>
 
     <LinearLayout
         android:id="@+id/signed_in_buttons"

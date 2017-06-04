@@ -30,8 +30,8 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="8dp"
             app:fabSize="mini"
-            app:backgroundTint="@color/md_grey_50"
-            android:src="@drawable/ic_camera_alt_black_24dp"/>
+            app:backgroundTint="@color/color_accent"
+            android:src="@drawable/ic_camera_alt_24dp"/>
 
     </FrameLayout>
 
@@ -80,7 +80,7 @@
         android:textColor="@color/color_accent"
         android:fontFamily="sans-serif-medium"
         android:clickable="true"
-        android:background="@drawable/ripple"
+        android:background="@drawable/bg_button_round_stroke"
         android:text="@string/activity_login_next_button"
         android:padding="8dp"/>
 

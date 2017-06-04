@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:src="@drawable/ic_settings_black_24dp"
+            android:src="@drawable/ic_settings_24dp"
             android:background="@drawable/bg_button_round_stroke"
             android:padding="6dp"
             android:tint="@color/color_accent"
@@ -84,16 +84,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_person_black_18dp"/>
+                android:src="@drawable/ic_account_outline_24dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_camera_alt_black_24dp"
+                android:src="@drawable/ic_camera_alt_24dp"
                 android:padding="8dp"
-                android:layout_marginTop="8dp"
                 android:text="12"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:gravity="center"
                 android:fontFamily="sans-serif"
                 android:textColor="@color/text_color_secondary"/>
@@ -112,15 +111,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_photo_camera_black_18dp"/>
+                android:src="@drawable/ic_camera_alt_24dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:layout_marginTop="8dp"
                 android:text="09"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:gravity="center"
                 android:fontFamily="sans-serif"
                 android:textColor="@color/text_color_secondary"/>
