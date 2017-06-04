@@ -53,9 +53,9 @@
             android:id="@+id/activity_settings_day_night_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_theme_light_dark_black_24dp"
-            android:layout_margin="16dp"
-            android:tint="@color/color_accent"/>
+            android:src="@drawable/ic_theme_light_dark_24dp"
+            android:alpha="0.6"
+            android:layout_margin="16dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -109,9 +109,9 @@
             android:id="@+id/activity_settings_account_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_account_circle_black_24dp"
-            android:layout_margin="16dp"
-            android:tint="@color/color_accent"/>
+            android:src="@drawable/ic_account_circle_24dp"
+            android:alpha="0.6"
+            android:layout_margin="16dp"/>
 
         <TextView
             android:id="@+id/activity_settings_account_title"
@@ -140,8 +140,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_notifications_24dp"
-            android:layout_margin="16dp"
-            android:tint="@color/color_accent"/>
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:alpha="0.6"
+            android:layout_marginStart="16dp" />
 
         <TextView
             android:id="@+id/activity_settings_notification_title"
