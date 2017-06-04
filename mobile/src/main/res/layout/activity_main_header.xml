@@ -3,73 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/background"
     tools:context="com.ruiriot.deepur.activity.MainHeaderActivity">
-
-    <RelativeLayout
-        android:id="@+id/activity_main_header_rl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/activity_main_header_user_image"
-            android:layout_width="@dimen/activity_main_header_user_image"
-            android:layout_height="@dimen/activity_main_header_user_image"
-            android:scaleType="centerCrop"
-            android:layout_margin="16dp"
-            android:src="@drawable/ic_person_black_48dp"
-            android:background="@color/background_card"/>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_margin="14dp"
-            android:layout_toEndOf="@id/activity_main_header_user_image">
-
-            <TextView
-                android:id="@+id/activity_main_header_user_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:text="User Name"
-                android:layout_marginBottom="8dp"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:textColor="@color/text_color_primary"
-                android:fontFamily="sans-serif"/>
-
-            <TextView
-                android:id="@+id/activity_main_header_user_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:text="email@email.com"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:textColor="@color/text_color_secondary"
-                android:fontFamily="sans-serif-condensed-light"/>
-
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/activity_main_header_settings_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:src="@drawable/ic_settings_18dp"
-            android:background="@drawable/bg_round_stroke"
-            android:padding="6dp"
-            android:layout_alignParentEnd="true"/>
-
-    </RelativeLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/activity_main_header_rl">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:id="@+id/activity_main_header_ll_friends"

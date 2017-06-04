@@ -83,7 +83,7 @@
         android:fontFamily="sans-serif-medium"
         android:textAllCaps="true"
         android:textSize="14sp"
-        android:textColor="@color/color_accent"
+        android:textColor="@color/text_color_primary"
         android:background="@drawable/bg_button_round_stroke"/>
 
     <TextView

@@ -9,6 +9,7 @@
     <string name="album_permission">To share an image, give deepur access to Media</string>
     <string name="allow">ALLOW</string>
     <string name="stories">Stories</string>
+    <string name="error">There is something wrong</string>
 
     <!-- LOGIN -->
     <string name="activity_login_email">Email</string>

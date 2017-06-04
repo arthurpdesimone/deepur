@@ -136,23 +136,6 @@ public class LoginActivity extends BaseActivity{
         }
     }
 
-    private void blurView(){
-        final Application activity = getApplication();
-        final View content = findViewById(android.R.id.content).getRootView();
-        if (content.getWidth() > 0) {
-            Bitmap image = BlurEffectUtils.blur(content);
-            blurryBg.setBackgroundDrawable(new BitmapDrawable(activity.getResources(), image));
-        } else {
-            content.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                @Override
-                public void onGlobalLayout() {
-                    Bitmap image = BlurEffectUtils.blur(content);
-                    blurryBg.setBackgroundDrawable(new BitmapDrawable(activity.getResources(), image));
-                }
-            });
-        }
-    }
-
     private void createAccount(String email, String password) {
         findViewById(R.id.activity_login_verify_email).setEnabled(true);
 
