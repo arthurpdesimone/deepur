@@ -33,7 +33,9 @@
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:padding="24dp"
-        android:src="@drawable/autumn_logo"/>
+        android:src="@drawable/autumn_logo"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/activity_login_deepur"
@@ -62,7 +64,6 @@
             android:inputType="numberPassword"
             android:fontFamily="sans-serif"
             android:textSize="14sp"
-            android:drawableEnd="@drawable/ic_eye_outline_18dp"
             android:textColor="@color/text_color_secondary"
             android:hint="@string/activity_login_password"/>
 

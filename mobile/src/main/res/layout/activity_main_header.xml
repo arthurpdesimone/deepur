@@ -18,7 +18,7 @@
             android:scaleType="centerCrop"
             android:layout_margin="16dp"
             android:src="@drawable/ic_person_black_48dp"
-            android:background="@drawable/bg_rectangle_rounded_corner"/>
+            android:background="@color/background_card"/>
 
         <LinearLayout
             android:orientation="vertical"
@@ -58,10 +58,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:src="@drawable/ic_settings_24dp"
-            android:background="@drawable/bg_button_round_stroke"
+            android:src="@drawable/ic_settings_18dp"
+            android:background="@drawable/bg_round_stroke"
             android:padding="6dp"
-            android:tint="@color/color_accent"
             android:layout_alignParentEnd="true"/>
 
     </RelativeLayout>
@@ -85,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:alpha="0.6"
-                android:src="@drawable/ic_account_outline_24dp"/>
+                android:src="@drawable/ic_person_18dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -109,11 +108,12 @@
             android:padding="8dp">
 
             <ImageView
+                android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:alpha="0.6"
-                android:src="@drawable/ic_camera_alt_24dp"/>
+                android:src="@drawable/ic_photo_camera_18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
