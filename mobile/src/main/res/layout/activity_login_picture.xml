@@ -79,7 +79,7 @@
         android:fontFamily="sans-serif-medium"
         android:clickable="true"
         android:background="@drawable/bg_button_round_stroke"
-        android:text="@string/activity_login_next_button"
+        android:text="@string/done"
         android:padding="8dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"

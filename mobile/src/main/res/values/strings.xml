@@ -10,6 +10,9 @@
     <string name="allow">ALLOW</string>
     <string name="stories">Stories</string>
     <string name="error">There is something wrong</string>
+    <string name="done">DONE</string>
+
+
 
     <!-- LOGIN -->
     <string name="activity_login_email">Email</string>
@@ -44,5 +47,6 @@
     <string name="activity_settings_day_night_description">This mode changes the lighting conditions whether it is day or night</string>
     <string name="activity_settings_account_title">Account</string>
     <string name="activity_settings_notification_title">Notifications</string>
+    <string name="activity_settings_change_password">Change password</string>
 
 </resources>
