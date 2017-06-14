@@ -30,7 +30,8 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="8dp"
             app:fabSize="mini"
-            app:backgroundTint="@color/color_accent"
+            app:backgroundTint="@color/background_card"
+            android:tint="@color/color_accent"
             android:src="@drawable/ic_camera_alt_24dp"/>
 
     </FrameLayout>
@@ -74,7 +75,7 @@
         android:layout_marginBottom="64dp"
         android:minWidth="96dp"
         android:gravity="center"
-        android:textColor="@color/color_accent"
+        android:textColor="@color/text_color_primary"
         android:fontFamily="sans-serif-medium"
         android:clickable="true"
         android:background="@drawable/bg_button_round_stroke"

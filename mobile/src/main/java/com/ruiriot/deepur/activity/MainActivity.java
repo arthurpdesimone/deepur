@@ -84,7 +84,7 @@ public class MainActivity extends BaseActivity {
                     int settingsColor = swatch.getTitleTextColor();
                     int h = userBg.getWidth();
                     ShapeDrawable mDrawable = new ShapeDrawable(new RectShape());
-                    mDrawable.getPaint().setShader(new LinearGradient(h, 0, 0, 0, color, color, Shader.TileMode.REPEAT));
+                    mDrawable.getPaint().setShader(new LinearGradient(h, 1, 1, 0, color, getResources().getColor(R.color.transparent), Shader.TileMode.REPEAT));
                     userBg.setBackground(mDrawable);
                     userName.setTextColor(nameTextColor);
                     userEmailText.setTextColor(emailTextColor);
