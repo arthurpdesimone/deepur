@@ -82,7 +82,7 @@ public class LoginPictureActivity extends BaseActivity implements ActivityCompat
         }
         if (i == R.id.activity_login_picture_next_button){
             showProgressDialog(this);
-            callActivity(LoginPictureActivity.this, MainActivity.class);
+            callActivity(LoginPictureActivity.this, HomeActivity.class);
             hideProgressDialog(this);
         }
     }

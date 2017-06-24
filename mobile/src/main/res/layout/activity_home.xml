@@ -20,7 +20,7 @@
                 android:layout_width="@dimen/activity_main_header_user_image"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:alpha="0.7"
+                android:alpha="0.8"
                 android:src="@drawable/rui" />
 
             <View

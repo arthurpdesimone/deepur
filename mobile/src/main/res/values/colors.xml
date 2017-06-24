@@ -2,7 +2,7 @@
 <resources>
     <color name="color_primary">@color/md_grey_100</color>
     <color name="color_primary_dark">@color/md_grey_200</color>
-    <color name="color_accent">@color/wisteria</color>
+    <color name="color_accent">@color/md_pink_A200</color>
 
     <color name="background">@color/md_grey_50</color>
     <color name="background_card">@color/md_white_1000</color>

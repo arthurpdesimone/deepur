@@ -81,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/activity_settings_day_night_description"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:fontFamily="sans-serif"
                 android:layout_marginTop="8dp"
                 android:textColor="@color/text_color_secondary"/>
@@ -154,6 +154,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/activity_settings_change_password"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif"
+                android:textColor="@color/text_color_secondary"
+                android:clickable="true"
+                android:background="@drawable/ripple"
+                android:paddingStart="64dp"
+                android:paddingEnd="64dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/activity_settings_account_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_login_sign_out"
                 android:textSize="14sp"
                 android:fontFamily="sans-serif"
                 android:textColor="@color/text_color_secondary"

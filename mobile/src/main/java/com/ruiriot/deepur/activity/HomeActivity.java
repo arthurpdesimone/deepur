@@ -15,7 +15,6 @@ import android.support.v7.graphics.Palette;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +28,7 @@ import static com.ruiriot.deepur.utils.ActivityUtils.callActivity;
 
 /**Receive email > Set email on TextView > getUserName > setUserName*/
 
-public class MainActivity extends BaseActivity {
+public class HomeActivity extends BaseActivity {
 
 
     @BindView(R.id.activity_main_header_user_image)
@@ -55,7 +54,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
 
         ButterKnife.bind(this);
 
