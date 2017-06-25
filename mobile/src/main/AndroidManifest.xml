@@ -27,7 +27,7 @@
         </activity>
         <activity
             android:name=".activity.HomeActivity"
-            android:theme="@style/AppThemeTransparent" />
+            android:theme="@style/AppThemeMD" />
         <activity
             android:name=".activity.LoginPictureActivity"
             android:theme="@style/AppThemeMD" />

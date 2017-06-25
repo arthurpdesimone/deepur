@@ -24,6 +24,8 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_arrow_back_24dp"
                 android:tint="@color/color_accent"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
                 android:layout_margin="8dp"
                 android:padding="8dp"/>
 
@@ -32,8 +34,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title_activity_settings"
-                android:textSize="18sp"
-                android:fontFamily="sans-serif"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-condensed"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@id/activity_settings_back_icon"
                 android:layout_marginStart="8dp"
@@ -81,8 +83,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/activity_settings_day_night_description"
-                android:textSize="12sp"
-                android:fontFamily="sans-serif"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-condensed"
                 android:layout_marginTop="8dp"
                 android:textColor="@color/text_color_secondary"/>
 
@@ -101,9 +103,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:background="@drawable/ripple">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/activity_settings_account_icon"
@@ -139,45 +139,45 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/activity_login_picture_title"
-                android:textSize="14sp"
-                android:fontFamily="sans-serif"
-                android:textColor="@color/text_color_secondary"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/color_accent"
                 android:clickable="true"
                 android:background="@drawable/ripple"
                 android:paddingStart="64dp"
                 android:paddingEnd="64dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"/>
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"/>
 
             <TextView
                 android:id="@+id/activity_settings_account_change_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/activity_settings_change_password"
-                android:textSize="14sp"
-                android:fontFamily="sans-serif"
-                android:textColor="@color/text_color_secondary"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/color_accent"
                 android:clickable="true"
                 android:background="@drawable/ripple"
                 android:paddingStart="64dp"
                 android:paddingEnd="64dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"/>
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"/>
 
             <TextView
                 android:id="@+id/activity_settings_account_logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/activity_login_sign_out"
-                android:textSize="14sp"
-                android:fontFamily="sans-serif"
-                android:textColor="@color/text_color_secondary"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/color_accent"
                 android:clickable="true"
                 android:background="@drawable/ripple"
                 android:paddingStart="64dp"
                 android:paddingEnd="64dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"/>
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"/>
 
         </LinearLayout>
 
