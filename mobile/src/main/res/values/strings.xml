@@ -13,7 +13,6 @@
     <string name="done">DONE</string>
 
 
-
     <!-- LOGIN -->
     <string name="activity_login_email">Email</string>
     <string name="activity_login_password">Password</string>

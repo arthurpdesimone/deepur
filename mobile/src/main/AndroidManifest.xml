@@ -39,8 +39,8 @@
         <activity
             android:name=".activity.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:theme="@style/AppThemeMD" >
-        </activity>
+            android:theme="@style/AppThemeMD"></activity>
+        <activity android:name=".activity.Messenger"></activity>
     </application>
 
 </manifest>
