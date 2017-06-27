@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
-    android:background="@drawable/bg_button_round_stroke">
+    android:background="@drawable/bg_message_received">
 
     <TextView
-        android:id="@+id/fragment_messenger_message_bubble"
+        android:id="@+id/fragment_messenger_message_received"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/lorem"

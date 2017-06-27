@@ -12,6 +12,7 @@
     <color name="text_color_primary_black">#de000000</color>
     <color name="text_color_secondary_black">#8a000000</color>
     <color name="transparent">#00000000</color>
+    <color name="facebook">#3b5998</color>
 
     <color name="red_text_color">@color/md_white_1000</color>
     <color name="indigo_text_color">@color/md_white_1000</color>

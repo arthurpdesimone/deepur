@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.ruiriot.deepur.R;
 
-public class MainHeaderActivity extends AppCompatActivity {
+public class HomeHeaderActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
