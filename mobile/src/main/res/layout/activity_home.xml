@@ -52,8 +52,6 @@
                 android:textColor="@color/color_accent"
                 android:textSize="12sp" />
 
-            <include layout="@layout/fragment_item_post" />
-
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/activity_home_recycler_view"
                 android:layout_width="match_parent"
