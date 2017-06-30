@@ -34,13 +34,16 @@ public abstract class ActivityUtils {
         String userEmail;
 
         if (user != null){
-            userEmail = user.getEmail();
+            //userEmail = user.getEmail();
             Intent intent = new Intent(context, clazz);
-            intent.putExtra(Intent.EXTRA_EMAIL, userEmail);
+            //intent.putExtra(Intent.EXTRA_EMAIL, userEmail);
             context.startActivity(intent);
         }else {
-            Toast.makeText(context, "User not found.",
-                    Toast.LENGTH_SHORT).show();
+            /*Toast.makeText(context, "User not found.",
+                    Toast.LENGTH_SHORT).show();*/
+            Intent intent = new Intent(context, clazz);
+            //intent.putExtra(Intent.EXTRA_EMAIL, userEmail);
+            context.startActivity(intent);
         }
 
     }

@@ -39,9 +39,27 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="16dp"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/activity_login_deepur"/>
+
+        <TextView
+            android:id="@+id/activity_login_skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activity_login_facebook"
+            android:text="@string/activity_login_next_button"
+            android:padding="8dp"
+            android:minWidth="96dp"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowColor="@color/text_color_secondary"
+            android:shadowRadius="1"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:textSize="14sp"
+            android:textColor="@color/color_accent"/>
 
         <TextView
             android:id="@+id/activity_login_description"
@@ -49,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/activity_login_facebook"
             android:text="@string/activity_login_description"
-            android:layout_margin="16dp"
+            android:layout_marginTop="56dp"
             android:minWidth="96dp"
             android:shadowDx="1"
             android:shadowDy="1"

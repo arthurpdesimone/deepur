@@ -45,6 +45,9 @@ public class LoginActivity extends BaseActivity{
     @BindView(R.id.activity_login_relative)
     RelativeLayout blurryBg;
 
+    @BindView(R.id.activity_login_skip)
+    TextView skipToHome;
+
     CallbackManager callbackManager;
 
     @Override
@@ -58,12 +61,19 @@ public class LoginActivity extends BaseActivity{
 
         findViewById(R.id.activity_login_facebook).setOnClickListener(this);
         coordinatorLayout = findViewById(R.id.activity_login_coordinator);
-        mSignInButton.setReadPermissions("email");
+        //mSignInButton.setReadPermissions("email");
 
-        mSignInButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+        skipToHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                callActivity(getApplicationContext(), HomeActivity.class);
+            }
+        });
+
+       /* mSignInButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                // App code
+
             }
 
             @Override
@@ -75,7 +85,7 @@ public class LoginActivity extends BaseActivity{
             public void onError(FacebookException exception) {
                 showErrorSnackBar();
             }
-        });
+        });*/
 //
 //        Bitmap image = BitmapFactory.decodeResource(getResources(),
 //                R.drawable.autumn);

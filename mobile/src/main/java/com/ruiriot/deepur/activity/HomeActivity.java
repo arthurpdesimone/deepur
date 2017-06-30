@@ -12,6 +12,9 @@ import android.graphics.drawable.shapes.RectShape;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.graphics.Palette;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
@@ -19,7 +22,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ruiriot.deepur.R;
+import com.ruiriot.deepur.adapter.HomeAdapter;
 import com.ruiriot.deepur.utils.BlurEffectUtils;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,7 +55,12 @@ public class HomeActivity extends BaseActivity {
     @BindView(R.id.activity_main_header_settings_icon)
     ImageView settingsButton;
 
+    @BindView(R.id.activity_home_recycler_view)
+    RecyclerView mRecyclerView;
+
     Intent intent;
+
+    private HomeAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +112,20 @@ public class HomeActivity extends BaseActivity {
                 callActivity(getApplicationContext(), SettingsActivity.class);
             }
         });
+
+        setupRecycler();
+    }
+
+    private void setupRecycler() {
+
+        // Configurando o gerenciador de layout para ser uma lista.
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(layoutManager);
+
+        // Adiciona o adapter que irá anexar os objetos à lista.
+        // Está sendo criado com lista vazia, pois será preenchida posteriormente.
+        mAdapter = new HomeAdapter(new ArrayList<>(0));
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     private void blurView(){
