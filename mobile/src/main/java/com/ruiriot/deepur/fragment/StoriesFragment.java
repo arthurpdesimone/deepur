@@ -9,12 +9,15 @@ import android.view.ViewGroup;
 
 import com.ruiriot.deepur.R;
 
+/**
+ * Created by ruiri on 03-Jul-17.
+ */
 
-public class ItemPostFragment extends BaseFragment {
+public class StoriesFragment extends BaseFragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public ItemPostFragment() {
+    public StoriesFragment() {
         // Required empty public constructor
     }
 
@@ -28,7 +31,7 @@ public class ItemPostFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_item_post, container, false);
+        return inflater.inflate(R.layout.fragment_stories, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -54,5 +57,4 @@ public class ItemPostFragment extends BaseFragment {
         super.onDetach();
         mListener = null;
     }
-
 }

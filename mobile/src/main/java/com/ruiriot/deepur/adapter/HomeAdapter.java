@@ -3,6 +3,8 @@ package com.ruiriot.deepur.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.text.SpannableString;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,7 @@ import java.util.List;
 public class HomeAdapter extends FragmentPagerAdapter {
 
     private final List<Fragment> mFragmentList = new ArrayList<>();
+    private final List<String> mFragmentTitleList = new ArrayList<>();
 
     public HomeAdapter(FragmentManager fm) {
         super(fm);
@@ -28,7 +31,14 @@ public class HomeAdapter extends FragmentPagerAdapter {
         return mFragmentList.size();
     }
 
+
+    @Override
+    public CharSequence getPageTitle(int i) {
+        return mFragmentTitleList.get(i);
+    }
+
     public void addFragment(Fragment fragment, String title) {
         mFragmentList.add(fragment);
+        mFragmentTitleList.add(title);
     }
 }
