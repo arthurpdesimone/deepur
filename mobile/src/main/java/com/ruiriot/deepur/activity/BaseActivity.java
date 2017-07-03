@@ -1,5 +1,6 @@
 package com.ruiriot.deepur.activity;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 
 import com.ruiriot.deepur.exception.BaseException;
+import com.ruiriot.deepur.fragment.ItemPostFragment;
 
 import static com.ruiriot.deepur.Constants.PERMISSIONS_REQUEST_CAMERA;
 import static com.ruiriot.deepur.Event.post;
@@ -18,7 +20,7 @@ import static com.ruiriot.deepur.Event.register;
  * Created by ruiriot on 09-May-17.
  */
 
-public class BaseActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback, View.OnClickListener{
+public class BaseActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback, View.OnClickListener, ItemPostFragment.OnFragmentInteractionListener{
 
     int resourceLayout;
 
@@ -79,5 +81,10 @@ public class BaseActivity extends AppCompatActivity implements ActivityCompat.On
     static {
         AppCompatDelegate.setDefaultNightMode(
                 AppCompatDelegate.MODE_NIGHT_AUTO);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

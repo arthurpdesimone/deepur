@@ -129,6 +129,7 @@ public class HomeActivity extends BaseActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         HomeAdapter adapter = new HomeAdapter(getSupportFragmentManager());
+        adapter.addFragment(new ItemPostFragment(), null);
         viewPager.setAdapter(adapter);
     }
 

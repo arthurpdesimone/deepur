@@ -27,4 +27,8 @@ public class HomeAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return mFragmentList.size();
     }
+
+    public void addFragment(Fragment fragment, String title) {
+        mFragmentList.add(fragment);
+    }
 }
