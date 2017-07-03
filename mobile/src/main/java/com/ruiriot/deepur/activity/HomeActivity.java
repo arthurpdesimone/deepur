@@ -10,11 +10,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.graphics.Palette;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
@@ -23,9 +24,8 @@ import android.widget.Toast;
 
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.adapter.HomeAdapter;
+import com.ruiriot.deepur.fragment.ItemPostFragment;
 import com.ruiriot.deepur.utils.BlurEffectUtils;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,7 +35,6 @@ import static com.ruiriot.deepur.utils.ActivityUtils.callActivity;
 /**Receive email > Set email on TextView > getUserName > setUserName*/
 
 public class HomeActivity extends BaseActivity {
-
 
     @BindView(R.id.activity_main_header_user_image)
     ImageView userImage;
@@ -58,9 +57,16 @@ public class HomeActivity extends BaseActivity {
     @BindView(R.id.activity_home_recycler_view)
     RecyclerView mRecyclerView;
 
-    Intent intent;
+    @BindView(R.id.activity_home_viewpager)
+    ViewPager homeViewPager;
 
-    private HomeAdapter mAdapter;
+    @BindView(R.id.acitivity_home_toolbar)
+    Toolbar toolbar;
+
+    @BindView(R.id.activity_home_tabs)
+    TabLayout tabLayout;
+
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +76,13 @@ public class HomeActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         intent = getIntent();
+
+        toolbar = findViewById(R.id.acitivity_home_toolbar);
+        setSupportActionBar(toolbar);
+
+        setupViewPager(homeViewPager);
+
+        tabLayout.setupWithViewPager(homeViewPager);
 
         if (savedInstanceState == null) {
             // Set the local night mode to some value
@@ -112,20 +125,11 @@ public class HomeActivity extends BaseActivity {
                 callActivity(getApplicationContext(), SettingsActivity.class);
             }
         });
-
-        setupRecycler();
     }
 
-    private void setupRecycler() {
-
-        // Configurando o gerenciador de layout para ser uma lista.
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(layoutManager);
-
-        // Adiciona o adapter que irá anexar os objetos à lista.
-        // Está sendo criado com lista vazia, pois será preenchida posteriormente.
-        mAdapter = new HomeAdapter(new ArrayList<>(0));
-        mRecyclerView.setAdapter(mAdapter);
+    private void setupViewPager(ViewPager viewPager) {
+        HomeAdapter adapter = new HomeAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
     }
 
     private void blurView(){

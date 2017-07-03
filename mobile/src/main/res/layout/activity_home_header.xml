@@ -62,6 +62,7 @@
                     android:text="email@email.com"
                     android:maxLines="1"
                     android:ellipsize="end"
+                    android:visibility="gone"
                     android:fontFamily="sans-serif-condensed"/>
 
             </LinearLayout>
@@ -152,7 +153,7 @@
             android:text="@string/activity_main_header_latest_post_title"
             android:maxLines="1"
             android:ellipsize="end"
-            android:textColor="@color/color_accent"
+            android:textColor="@color/text_color_primary"
             android:fontFamily="sans-serif-condensed"/>
 
         <TextView

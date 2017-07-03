@@ -1,43 +1,30 @@
 package com.ruiriot.deepur.adapter;
 
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-
-import com.ruiriot.deepur.R;
-import com.ruiriot.deepur.adapter.holder.HomeHolder;
-import com.ruiriot.deepur.fragment.ItemPostFragment;
-
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by ruiri on 30-Jun-17.
  */
 
-public class HomeAdapter extends RecyclerView.Adapter<HomeHolder> {
+public class HomeAdapter extends FragmentPagerAdapter {
 
-    private final List<ItemPostFragment> itemPostFragments;
+    private final List<Fragment> mFragmentList = new ArrayList<>();
 
-    public HomeAdapter(ArrayList posts) {
-        itemPostFragments = posts;
+    public HomeAdapter(FragmentManager fm) {
+        super(fm);
     }
 
     @Override
-    public HomeHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new HomeHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_item_post, parent, false));
+    public Fragment getItem(int i) {
+        return mFragmentList.get(i);
     }
 
     @Override
-    public void onBindViewHolder(HomeHolder holder, int position) {
-
+    public int getCount() {
+        return mFragmentList.size();
     }
-
-    @Override
-    public int getItemCount() {
-        return itemPostFragments != null ? itemPostFragments.size() : 0;
-    }
-
 }

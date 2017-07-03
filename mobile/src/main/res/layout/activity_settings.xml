@@ -40,7 +40,7 @@
                 android:layout_toEndOf="@id/activity_settings_back_icon"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:textColor="@color/color_accent"/>
+                android:textColor="@color/text_color_primary"/>
 
         </RelativeLayout>
 
