@@ -1,17 +1,26 @@
 package com.ruiriot.deepur.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatDelegate;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.adapter.HomeAdapter;
+import com.ruiriot.deepur.adapter.NotificationAdapter;
+import com.ruiriot.deepur.fragment.ItemNotification;
 import com.ruiriot.deepur.fragment.NotificationsFragment;
 import com.ruiriot.deepur.fragment.StoriesFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,6 +43,20 @@ public class HomeActivity extends BaseActivity {
     @BindView(R.id.activity_main_header_settings_icon)
     ImageView settingsButton;
 
+    Context context;
+
+    List<ItemNotification> notificationList = new ArrayList<>();
+
+    @BindView(R.id.fragment_notifications_recycler_view)
+    RecyclerView recyclerViewNotifications;
+
+    @BindView(R.id.fragment_notifications_item_date)
+    TextView dateNotification;
+
+    @BindView(R.id.fragment_notifications_item_description)
+    TextView descriptionNotification;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +69,7 @@ public class HomeActivity extends BaseActivity {
         toolbar.setBackgroundColor(getResources().getColor(R.color.background));
 
         setupViewPager(homeViewPager);
+        setupRecyclerViewNotifications();
 
         tabLayout.setupWithViewPager(homeViewPager);
 
@@ -62,6 +86,13 @@ public class HomeActivity extends BaseActivity {
                 callActivity(getApplicationContext(), SettingsActivity.class);
             }
         });
+    }
+
+    private void setupRecyclerViewNotifications(){
+        RecyclerView.LayoutManager mLayoutManager;
+        mLayoutManager = new LinearLayoutManager(context);
+        recyclerViewNotifications.setLayoutManager(mLayoutManager);
+        recyclerViewNotifications.setAdapter(new NotificationAdapter(notificationList, context));
     }
 
     private void setupViewPager(ViewPager viewPager) {
