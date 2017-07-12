@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:context="com.ruiriot.deepur.activity.SettingsActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:contentInsetStart="0dp"
+        android:contentInsetEnd="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/activity_settings_back_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_back_24dp"
+                android:tint="@color/color_accent"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:layout_margin="8dp"
+                android:padding="8dp"/>
+
+            <TextView
+                android:id="@+id/activity_settings_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_activity_settings"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/activity_settings_back_icon"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:textColor="@color/text_color_primary"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <ImageView
+            android:id="@+id/activity_settings_day_night_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_theme_light_dark_24dp"
+            android:alpha="0.6"
+            android:layout_margin="16dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="64dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:id="@+id/activity_settings_day_night_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_settings_day_night_title"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif"
+                android:textColor="@color/text_color_primary"/>
+
+            <TextView
+                android:id="@+id/activity_settings_day_night_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_settings_day_night_description"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/text_color_secondary"/>
+
+        </LinearLayout>
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:padding="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/activity_settings_account_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_account_circle_24dp"
+            android:alpha="0.6"
+            android:layout_margin="16dp"/>
+
+        <TextView
+            android:id="@+id/activity_settings_account_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_settings_account_title"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/text_color_primary"
+            android:layout_marginStart="64dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="16dp"/>
+
+        <LinearLayout
+            android:id="@+id/activity_settings_account_item_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="8dp"
+            android:layout_below="@id/activity_settings_account_title">
+
+            <TextView
+                android:id="@+id/activity_settings_account_change_picture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_login_picture_title"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/color_accent"
+                android:clickable="true"
+                android:background="@drawable/ripple"
+                android:paddingStart="64dp"
+                android:paddingEnd="64dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"/>
+
+            <TextView
+                android:id="@+id/activity_settings_account_change_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_settings_change_password"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/color_accent"
+                android:clickable="true"
+                android:background="@drawable/ripple"
+                android:paddingStart="64dp"
+                android:paddingEnd="64dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"/>
+
+            <TextView
+                android:id="@+id/activity_settings_account_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_login_sign_out"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/color_accent"
+                android:clickable="true"
+                android:background="@drawable/ripple"
+                android:paddingStart="64dp"
+                android:paddingEnd="64dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:background="@drawable/ripple">
+
+        <ImageView
+            android:id="@+id/activity_settings_notification_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_notifications_24dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:alpha="0.6"
+            android:layout_marginStart="16dp" />
+
+        <TextView
+            android:id="@+id/activity_settings_notification_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_settings_notification_title"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/text_color_primary"
+            android:layout_marginStart="64dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

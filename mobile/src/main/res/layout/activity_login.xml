@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/activity_login_coordinator"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/activity_login_relative">
+
+        <ImageView
+            android:id="@+id/activity_login_deepur_logo"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:padding="24dp"
+            android:src="@drawable/autumn_logo"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/activity_login_deepur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="44sp"
+            android:layout_margin="16dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/activity_login_deepur_logo"
+            android:textColor="@color/text_color_primary"
+            android:fontFamily="sans-serif-condensed-light"/>
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/activity_login_facebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="16dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/activity_login_deepur"/>
+
+        <TextView
+            android:id="@+id/activity_login_skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activity_login_facebook"
+            android:text="@string/activity_login_next_button"
+            android:padding="8dp"
+            android:minWidth="96dp"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowColor="@color/text_color_secondary"
+            android:shadowRadius="1"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:textSize="14sp"
+            android:textColor="@color/color_accent"/>
+
+        <TextView
+            android:id="@+id/activity_login_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activity_login_facebook"
+            android:text="@string/activity_login_description"
+            android:layout_marginTop="56dp"
+            android:minWidth="96dp"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowColor="@color/text_color_secondary"
+            android:shadowRadius="1"
+            android:fontFamily="sans-serif-light"
+            android:drawableStart="@drawable/ic_info_outline_black_18dp"
+            android:drawablePadding="8dp"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:alpha="0.6"
+            android:textSize="14sp"
+            android:textColor="@color/text_color_primary"/>
+
+        <LinearLayout
+            android:id="@+id/signed_in_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activity_login_description"
+            android:orientation="horizontal"
+            android:visibility="invisible"
+            android:padding="16dp">
+
+            <Button
+                android:id="@+id/activity_login_sign_out"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:layout_margin="8dp"
+                android:background="@color/color_accent"
+                android:text="@string/activity_login_sign_out" />
+
+            <Button
+                android:id="@+id/activity_login_verify_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:layout_margin="8dp"
+                android:background="@color/color_accent"
+                android:text="@string/activity_login_verify_email"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

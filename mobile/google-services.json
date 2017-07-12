@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "827955158921",
+    "firebase_url": "https://deepur-ce6d9.firebaseio.com",
+    "project_id": "deepur-ce6d9",
+    "storage_bucket": "deepur-ce6d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:827955158921:android:a0ddb3509c237512",
+        "android_client_info": {
+          "package_name": "com.ruiriot.deepur"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "827955158921-mpg474init5j33adjnseucono9a3p6sh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAYEffBKcjzx_RkH7MPpCkAxyQy3-TYsc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

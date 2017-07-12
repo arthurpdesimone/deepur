@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/activity_login_picture_relative"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ruiriot.deepur.activity.LoginPictureActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background">
+
+    <FrameLayout
+        android:id="@+id/activity_login_frame_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="160dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/activity_login_picture_user_image"
+            android:layout_width="156dp"
+            android:layout_height="156dp"
+            android:contentDescription="@string/activity_login_picture_user_image"
+            android:scaleType="centerCrop"
+            android:background="@drawable/bg_round_stroke"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/activity_login_picture_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="8dp"
+            app:fabSize="mini"
+            app:backgroundTint="@color/background_card"
+            android:tint="@color/color_accent"
+            android:src="@drawable/ic_camera_alt_24dp"/>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/activity_login_picture_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_login_frame_layout"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="8dp"
+        android:text="User Name"
+        android:textColor="@color/text_color_primary"
+        android:fontFamily="sans-serif"/>
+
+    <TextView
+        android:id="@+id/activity_login_picture_user_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_login_picture_user_name"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="20sp"
+        android:text="email"
+        android:textColor="@color/text_color_secondary"
+        android:fontFamily="sans-serif-condensed-light"/>
+
+    <TextView
+        android:id="@+id/activity_login_picture_next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="64dp"
+        android:minWidth="96dp"
+        android:gravity="center"
+        android:textColor="@color/text_color_primary"
+        android:fontFamily="sans-serif-medium"
+        android:clickable="true"
+        android:background="@drawable/bg_button_round_stroke"
+        android:text="@string/done"
+        android:padding="8dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp" />
+
+</RelativeLayout>
