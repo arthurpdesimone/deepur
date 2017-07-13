@@ -1,26 +1,19 @@
 package com.ruiriot.deepur.utils;
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.ruiriot.deepur.R;
 
-import static android.content.Context.ACCOUNT_SERVICE;
-import static com.google.android.gms.internal.zzt.TAG;
 
 /**
  * Created by ruiri on 08-May-17.
@@ -60,7 +53,7 @@ public abstract class ActivityUtils {
             if (requestCode != PackageManager.PERMISSION_GRANTED){
                 if (ActivityCompat.shouldShowRequestPermissionRationale(context, p)) {
 
-                    Log.i(TAG, "permission granted");
+                    Log.i("", "permission granted");
                 } else {
 
                     ActivityCompat.requestPermissions(context, permissions, requestCode);

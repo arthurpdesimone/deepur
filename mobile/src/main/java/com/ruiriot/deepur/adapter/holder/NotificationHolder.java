@@ -2,6 +2,9 @@ package com.ruiriot.deepur.adapter.holder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
+
+import com.ruiriot.deepur.R;
 
 /**
  * Created by ruiri on 04-Jul-17.
@@ -9,26 +12,28 @@ import android.view.View;
 
 public class NotificationHolder extends RecyclerView.ViewHolder {
 
+    private TextView dateNotification;
+    private TextView descriptionNotification;
+
     public NotificationHolder(View itemView) {
         super(itemView);
+        dateNotification = itemView.findViewById(R.id.fragment_notifications_item_date);
+        descriptionNotification = itemView.findViewById(R.id.fragment_notifications_item_description);
     }
 
-    private String dateNotification;
-    private String descriptionNotification;
-
-    public String getDateNotification() {
+    public TextView getDateNotification() {
         return dateNotification;
     }
 
-    public void setDateNotification(String dateNotification) {
+    public void setDateNotification(TextView dateNotification) {
         this.dateNotification = dateNotification;
     }
 
-    public String getDescriptionNotification() {
+    public TextView getDescriptionNotification() {
         return descriptionNotification;
     }
 
-    public void setDescriptionNotification(String descriptionNotification) {
+    public void setDescriptionNotification(TextView descriptionNotification) {
         this.descriptionNotification = descriptionNotification;
     }
 }

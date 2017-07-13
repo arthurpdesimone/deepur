@@ -41,10 +41,6 @@
             android:name=".activity.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:theme="@style/AppThemeMD" />
-        <activity
-            android:name=".activity.Messenger"
-            android:label="@string/title_activity_messenger"
-            android:theme="@style/AppThemeMD" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -66,7 +62,6 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.StoriesActivity"></activity>
     </application>
 
 </manifest>

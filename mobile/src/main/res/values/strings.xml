@@ -50,6 +50,7 @@
 
     <!-- ACTIVITY MESSENGER -->
     <string name="title_activity_messenger">Messenger</string>
+    <string name="activity_messenger_edit_text">Type a message</string>
 
     <!-- FACEBOOK -->
     <string name="facebook_app_id">230953874089702</string>

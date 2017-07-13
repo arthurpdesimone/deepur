@@ -3,12 +3,9 @@ package com.ruiriot.deepur.adapter.holder;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ruiriot.deepur.R;
-
-import org.w3c.dom.Text;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -16,17 +13,17 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by ruiri on 12-Jul-17.
  */
 
-public class StoriesHolder extends RecyclerView.ViewHolder {
+public class MessengerHolder extends RecyclerView.ViewHolder{
 
     private CircleImageView userImageView;
     private TextView userName;
     private EditText userText;
 
-    public StoriesHolder(View itemView) {
+    public MessengerHolder(View itemView) {
         super(itemView);
-        userImageView = itemView.findViewById(R.id.fragment_stories_post_user_image);
-        userName = itemView.findViewById(R.id.fragment_stories_post_user_name);
-        userText = itemView.findViewById(R.id.fragment_new_item_post_edit_text);
+        userImageView = itemView.findViewById(R.id.fragment_messenger_item_user_image);
+        userName = itemView.findViewById(R.id.fragment_messenger_item_user_name);
+        userText = itemView.findViewById(R.id.fragment_messenger_item_message_preview);
     }
 
     public CircleImageView getUserImageView() {

@@ -7,6 +7,7 @@ package com.ruiriot.deepur.fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.ruiriot.deepur.R;
 public class NotificationsFragment extends BaseFragment{
 
     private OnFragmentInteractionListener mListener;
+    private RecyclerView recyclerView;
 
     public NotificationsFragment() {
         // Required empty public constructor
@@ -51,5 +53,4 @@ public class NotificationsFragment extends BaseFragment{
         super.onDetach();
         mListener = null;
     }
-
 }
