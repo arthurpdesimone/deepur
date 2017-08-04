@@ -5,11 +5,9 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.util.Log;
 
-import com.google.common.eventbus.Subscribe;
 import com.ruiriot.deepur.exception.BaseException;
 
 import static com.ruiriot.deepur.Constants.TAG_ERROR;
-import static com.ruiriot.deepur.Event.register;
 
 /**
  * Created by ruiri on 09-May-17.
@@ -20,11 +18,9 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        register(this);
     }
 
-    @Subscribe
-    public void handleException(BaseException e){
+     public void handleException(BaseException e){
         Log.e(TAG_ERROR, "ERRO");
     }
 

@@ -15,7 +15,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/acitivity_home_toolbar"
+            android:id="@+id/activity_home_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background"
@@ -28,7 +28,7 @@
                 android:layout_margin="8dp"
                 android:src="@drawable/ic_settings_24dp"
                 android:padding="8dp"
-                android:tint="@color/color_accent"
+                android:alpha="0.84"
                 app:theme="@style/AppThemeMD"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
@@ -38,7 +38,7 @@
 
         <android.support.design.widget.TabLayout
             android:id="@+id/activity_home_tabs"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabMode="fixed"/>
 

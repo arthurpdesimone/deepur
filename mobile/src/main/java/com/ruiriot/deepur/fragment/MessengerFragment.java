@@ -62,9 +62,9 @@ public class MessengerFragment extends BaseFragment {
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("messenger");
 
-        userName = holder.getUserName().toString();
-        userText = holder.getUserText().toString();
-        userImage = holder.getUserImageView();
+        //userName = holder.getUserName().toString();
+        //userText = holder.getUserText().toString();
+        //userImage = holder.getUserImageView();
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -95,7 +95,7 @@ public class MessengerFragment extends BaseFragment {
         rootView.setTag(TAG);
 
         context = getActivity();
-        recyclerView = rootView.findViewById(R.id.activity_messenger_recycler_view);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.activity_messenger_recycler_view);
 
         mCurrentLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setItemAnimator(new DefaultItemAnimator());

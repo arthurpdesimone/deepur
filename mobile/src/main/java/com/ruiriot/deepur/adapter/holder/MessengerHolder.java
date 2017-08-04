@@ -21,9 +21,9 @@ public class MessengerHolder extends RecyclerView.ViewHolder{
 
     public MessengerHolder(View itemView) {
         super(itemView);
-        userImageView = itemView.findViewById(R.id.fragment_messenger_item_user_image);
-        userName = itemView.findViewById(R.id.fragment_messenger_item_user_name);
-        userText = itemView.findViewById(R.id.fragment_messenger_item_message_preview);
+        userImageView = (CircleImageView) itemView.findViewById(R.id.fragment_messenger_item_user_image);
+        userName = (TextView) itemView.findViewById(R.id.fragment_messenger_item_user_name);
+        userText = (EditText) itemView.findViewById(R.id.fragment_messenger_item_message_preview);
     }
 
     public CircleImageView getUserImageView() {

@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_arrow_back_24dp"
-                android:tint="@color/color_accent"
+                android:alpha="0.84"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:layout_margin="8dp"
@@ -91,11 +91,13 @@
         </LinearLayout>
 
         <Switch
+            android:id="@+id/activity_settings_switch_daynight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
             android:padding="8dp"
+            android:elevation="1dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"/>
 
@@ -214,6 +216,17 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:layout_centerVertical="true"/>
+
+        <Switch
+            android:id="@+id/activity_settings_switch_notifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:padding="8dp"
+            android:elevation="1dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"/>
 
     </RelativeLayout>
 

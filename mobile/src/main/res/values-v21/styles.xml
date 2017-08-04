@@ -9,7 +9,7 @@
         <item name="colorControlHighlight">@color/color_accent</item>
     </style>
 
-    <style name="AppThemeMD" parent="@style/AppTheme">
+    <style name="AppThemeMD" parent="AppTheme">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:statusBarColor">@color/color_accent</item>

@@ -24,9 +24,9 @@ public class StoriesHolder extends RecyclerView.ViewHolder {
 
     public StoriesHolder(View itemView) {
         super(itemView);
-        userImageView = itemView.findViewById(R.id.fragment_stories_post_user_image);
-        userName = itemView.findViewById(R.id.fragment_stories_post_user_name);
-        userText = itemView.findViewById(R.id.fragment_new_item_post_edit_text);
+        userImageView = (CircleImageView) itemView.findViewById(R.id.fragment_stories_post_user_image);
+        userName = (TextView) itemView.findViewById(R.id.fragment_stories_post_user_name);
+        userText = (EditText) itemView.findViewById(R.id.fragment_new_item_post_edit_text);
     }
 
     public CircleImageView getUserImageView() {

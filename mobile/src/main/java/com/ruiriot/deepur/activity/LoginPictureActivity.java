@@ -12,9 +12,11 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.ruiriot.deepur.ChooseImage;
 import com.ruiriot.deepur.Constants;
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.fragment.ChooseImageFragment;
@@ -30,7 +32,7 @@ import static com.ruiriot.deepur.utils.ActivityUtils.hideProgressDialog;
 import static com.ruiriot.deepur.utils.ActivityUtils.requestPermission;
 import static com.ruiriot.deepur.utils.ActivityUtils.showProgressDialog;
 
-public class LoginPictureActivity extends BaseActivity implements ActivityCompat.OnRequestPermissionsResultCallback{
+public class LoginPictureActivity extends BaseActivity implements ActivityCompat.OnRequestPermissionsResultCallback, ChooseImage{
 
     Intent intent;
     String userEmail;
@@ -78,7 +80,8 @@ public class LoginPictureActivity extends BaseActivity implements ActivityCompat
         int i = v.getId();
 
         if(i == R.id.activity_login_picture_add){
-            requestPermission(this, Constants.PERMISSIONS_REQUEST_CAMERA , Manifest.permission.CAMERA);
+            BottomSheetDialogFragment bottomSheetDialogFragment = new ChooseImageFragment();
+            bottomSheetDialogFragment.show(getSupportFragmentManager(), bottomSheetDialogFragment.getTag());
         }
         if (i == R.id.activity_login_picture_next_button){
             showProgressDialog(this);
@@ -99,8 +102,6 @@ public class LoginPictureActivity extends BaseActivity implements ActivityCompat
                 if (permission.equals(Manifest.permission.CAMERA)) {
                     if (grantResult == PackageManager.PERMISSION_GRANTED) {
 //                        takePhoto(userImageView);
-                        BottomSheetDialogFragment bottomSheetDialogFragment = new ChooseImageFragment();
-                        bottomSheetDialogFragment.show(getSupportFragmentManager(), bottomSheetDialogFragment.getTag());
                     } else {
                         requestPermission(this, Constants.PERMISSIONS_REQUEST_CAMERA , Manifest.permission.CAMERA);
                     }
@@ -118,7 +119,7 @@ public class LoginPictureActivity extends BaseActivity implements ActivityCompat
 //                if (resultCode == Activity.RESULT_OK) {
 //                    Uri selectedImage = imageUri;
 //                    getContentResolver().notifyChange(selectedImage, null);
-//                    ImageView imageView = (ImageView) findViewById(R.id.activity_login_picture_user_image);
+//                    ImageView imageView = (ImageView) findViewById(R.fragment_categories_name.activity_login_picture_user_image);
 //                    ContentResolver cr = getContentResolver();
 //                    Bitmap bitmap;
 //                    try {
@@ -146,6 +147,11 @@ public class LoginPictureActivity extends BaseActivity implements ActivityCompat
         imageUri = Uri.fromFile(photo);
         startActivityForResult(intent, TAKE_PICTURE);
         return imageUri;
+    }
+
+    @Override
+    public void OnChooseImage() {
+
     }
 }
 

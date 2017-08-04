@@ -9,18 +9,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 
-import com.ruiriot.deepur.exception.BaseException;
+import com.ruiriot.deepur.adapter.CategoriesAdapter;
+import com.ruiriot.deepur.fragment.CategoriesFragment;
 import com.ruiriot.deepur.fragment.ItemPostFragment;
 
 import static com.ruiriot.deepur.Constants.PERMISSIONS_REQUEST_CAMERA;
-import static com.ruiriot.deepur.Event.post;
-import static com.ruiriot.deepur.Event.register;
 
 /**
  * Created by ruiriot on 09-May-17.
  */
 
-public class BaseActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback, View.OnClickListener, ItemPostFragment.OnFragmentInteractionListener{
+public class BaseActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback, View.OnClickListener, ItemPostFragment.OnFragmentInteractionListener, CategoriesFragment.OnListFragmentInteractionListener {
 
     int resourceLayout;
 
@@ -28,7 +27,6 @@ public class BaseActivity extends AppCompatActivity implements ActivityCompat.On
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        register(this);
     }
 
     @Override
@@ -45,7 +43,7 @@ public class BaseActivity extends AppCompatActivity implements ActivityCompat.On
             }
 
         }else {
-            post(new BaseException());
+
         }
     }
 
@@ -85,6 +83,11 @@ public class BaseActivity extends AppCompatActivity implements ActivityCompat.On
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onListFragmentInteraction(CategoriesAdapter.CategoriesItem item) {
 
     }
 }

@@ -8,14 +8,19 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.CoordinatorLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.Manifest;
+import android.widget.Toast;
 
+import com.facebook.login.widget.LoginButton;
 import com.ruiriot.deepur.Constants;
 import com.ruiriot.deepur.R;
+import com.ruiriot.deepur.activity.LoginPictureActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,7 +35,7 @@ public class ChooseImageFragment extends BottomSheetDialogFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //permissionButton.findViewById(R.id.fragment_choose_image_album_button_permission);
+        //permissionButton.findViewById(R.fragment_categories_name.fragment_choose_image_album_button_permission);
 
         /*permissionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,7 +45,6 @@ public class ChooseImageFragment extends BottomSheetDialogFragment {
         });*/
     }
 
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return super.onCreateView(inflater, container, savedInstanceState);

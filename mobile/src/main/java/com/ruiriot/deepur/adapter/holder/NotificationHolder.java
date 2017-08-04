@@ -17,8 +17,8 @@ public class NotificationHolder extends RecyclerView.ViewHolder {
 
     public NotificationHolder(View itemView) {
         super(itemView);
-        dateNotification = itemView.findViewById(R.id.fragment_notifications_item_date);
-        descriptionNotification = itemView.findViewById(R.id.fragment_notifications_item_description);
+        dateNotification = (TextView) itemView.findViewById(R.id.fragment_notifications_item_date);
+        descriptionNotification = (TextView) itemView.findViewById(R.id.fragment_notifications_item_description);
     }
 
     public TextView getDateNotification() {

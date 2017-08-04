@@ -60,13 +60,13 @@ public class LoginActivity extends BaseActivity{
         ButterKnife.bind(this);
 
         findViewById(R.id.activity_login_facebook).setOnClickListener(this);
-        coordinatorLayout = findViewById(R.id.activity_login_coordinator);
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.activity_login_coordinator);
         //mSignInButton.setReadPermissions("email");
 
         skipToHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                callActivity(getApplicationContext(), HomeActivity.class);
+                callActivity(getApplicationContext(), LoginPictureActivity.class);
             }
         });
 

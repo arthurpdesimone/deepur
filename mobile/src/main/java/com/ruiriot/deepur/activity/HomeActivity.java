@@ -16,10 +16,10 @@ import android.widget.TextView;
 
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.adapter.HomeAdapter;
-import com.ruiriot.deepur.adapter.NotificationAdapter;
 import com.ruiriot.deepur.adapter.StoriesAdapter;
 import com.ruiriot.deepur.adapter.holder.NotificationHolder;
 import com.ruiriot.deepur.adapter.holder.StoriesHolder;
+import com.ruiriot.deepur.fragment.CategoriesFragment;
 import com.ruiriot.deepur.fragment.MessengerFragment;
 import com.ruiriot.deepur.fragment.NotificationsFragment;
 import com.ruiriot.deepur.fragment.StoriesFragment;
@@ -29,8 +29,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Optional;
-import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.ruiriot.deepur.utils.ActivityUtils.callActivity;
 
@@ -41,7 +39,7 @@ public class HomeActivity extends BaseActivity {
     @BindView(R.id.activity_home_viewpager)
     ViewPager homeViewPager;
 
-    @BindView(R.id.acitivity_home_toolbar)
+    @BindView(R.id.activity_home_toolbar)
     Toolbar toolbar;
 
     @BindView(R.id.activity_home_tabs)
@@ -79,7 +77,7 @@ public class HomeActivity extends BaseActivity {
 
         ButterKnife.bind(this);
 
-        toolbar = findViewById(R.id.acitivity_home_toolbar);
+        toolbar = (Toolbar) findViewById(R.id.activity_home_toolbar);
         setSupportActionBar(toolbar);
         toolbar.setBackgroundColor(getResources().getColor(R.color.background));
         context = getApplication().getApplicationContext();
@@ -124,6 +122,7 @@ public class HomeActivity extends BaseActivity {
         HomeAdapter adapter = new HomeAdapter(getSupportFragmentManager());
         adapter.addFragment(new MessengerFragment(), getResources().getString(R.string.title_activity_messenger));
         adapter.addFragment(new StoriesFragment(), getResources().getString(R.string.stories));
+        adapter.addFragment(new CategoriesFragment(), getResources().getString(R.string.categories));
         adapter.addFragment(new NotificationsFragment(), getResources().getString(R.string.activity_settings_notification_title));
         viewPager.setAdapter(adapter);
     }

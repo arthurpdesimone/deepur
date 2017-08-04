@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/fragment_messenger_item_user_image"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_margin="16dp"/>
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="16dp"
+        android:background="@color/background_card"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -17,14 +17,14 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="66dp"
         android:layout_toEndOf="@id/fragment_messenger_item_user_image">
 
         <TextView
             android:id="@+id/fragment_messenger_item_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/activity_login_picture_user_image"
+            android:text="@string/user_name"
             android:textSize="16sp"
             android:layout_marginBottom="4dp"
             android:maxLines="1"
@@ -36,7 +36,7 @@
             android:id="@+id/fragment_messenger_item_message_preview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/activity_login_picture_user_image"
+            android:text="@string/lorem"
             android:textSize="14sp"
             android:maxLines="1"
             android:ellipsize="end"
@@ -44,5 +44,34 @@
             android:fontFamily="sans-serif"/>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/fragment_messenger_item_message_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="18h30"
+        android:textSize="12sp"
+        android:textColor="@color/text_color_secondary"
+        android:fontFamily="sans-serif"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <TextView
+        android:id="@+id/fragment_messenger_item_message_status"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:background="@drawable/bg_round"
+        android:text="4"
+        android:textSize="12sp"
+        android:textColor="@color/background"
+        android:fontFamily="sans-serif"
+        android:layout_alignParentEnd="true"
+        android:gravity="center"
+        android:layout_below="@id/fragment_messenger_item_message_time"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"/>
 
 </RelativeLayout>

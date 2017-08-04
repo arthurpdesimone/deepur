@@ -70,7 +70,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:fontFamily="sans-serif-light"
+            android:fontFamily="sans-serif"
             android:text="@string/album_permission"
             android:textColor="@color/text_color_secondary"
             android:textSize="14sp" />
@@ -96,7 +96,7 @@
     <!--<android.support.v7.widget.RecyclerView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/fragment_choose_image_camera_button"
+        android:layout_below="@fragment_categories_name/fragment_choose_image_camera_button"
         android:orientation="horizontal">
 
 
