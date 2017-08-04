@@ -1,6 +1,8 @@
 package com.ruiriot.deepur.activity;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -10,6 +12,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -69,6 +72,12 @@ public class HomeActivity extends BaseActivity {
     @BindView(R.id.fragment_notifications_item_description)
     TextView descriptionNotification;
 
+    private int[] tabIcons = {
+            R.drawable.ic_message_black_24dp,
+            R.drawable.ic_account_circle_24dp,
+            R.drawable.ic_camera_alt_24dp,
+            R.drawable.ic_notifications_24dp
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +93,7 @@ public class HomeActivity extends BaseActivity {
 
         setupViewPager(homeViewPager);
         tabLayout.setupWithViewPager(homeViewPager);
+        setupTabIcons();
 
         if (savedInstanceState == null) {
             // Set the local night mode to some value
@@ -104,8 +114,35 @@ public class HomeActivity extends BaseActivity {
 
     }
 
-    private void setupRecyclerViewNotifications(){
+    private void setupTabIcons() {
+        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
+        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
+        tabLayout.getTabAt(2).setIcon(tabIcons[2]);
+        tabLayout.getTabAt(3).setIcon(tabIcons[3]);
 
+        tabLayout.getTabAt(1).getIcon().setAlpha(128);
+        tabLayout.getTabAt(2).getIcon().setAlpha(128);
+        tabLayout.getTabAt(3).getIcon().setAlpha(128);
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                tab.getIcon().setAlpha(255);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                tab.getIcon().setAlpha(128);
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                tab.getIcon().setAlpha(255);
+            }
+        });
+    }
+
+    private void setupRecyclerViewNotifications(){
 
     }
 
@@ -114,7 +151,6 @@ public class HomeActivity extends BaseActivity {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
         recyclerViewStories.setLayoutManager(mLayoutManager);
         recyclerViewStories.setItemAnimator(new DefaultItemAnimator());
-
         recyclerViewStories.setAdapter(new StoriesAdapter(storiesList, context));
     }
 

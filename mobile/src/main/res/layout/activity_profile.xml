@@ -2,66 +2,171 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.ruiriot.deepur.activity.ProfileActivity">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/activity_profile_image"
-        android:layout_width="156dp"
-        android:layout_height="156dp"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="32dp"
-        android:src="@drawable/ic_person_black_48dp"
-        app:civ_border_width="2dp"
-        app:civ_border_color="@color/color_accent"/>
-
-    <LinearLayout
-        android:id="@+id/activity_profile_ll"
-        android:orientation="vertical"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/activity_profile_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_primary"
-        android:layout_below="@id/activity_profile_image">
+        app:contentInsetStart="0dp"
+        android:contentInsetEnd="0dp">
 
-        <TextView
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/activity_profile_back_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_back_24dp"
+                android:tint="@color/active_icon"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:layout_margin="8dp"
+                android:padding="8dp"/>
+
+            <TextView
+                android:id="@+id/activity_profile_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_settings_account_title"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/activity_profile_back_icon"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:textColor="@color/text_color_primary"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/activity_profile_image"
+        android:layout_width="144dp"
+        android:layout_height="144dp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="32dp"
+        android:src="@drawable/rui"
+        app:civ_border_width="2dp"
+        app:civ_border_color="@color/color_accent"
+        android:layout_below="@id/activity_profile_toolbar"/>
+
+    <RelativeLayout
+        android:id="@+id/activity_profile_ll"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_profile_image"
+        android:background="@color/color_primary">
+
+        <EditText
             android:id="@+id/activity_profile_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/user_name"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textColor="@color/text_color_primary"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="64dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="4dp"
+            android:layout_centerVertical="true"
+            android:paddingStart="16dp"
+            android:paddingEnd="64dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
             android:textAllCaps="true"
-            android:fontFamily="sans-serif-condensed"/>
+            android:background="@color/transparent"
+            android:fontFamily="sans-serif-condensed"
+            android:inputType="textCapWords"
+            android:imeOptions="actionDone"
+            android:enabled="false"/>
 
-        <TextView
-            android:id="@+id/activity_profile_email"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/activity_profile_edit"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/activity_login_email"
-            android:textSize="14sp"
-            android:textColor="@color/text_color_secondary"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="64dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="sans-serif-condensed"/>
+            android:src="@drawable/ic_mode_edit_24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:padding="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/activity_profile_edit"
+    <TextView
+        android:id="@+id/activity_profile_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_mode_edit_24dp"
-        android:layout_alignParentEnd="true"
-        android:padding="8dp"
-        android:layout_margin="8dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:layout_below="@id/activity_profile_image"/>
+        android:layout_below="@id/activity_profile_ll"
+        android:gravity="center"
+        android:text="@string/activity_login_email"
+        android:textSize="14sp"
+        android:textColor="@color/text_color_secondary"
+        android:layout_margin="16dp"
+        android:fontFamily="sans-serif"/>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/activity_profile_account_card"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="1dp"
+        app:cardCornerRadius="1dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentBottom="true"
+        app:cardBackgroundColor="@color/background_card">
+
+        <RelativeLayout
+            android:id="@+id/activity_profile_account_sign_out_rl"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/activity_profile_sign_out_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_exit_to_app_24dp"
+                android:tint="@color/active_icon"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:padding="8dp"/>
+
+            <TextView
+                android:id="@+id/activity_profile_sign_out"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:text="@string/activity_login_sign_out"
+                android:textSize="16sp"
+                android:textColor="@color/text_color_primary"
+                android:layout_marginStart="72dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="sans-serif"
+                android:layout_centerVertical="true"/>
+
+            <ImageView
+                android:id="@+id/activity_profile_sign_out_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_keyboard_arrow_right_24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:padding="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
 
 </RelativeLayout>

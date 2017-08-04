@@ -4,11 +4,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 
+import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.adapter.CategoriesAdapter;
 import com.ruiriot.deepur.fragment.CategoriesFragment;
 import com.ruiriot.deepur.fragment.ItemPostFragment;
@@ -19,7 +21,7 @@ import static com.ruiriot.deepur.Constants.PERMISSIONS_REQUEST_CAMERA;
  * Created by ruiriot on 09-May-17.
  */
 
-public class BaseActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback, View.OnClickListener, ItemPostFragment.OnFragmentInteractionListener, CategoriesFragment.OnListFragmentInteractionListener {
+public class BaseActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback, View.OnClickListener, ItemPostFragment.OnFragmentInteractionListener, CategoriesFragment.OnListFragmentInteractionListener, TabLayout.OnTabSelectedListener {
 
     int resourceLayout;
 
@@ -88,6 +90,21 @@ public class BaseActivity extends AppCompatActivity implements ActivityCompat.On
 
     @Override
     public void onListFragmentInteraction(CategoriesAdapter.CategoriesItem item) {
+
+    }
+
+    @Override
+    public void onTabSelected(TabLayout.Tab tab) {
+
+    }
+
+    @Override
+    public void onTabUnselected(TabLayout.Tab tab) {
+
+    }
+
+    @Override
+    public void onTabReselected(TabLayout.Tab tab) {
 
     }
 }
