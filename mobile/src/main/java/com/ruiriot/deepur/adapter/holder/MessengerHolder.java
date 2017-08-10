@@ -17,13 +17,13 @@ public class MessengerHolder extends RecyclerView.ViewHolder{
 
     private CircleImageView userImageView;
     private TextView userName;
-    private EditText userText;
+    private TextView userText;
 
     public MessengerHolder(View itemView) {
         super(itemView);
         userImageView = (CircleImageView) itemView.findViewById(R.id.fragment_messenger_item_user_image);
         userName = (TextView) itemView.findViewById(R.id.fragment_messenger_item_user_name);
-        userText = (EditText) itemView.findViewById(R.id.fragment_messenger_item_message_preview);
+        userText = (TextView) itemView.findViewById(R.id.fragment_messenger_item_message_preview);
     }
 
     public CircleImageView getUserImageView() {
@@ -42,11 +42,11 @@ public class MessengerHolder extends RecyclerView.ViewHolder{
         this.userName = userName;
     }
 
-    public EditText getUserText() {
+    public TextView getUserText() {
         return userText;
     }
 
-    public void setUserText(EditText userText) {
+    public void setUserText(TextView userText) {
         this.userText = userText;
     }
 }

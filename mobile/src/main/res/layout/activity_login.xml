@@ -15,8 +15,9 @@
         <ImageView
             android:id="@+id/activity_login_deepur_logo"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:padding="24dp"
+            android:layout_height="144dp"
+            android:layout_margin="32dp"
+            android:visibility="invisible"
             android:src="@drawable/autumn_logo"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true" />

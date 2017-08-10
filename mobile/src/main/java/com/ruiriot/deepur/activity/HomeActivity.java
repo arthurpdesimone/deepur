@@ -73,9 +73,8 @@ public class HomeActivity extends BaseActivity {
     TextView descriptionNotification;
 
     private int[] tabIcons = {
-            R.drawable.ic_message_black_24dp,
-            R.drawable.ic_account_circle_24dp,
-            R.drawable.ic_camera_alt_24dp,
+            R.drawable.ic_chat_24dp,
+            R.drawable.ic_web_24dp,
             R.drawable.ic_notifications_24dp
     };
 
@@ -88,7 +87,8 @@ public class HomeActivity extends BaseActivity {
 
         toolbar = (Toolbar) findViewById(R.id.activity_home_toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setBackgroundColor(getResources().getColor(R.color.background));
+        toolbar.setTitle("");
+        toolbar.setBackgroundColor(getResources().getColor(R.color.color_primary));
         context = getApplication().getApplicationContext();
 
         setupViewPager(homeViewPager);
@@ -118,11 +118,9 @@ public class HomeActivity extends BaseActivity {
         tabLayout.getTabAt(0).setIcon(tabIcons[0]);
         tabLayout.getTabAt(1).setIcon(tabIcons[1]);
         tabLayout.getTabAt(2).setIcon(tabIcons[2]);
-        tabLayout.getTabAt(3).setIcon(tabIcons[3]);
 
         tabLayout.getTabAt(1).getIcon().setAlpha(128);
         tabLayout.getTabAt(2).getIcon().setAlpha(128);
-        tabLayout.getTabAt(3).getIcon().setAlpha(128);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -157,7 +155,6 @@ public class HomeActivity extends BaseActivity {
     private void setupViewPager(ViewPager viewPager) {
         HomeAdapter adapter = new HomeAdapter(getSupportFragmentManager());
         adapter.addFragment(new MessengerFragment(), getResources().getString(R.string.title_activity_messenger));
-        adapter.addFragment(new StoriesFragment(), getResources().getString(R.string.stories));
         adapter.addFragment(new CategoriesFragment(), getResources().getString(R.string.categories));
         adapter.addFragment(new NotificationsFragment(), getResources().getString(R.string.activity_settings_notification_title));
         viewPager.setAdapter(adapter);

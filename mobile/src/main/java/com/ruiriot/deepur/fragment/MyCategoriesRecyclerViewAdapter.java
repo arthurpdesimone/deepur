@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ruiriot.deepur.R;
+import com.ruiriot.deepur.adapter.BaseAdapter;
 import com.ruiriot.deepur.fragment.CategoriesFragment.OnListFragmentInteractionListener;
 import com.ruiriot.deepur.adapter.CategoriesAdapter.CategoriesItem;
 
@@ -18,7 +19,7 @@ import java.util.List;
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MyCategoriesRecyclerViewAdapter extends RecyclerView.Adapter<MyCategoriesRecyclerViewAdapter.ViewHolder> {
+public class MyCategoriesRecyclerViewAdapter extends BaseAdapter {
 
     final List<CategoriesItem> mValues;
     final OnListFragmentInteractionListener mListener;
@@ -35,11 +36,10 @@ public class MyCategoriesRecyclerViewAdapter extends RecyclerView.Adapter<MyCate
         return new ViewHolder(view);
     }
 
-    @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.categoryName.setText(mValues.get(position).id);
-        //holder.categoryImage.setImageDrawable(mValues.get(position).content);
+        holder.categoryName.setText(holder.mItem.name);
+        //holder.categoryImage.setImageDrawable(mValues.get(position).name);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override

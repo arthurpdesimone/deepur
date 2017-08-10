@@ -11,15 +11,17 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Messenger {
 
-    String username;
-    String userText;
-    CircleImageView userImage;
+    private String id;
+    private String username;
+    private String userText;
+    private String userImage;
 
     public Messenger() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public Messenger(String username, String userText, CircleImageView userImage) {
+    public Messenger(String id, String username, String userText, String userImage) {
+        this.id = id;
         this.username = username;
         this.userText = userText;
         this.userImage = userImage;
@@ -30,6 +32,7 @@ public class Messenger {
         result.put("name", username);
         result.put("message", userText);
         result.put("image", userImage);
+        result.put("id", id);
 
         return result;
     }

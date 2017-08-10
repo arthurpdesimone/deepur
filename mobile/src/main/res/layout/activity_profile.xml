@@ -52,7 +52,6 @@
         android:layout_height="144dp"
         android:layout_centerHorizontal="true"
         android:layout_margin="32dp"
-        android:src="@drawable/rui"
         app:civ_border_width="2dp"
         app:civ_border_color="@color/color_accent"
         android:layout_below="@id/activity_profile_toolbar"/>
@@ -145,7 +144,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textAllCaps="true"
                 android:text="@string/activity_login_sign_out"
                 android:textSize="16sp"
                 android:textColor="@color/text_color_primary"
@@ -162,6 +160,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:padding="8dp"
+                android:tint="@color/active_icon"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"/>
 

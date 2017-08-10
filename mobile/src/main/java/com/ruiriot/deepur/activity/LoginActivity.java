@@ -33,6 +33,7 @@ public class LoginActivity extends BaseActivity{
 
     public ProgressDialog mProgressDialog;
     CoordinatorLayout coordinatorLayout;
+    public static final String PREF_USER_FIRST_TIME = "user_first_time";
 
     @ViewEvents(clickable = true)
     @BindView(R.id.activity_login_facebook)

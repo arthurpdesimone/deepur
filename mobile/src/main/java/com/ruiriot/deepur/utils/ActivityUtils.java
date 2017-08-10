@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
@@ -40,6 +41,20 @@ public abstract class ActivityUtils {
             context.startActivity(intent);
         }
 
+    }
+
+    public static void saveSharedSetting(Context ctx, String settingName, String settingValue) {
+        final String PREFERENCES_FILE = "materialsample_settings";
+        SharedPreferences sharedPref = ctx.getSharedPreferences(PREFERENCES_FILE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(settingName, settingValue);
+        editor.apply();
+    }
+
+    public static String readSharedSetting(Context ctx, String settingName, String defaultValue) {
+        final String PREFERENCES_FILE = "materialsample_settings";
+        SharedPreferences sharedPref = ctx.getSharedPreferences(PREFERENCES_FILE, Context.MODE_PRIVATE);
+        return sharedPref.getString(settingName, defaultValue);
     }
 
     static public void requestPermission(Activity context, int requestCode, String... permissions){

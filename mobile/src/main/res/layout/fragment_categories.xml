@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_width="144dp"
+    android:layout_height="144dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="2dp"
+    android:elevation="2dp"
+    android:layout_margin="8dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="126dp">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/fragment_categories_image"
             android:layout_width="match_parent"
-            android:layout_height="192dp"
-            android:scaleType="centerCrop"
-            android:background="@color/color_accent_light"/>
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"/>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/fragment_categories_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bg_categories"
+            android:text="GEEK"
+            android:paddingTop="24dp"
+            android:paddingBottom="16dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/text_color_primary"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif-condensed"/>
 
-    <TextView
-        android:id="@+id/fragment_categories_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minLines="2"
-        android:paddingTop="24dp"
-        android:paddingStart="32dp"
-        android:paddingBottom="16dp"
-        android:paddingEnd="32dp"
-        android:background="@color/color_accent"
-        android:text="GEEK"
-        android:textColor="@color/text_color_primary"
-        android:textSize="24sp"
-        android:fontFamily="sans-serif-condensed"/>
+    </RelativeLayout>
 
-</LinearLayout>
+</android.support.v7.widget.CardView>

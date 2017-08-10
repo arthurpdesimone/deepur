@@ -26,8 +26,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 /**
  * Created by ruiri on 12-Jul-17.
  */
@@ -44,9 +42,10 @@ public class MessengerFragment extends BaseFragment {
     FirebaseDatabase database;
     DatabaseReference myRef;
 
+    private String id;
     private String userName;
     private String userText;
-    private CircleImageView userImage;
+    private String userImage;
     MessengerHolder holder;
 
     private static final int DATASET_COUNT = 60;
@@ -76,7 +75,7 @@ public class MessengerFragment extends BaseFragment {
                             "Error: could not fetch user.",
                             Toast.LENGTH_SHORT).show();
                 }else {
-                    writeNewMessenger(userName, userText, userImage);
+                    writeNewMessenger(id, userName, userText, userImage);
                 }
             }
 
@@ -150,8 +149,8 @@ public class MessengerFragment extends BaseFragment {
         recyclerView.scrollToPosition(scrollPosition);
     }
 
-    private void writeNewMessenger(String userName, String userText, CircleImageView userImage) {
-        Messenger messengerUsers = new Messenger(userName, userText, userImage);
+    private void writeNewMessenger(String id, String userName, String userText, String userImage) {
+        Messenger messengerUsers = new Messenger(id, userName, userText, userImage);
         myRef.child("messenger").setValue(messengerUsers);
 
         Map<String, Object> messengerValues = messengerUsers.toMap();

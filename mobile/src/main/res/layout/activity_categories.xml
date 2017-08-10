@@ -6,10 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.ruiriot.deepur.activity.CategoriesActivity">
 
-    <fragment
-        android:id="@+id/activity_categories_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="com.ruiriot.deepur.fragment.CategoriesFragment"/>
+    <include layout="@layout/fragment_categories_list"/>
 
 </RelativeLayout>

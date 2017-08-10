@@ -35,7 +35,7 @@ public class ChooseImageFragment extends BottomSheetDialogFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //permissionButton.findViewById(R.fragment_categories_name.fragment_choose_image_album_button_permission);
+        permissionButton.findViewById(R.id.fragment_choose_image_album_button_permission);
 
         /*permissionButton.setOnClickListener(new View.OnClickListener() {
             @Override

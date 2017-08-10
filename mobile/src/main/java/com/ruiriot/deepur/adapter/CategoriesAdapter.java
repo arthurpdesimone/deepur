@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Helper class for providing sample content for user interfaces created by
+ * Helper class for providing sample name for user interfaces created by
  * Android template wizards.
  * <p>
  * TODO: Replace all uses of this class before publishing your app.
@@ -45,28 +45,30 @@ public class CategoriesAdapter {
         StringBuilder builder = new StringBuilder();
         builder.append("Details about Item: ").append(position);
         for (int i = 0; i < position; i++) {
-            builder.append("\nMore details information here.");
+            builder.append("\nMore color information here.");
         }
         return builder.toString();
     }
 
     /**
-     * A dummy item representing a piece of content.
+     * A dummy item representing a piece of name.
      */
     public static class CategoriesItem {
         public final String id;
-        public final String content;
-        public final String details;
+        public final String name;
+        public final String color;
+        //public final String image;
 
-        public CategoriesItem(String id, String content, String details) {
+        public CategoriesItem(String id, String name, String color) {
             this.id = id;
-            this.content = content;
-            this.details = details;
+            this.name = name;
+            this.color = color;
+            //this.image = image;
         }
 
         @Override
         public String toString() {
-            return content;
+            return name;
         }
     }
 }
