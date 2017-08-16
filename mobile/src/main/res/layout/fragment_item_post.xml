@@ -31,8 +31,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-                    android:alpha="0.6"
-                    android:src="@drawable/ic_sentiment_very_satisfied_black_24dp" />
+                    android:alpha="0.6" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/fragment_item_post_user_image"
@@ -86,7 +85,7 @@
                     android:alpha="0.6"
                     android:contentDescription="@string/options"
                     android:padding="8dp"
-                    android:src="@drawable/ic_more_vert_black_24dp"
+                    android:src="@drawable/ic_more_vert_white_24dp"
                     android:visibility="gone" />
 
             </RelativeLayout>
@@ -166,7 +165,7 @@
                         android:contentDescription="@string/favorite"
                         android:background="@drawable/bg_round_love"
                         android:padding="6dp"
-                        android:src="@drawable/ic_favorite_border_18dp"/>
+                        android:src="@drawable/ic_favorite_border_white_24dp"/>
 
                     <TextView
                         android:id="@+id/fragment_item_post_love_count"

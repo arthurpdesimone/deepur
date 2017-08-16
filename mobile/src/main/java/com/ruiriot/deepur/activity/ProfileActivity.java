@@ -1,6 +1,7 @@
 package com.ruiriot.deepur.activity;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.app.Activity;
 import android.support.v7.widget.CardView;
@@ -50,7 +51,8 @@ public class ProfileActivity extends Activity {
                 editNameText.setEnabled(true);
                 imm.showSoftInput(editNameText, InputMethodManager.SHOW_IMPLICIT);
                 editNameText.selectAll();
-                editNameButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_check_black_24dp, null));
+                editNameButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_check_white_24dp, null));
+                editNameButton.setColorFilter(getResources().getColor(R.color.active_icon), PorterDuff.Mode.MULTIPLY);
 
             }
         });
@@ -66,7 +68,8 @@ public class ProfileActivity extends Activity {
                     imm.hideSoftInputFromWindow(editNameText.getWindowToken(), 0);
                     handled = true;
                     editNameText.setEnabled(false);
-                    editNameButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_mode_edit_24dp, null));
+                    editNameButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_check_white_24dp, null));
+                    editNameButton.setColorFilter(getResources().getColor(R.color.active_icon), PorterDuff.Mode.MULTIPLY);
                 }
                 return handled;
             }

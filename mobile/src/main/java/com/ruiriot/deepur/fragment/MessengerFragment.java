@@ -3,6 +3,7 @@ package com.ruiriot.deepur.fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -30,7 +31,7 @@ import java.util.Map;
  * Created by ruiri on 12-Jul-17.
  */
 
-public class MessengerFragment extends BaseFragment {
+public class MessengerFragment extends BaseFragment implements View.OnClickListener {
 
     private OnFragmentInteractionListener mListener;
     private RecyclerView recyclerView;
@@ -46,6 +47,8 @@ public class MessengerFragment extends BaseFragment {
     private String userName;
     private String userText;
     private String userImage;
+    private String timeStamp;
+    private String unreadMessages;
     MessengerHolder holder;
 
     private static final int DATASET_COUNT = 60;
@@ -63,19 +66,22 @@ public class MessengerFragment extends BaseFragment {
 
         //userName = holder.getUserName().toString();
         //userText = holder.getUserText().toString();
-        //userImage = holder.getUserImageView();
+        //userImage = holder.getUserImageView().toString();
+        //timeStamp = holder.getTimeStamp().toString();
+        //unreadMessages = holder.getUnreadMessages().toString();
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Messenger messenger = dataSnapshot.getValue(Messenger.class);
+                id = dataSnapshot.getRef().getKey();
 
                 if (messenger == null){
                     Toast.makeText(context,
                             "Error: could not fetch user.",
                             Toast.LENGTH_SHORT).show();
                 }else {
-                    writeNewMessenger(id, userName, userText, userImage);
+                    writeNewMessenger(id, userName, userText, userImage, timeStamp, unreadMessages);
                 }
             }
 
@@ -98,6 +104,9 @@ public class MessengerFragment extends BaseFragment {
 
         mCurrentLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        FloatingActionButton newMessageFAB = (FloatingActionButton) rootView.findViewById(R.id.activity_messenger_fab_new_message);
+        newMessageFAB.setOnClickListener(this);
 
         mAdapter = new MessengerAdapter(messengerUser, context);
         // Set CustomAdapter as the adapter for RecyclerView.
@@ -149,9 +158,9 @@ public class MessengerFragment extends BaseFragment {
         recyclerView.scrollToPosition(scrollPosition);
     }
 
-    private void writeNewMessenger(String id, String userName, String userText, String userImage) {
-        Messenger messengerUsers = new Messenger(id, userName, userText, userImage);
-        myRef.child("messenger").setValue(messengerUsers);
+    private void writeNewMessenger(String id, String userName, String userText, String userImage, String timeStamp, String unreadMessages) {
+        Messenger messengerUsers = new Messenger(id, userName, userText, userImage, timeStamp, unreadMessages);
+        myRef.child(id).setValue(messengerUsers);
 
         Map<String, Object> messengerValues = messengerUsers.toMap();
 
@@ -161,4 +170,12 @@ public class MessengerFragment extends BaseFragment {
         myRef.updateChildren(childUpdates);
     }
 
+    @Override
+    public void onClick(View v) {
+        int i = v.getId();
+
+        if(i == R.id.activity_messenger_fab_new_message){
+            writeNewMessenger(id, userName, userText, userImage, timeStamp, unreadMessages);
+        }
+    }
 }

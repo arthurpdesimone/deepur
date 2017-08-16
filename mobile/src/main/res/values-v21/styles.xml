@@ -12,7 +12,7 @@
     <style name="AppThemeMD" parent="AppTheme">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
-        <item name="android:statusBarColor">@color/color_accent</item>
+        <item name="android:statusBarColor">@color/color_primary_dark</item>
     </style>
 
     <style name="AppThemeTransparent" parent="@style/AppTheme">

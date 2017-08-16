@@ -83,6 +83,21 @@
             android:textSize="14sp"
             android:textColor="@color/text_color_primary"/>
 
+        <TextView
+            android:id="@+id/activity_login_create_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activity_login_description"
+            android:text="@string/activity_login_create_account"
+            android:padding="8dp"
+            android:minWidth="96dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:textSize="14sp"
+            android:textColor="@color/text_color_primary"/>
+
         <LinearLayout
             android:id="@+id/signed_in_buttons"
             android:layout_width="match_parent"

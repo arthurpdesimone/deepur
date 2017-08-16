@@ -1,54 +1,69 @@
 package com.ruiriot.deepur.fragment;
 
-import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.Manifest;
-import android.widget.Toast;
-
-import com.facebook.login.widget.LoginButton;
-import com.ruiriot.deepur.Constants;
 import com.ruiriot.deepur.R;
-import com.ruiriot.deepur.activity.LoginPictureActivity;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import static android.support.v4.content.PermissionChecker.checkSelfPermission;
+import static com.ruiriot.deepur.Constants.PERMISSIONS_REQUEST_CAMERA;
 
-import static com.ruiriot.deepur.utils.ActivityUtils.requestPermission;
-
-public class ChooseImageFragment extends BottomSheetDialogFragment {
-
-    TextView permissionButton;
+public class ChooseImageFragment extends BottomSheetDialogFragment implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        permissionButton.findViewById(R.id.fragment_choose_image_album_button_permission);
-
-        /*permissionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                requestPermission(getActivity(), Constants.PERMISSIONS_REQUEST_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE);
-            }
-        });*/
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
-        
+        super.onCreateView(inflater, container, savedInstanceState);
+        final View view = inflater.inflate(R.layout.fragment_choose_image, container, false);
+
+        TextView permissionButton = (TextView) view.findViewById(R.id.fragment_choose_image_album_button_permission);
+        LinearLayout cameraButton = (LinearLayout) view.findViewById(R.id.fragment_choose_image_camera_button);
+
+        cameraButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (checkSelfPermission(view.getContext(), Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{Manifest.permission.CAMERA},
+                            PERMISSIONS_REQUEST_CAMERA);
+                }else{
+                    Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                    startActivityForResult(intent, PERMISSIONS_REQUEST_CAMERA);
+                }
+            }
+        });
+
+        permissionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("CHOOSEIMAGE", "CLICADO");
+                //requestPermission(getActivity(), PERMISSIONS_REQUEST_CAMERA, Manifest.permission.CAMERA);
+            }
+        });
+
+        return view;
     }
 
     @Override
@@ -82,6 +97,15 @@ public class ChooseImageFragment extends BottomSheetDialogFragment {
 
         if( behavior != null && behavior instanceof BottomSheetBehavior ) {
             ((BottomSheetBehavior) behavior).setBottomSheetCallback(mBottomSheetBehaviorCallback);
+        }
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == PERMISSIONS_REQUEST_CAMERA) {
+            Bitmap image = (Bitmap) data.getExtras().get("data");
+            ImageView imageview = (ImageView) getActivity().findViewById(R.id.activity_login_picture_user_image); //sets imageview as the bitmap
+            imageview.setImageBitmap(image);
+            dismiss();
         }
     }
 }

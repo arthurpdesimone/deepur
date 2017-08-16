@@ -15,16 +15,20 @@ public class Messenger {
     private String username;
     private String userText;
     private String userImage;
+    private String timeStamp;
+    private String unreadMessages;
 
     public Messenger() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public Messenger(String id, String username, String userText, String userImage) {
+    public Messenger(String id, String username, String userText, String userImage, String timeStamp, String unreadMessages) {
         this.id = id;
         this.username = username;
         this.userText = userText;
         this.userImage = userImage;
+        this.timeStamp = timeStamp;
+        this.unreadMessages = unreadMessages;
     }
 
     public Map<String, Object> toMap() {
@@ -33,6 +37,8 @@ public class Messenger {
         result.put("message", userText);
         result.put("image", userImage);
         result.put("id", id);
+        result.put("timeStamp", timeStamp);
+        result.put("unreadMessages", unreadMessages);
 
         return result;
     }

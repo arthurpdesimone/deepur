@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/activity_create_account_relative"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/activity_create_account_image"
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        android:scaleType="center"
+        android:src="@drawable/ic_photo_library_white_48dp"
+        android:background="@color/color_accent"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_person_white_24dp"
+        android:padding="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="24dp"
+        android:tint="@color/active_icon"
+        android:layout_below="@id/activity_create_account_image"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/activity_create_account_name_text_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/activity_create_account_image">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/activity_create_account_name_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="14sp"
+            android:alpha="0.6"
+            android:textColor="@color/text_color_primary"
+            android:hint="@string/user_name"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_email_white_24dp"
+        android:padding="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="24dp"
+        android:tint="@color/active_icon"
+        android:layout_below="@id/activity_create_account_name_text_input"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/activity_create_account_email_text_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/activity_create_account_name_text_input">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/activity_create_account_email_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="14sp"
+            android:alpha="0.6"
+            android:textColor="@color/text_color_primary"
+            android:hint="@string/activity_login_email"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_lock_white_24dp"
+        android:padding="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="24dp"
+        android:tint="@color/active_icon"
+        android:layout_below="@id/activity_create_account_email_text_input"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/activity_create_account_password_text_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/activity_create_account_email_text_input">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/activity_create_account_password_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="14sp"
+            android:textColor="@color/text_color_secondary"
+            android:hint="@string/activity_login_password"
+            android:alpha="0.6"
+            android:drawablePadding="8dp"
+            android:drawableEnd="@drawable/ic_visibility_off_black_24dp"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="end"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="64dp"
+        android:layout_marginEnd="16dp">
+
+        <TextView
+            android:id="@+id/activity_create_account_cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="96dp"
+            android:gravity="center"
+            android:textColor="@color/text_color_secondary"
+            android:fontFamily="sans-serif-medium"
+            android:clickable="true"
+            android:background="@drawable/ripple"
+            android:text="@string/cancel"
+            android:padding="8dp"
+            android:textAllCaps="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"/>
+
+        <TextView
+            android:id="@+id/activity_create_account_done_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="96dp"
+            android:gravity="center"
+            android:textColor="@color/color_accent"
+            android:fontFamily="sans-serif-medium"
+            android:clickable="true"
+            android:background="@drawable/ripple"
+            android:text="@string/done"
+            android:padding="8dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
+

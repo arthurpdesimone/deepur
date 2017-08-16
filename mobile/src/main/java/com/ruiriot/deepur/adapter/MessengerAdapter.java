@@ -34,9 +34,12 @@ public class MessengerAdapter extends RecyclerView.Adapter<MessengerHolder> {
 
     @Override
     public void onBindViewHolder(MessengerHolder messengerHolder, int i) {
+
         messengerHolder.setUserImageView(messengerUsers.get(i).getUserImageView());
         messengerHolder.setUserName(messengerUsers.get(i).getUserName());
         messengerHolder.setUserText(messengerUsers.get(i).getUserText());
+        messengerHolder.setTimeStamp(messengerUsers.get(i).getTimeStamp());
+        messengerHolder.setUnreadMessages(messengerUsers.get(i).getUnreadMessages());
     }
 
     @Override

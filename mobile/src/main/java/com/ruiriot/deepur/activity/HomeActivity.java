@@ -1,7 +1,6 @@
 package com.ruiriot.deepur.activity;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,7 +11,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,7 +23,7 @@ import com.ruiriot.deepur.adapter.holder.StoriesHolder;
 import com.ruiriot.deepur.fragment.CategoriesFragment;
 import com.ruiriot.deepur.fragment.MessengerFragment;
 import com.ruiriot.deepur.fragment.NotificationsFragment;
-import com.ruiriot.deepur.fragment.StoriesFragment;
+import com.ruiriot.deepur.utils.GaussianBlurUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,9 +71,9 @@ public class HomeActivity extends BaseActivity {
     TextView descriptionNotification;
 
     private int[] tabIcons = {
-            R.drawable.ic_chat_24dp,
-            R.drawable.ic_web_24dp,
-            R.drawable.ic_notifications_24dp
+            R.drawable.ic_chat_white_24dp,
+            R.drawable.ic_web_white_24dp,
+            R.drawable.ic_notifications_none_white_24dp
     };
 
     @Override
@@ -87,8 +85,9 @@ public class HomeActivity extends BaseActivity {
 
         toolbar = (Toolbar) findViewById(R.id.activity_home_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar();
         toolbar.setTitle("");
-        toolbar.setBackgroundColor(getResources().getColor(R.color.color_primary));
+        toolbar.setBackgroundColor(getResources().getColor(R.color.transparent));
         context = getApplication().getApplicationContext();
 
         setupViewPager(homeViewPager);
@@ -121,6 +120,10 @@ public class HomeActivity extends BaseActivity {
 
         tabLayout.getTabAt(1).getIcon().setAlpha(128);
         tabLayout.getTabAt(2).getIcon().setAlpha(128);
+
+        tabLayout.getTabAt(0).getIcon().setColorFilter(getResources().getColor(R.color.active_icon), PorterDuff.Mode.MULTIPLY);
+        tabLayout.getTabAt(1).getIcon().setColorFilter(getResources().getColor(R.color.active_icon), PorterDuff.Mode.MULTIPLY);
+        tabLayout.getTabAt(2).getIcon().setColorFilter(getResources().getColor(R.color.active_icon), PorterDuff.Mode.MULTIPLY);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -158,5 +161,9 @@ public class HomeActivity extends BaseActivity {
         adapter.addFragment(new CategoriesFragment(), getResources().getString(R.string.categories));
         adapter.addFragment(new NotificationsFragment(), getResources().getString(R.string.activity_settings_notification_title));
         viewPager.setAdapter(adapter);
+    }
+
+    private void applyBlur() {
+        //GaussianBlurUtils.with(this).put(dinosaurId, ivBlurredImage);
     }
 }

@@ -1,27 +1,16 @@
 package com.ruiriot.deepur.activity;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityCompat;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.ruiriot.deepur.ChooseImage;
-import com.ruiriot.deepur.Constants;
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.fragment.ChooseImageFragment;
-
-import java.io.File;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,10 +18,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.ruiriot.deepur.utils.ActivityUtils.callActivity;
 import static com.ruiriot.deepur.utils.ActivityUtils.hideProgressDialog;
-import static com.ruiriot.deepur.utils.ActivityUtils.requestPermission;
 import static com.ruiriot.deepur.utils.ActivityUtils.showProgressDialog;
 
-public class LoginPictureActivity extends BaseActivity implements ActivityCompat.OnRequestPermissionsResultCallback, ChooseImage{
+public class LoginPictureActivity extends BaseActivity implements ChooseImage{
 
     Intent intent;
     String userEmail;
@@ -50,7 +38,7 @@ public class LoginPictureActivity extends BaseActivity implements ActivityCompat
     @BindView(R.id.activity_login_picture_user_name)
     TextView userName;
 
-    @BindView(R.id.activity_login_picture_next_button)
+    @BindView(R.id.activity_login_picture_done_button)
     TextView nextButton;
 
     private static final int TAKE_PICTURE = 1;
@@ -83,32 +71,11 @@ public class LoginPictureActivity extends BaseActivity implements ActivityCompat
             BottomSheetDialogFragment bottomSheetDialogFragment = new ChooseImageFragment();
             bottomSheetDialogFragment.show(getSupportFragmentManager(), bottomSheetDialogFragment.getTag());
         }
-        if (i == R.id.activity_login_picture_next_button){
+        if (i == R.id.activity_login_picture_done_button){
             showProgressDialog(this);
             callActivity(LoginPictureActivity.this, HomeActivity.class);
             hideProgressDialog(this);
         }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == PERMISSIONS_CODE) {
-            for (int i = 0; i < permissions.length; i++) {
-                String permission = permissions[i];
-                int grantResult = grantResults[i];
-
-                if (permission.equals(Manifest.permission.CAMERA)) {
-                    if (grantResult == PackageManager.PERMISSION_GRANTED) {
-//                        takePhoto(userImageView);
-                    } else {
-                        requestPermission(this, Constants.PERMISSIONS_REQUEST_CAMERA , Manifest.permission.CAMERA);
-                    }
-                }
-            }
-        }
-
     }
 
 //    @Override
@@ -137,17 +104,6 @@ public class LoginPictureActivity extends BaseActivity implements ActivityCompat
 //                }
 //        }
 //    }
-
-    public Uri takePhoto(View view) {
-        Uri imageUri;
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        File photo = new File(Environment.getExternalStorageDirectory(),  "Pic.jpg");
-        intent.putExtra(MediaStore.EXTRA_OUTPUT,
-                Uri.fromFile(photo));
-        imageUri = Uri.fromFile(photo);
-        startActivityForResult(intent, TAKE_PICTURE);
-        return imageUri;
-    }
 
     @Override
     public void OnChooseImage() {

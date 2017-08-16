@@ -16,10 +16,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppThemeMD">
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_chat_white_24dp" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/color_accent" />
+
+        <service android:name=".utils.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".utils.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".utils.MyJobService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
+            </intent-filter>
+        </service>
+
         <activity
             android:name=".activity.LoginActivity"
             android:theme="@style/AppThemeMD"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activity.HomeActivity"
             android:theme="@style/AppThemeMD" />
@@ -57,8 +82,9 @@
         <activity
             android:name=".activity.OnBoardingActivity"
             android:label="@string/title_activity_onboarding"
-            android:theme="@style/AppThemeTransparent">
-        </activity>
+            android:theme="@style/AppThemeTransparent"/>
+        <activity android:name=".activity.CreateAccountActivity"
+            android:theme="@style/AppThemeTransparent"/>
     </application>
 
 </manifest>

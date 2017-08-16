@@ -8,8 +8,7 @@
         android:id="@+id/fragment_messenger_item_user_image"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_margin="16dp"
-        android:background="@color/background_card"/>
+        android:layout_margin="16dp"/>
 
     <LinearLayout
         android:orientation="vertical"

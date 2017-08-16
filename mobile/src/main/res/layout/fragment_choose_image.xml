@@ -22,7 +22,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:src="@drawable/ic_add_a_photo_black_18dp" />
+            android:tint="@color/active_icon"
+            android:src="@drawable/ic_camera_white_24dp" />
 
         <TextView
             android:id="@+id/fragment_choose_image_camera_text"
@@ -55,8 +56,8 @@
             android:id="@+id/fragment_choose_image_album_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_photo_black_48dp"
-            android:alpha="0.6"
+            android:src="@drawable/ic_photo_library_white_48dp"
+            android:tint="@color/active_icon"
             android:padding="16dp"
             android:layout_centerHorizontal="true"/>
 

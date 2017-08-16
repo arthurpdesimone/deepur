@@ -165,7 +165,7 @@ public class OnBoardingActivity extends BaseActivity {
 
         int[] texts = new int[]{R.string.onboarding1, R.string.onboarding2, R.string.onboarding3};
 
-        int[] bgs = new int[]{R.drawable.ic_person_login, R.drawable.ic_photo_black_48dp, R.drawable.ic_videogame_asset_black_48dp};
+        int[] bgs = new int[]{R.drawable.ic_person_white_48dp, R.drawable.ic_person_white_48dp, R.drawable.ic_person_white_48dp};
 
         public PlaceholderFragment() {
         }

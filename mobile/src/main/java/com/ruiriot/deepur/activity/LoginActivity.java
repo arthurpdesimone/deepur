@@ -23,6 +23,8 @@ import butterknife.ButterKnife;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 
+import org.w3c.dom.Text;
+
 import static com.ruiriot.deepur.utils.ActivityUtils.callActivity;
 
 /**
@@ -49,6 +51,9 @@ public class LoginActivity extends BaseActivity{
     @BindView(R.id.activity_login_skip)
     TextView skipToHome;
 
+    @BindView(R.id.activity_login_create_account)
+    TextView createAccountButton;
+
     CallbackManager callbackManager;
 
     @Override
@@ -62,48 +67,9 @@ public class LoginActivity extends BaseActivity{
 
         findViewById(R.id.activity_login_facebook).setOnClickListener(this);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.activity_login_coordinator);
-        //mSignInButton.setReadPermissions("email");
 
-        skipToHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                callActivity(getApplicationContext(), LoginPictureActivity.class);
-            }
-        });
-
-       /* mSignInButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-
-            }
-
-            @Override
-            public void onCancel() {
-                showErrorSnackBar();
-            }
-
-            @Override
-            public void onError(FacebookException exception) {
-                showErrorSnackBar();
-            }
-        });*/
-//
-//        Bitmap image = BitmapFactory.decodeResource(getResources(),
-//                R.drawable.autumn);
-//        Palette.from(image).generate(new Palette.PaletteAsyncListener() {
-//            public void onGenerated(Palette palette) {
-//                Palette.Swatch vibrantSwatch = palette.getLightVibrantSwatch();
-//                if (vibrantSwatch != null) {
-//                    Drawable drawable = getResources().getDrawable(R.drawable.bg_gradient_login);
-//                    int color = vibrantSwatch.getRgb();
-//                    int h = blurryBg.getHeight();
-//                    ShapeDrawable mDrawable = new ShapeDrawable(new RectShape());
-//                    mDrawable.getPaint().setShader(new LinearGradient(0, 0, 0, h, getResources().getColor(android.R.color.transparent), color, Shader.TileMode.REPEAT));
-//                    blurryBg.setBackgroundDrawable(mDrawable);
-//                }
-//            }
-//        });
-
+        skipToHome.setOnClickListener(this);
+        createAccountButton.setOnClickListener(this);
     }
 
     @Override
@@ -115,33 +81,13 @@ public class LoginActivity extends BaseActivity{
     @Override
     public void onClick(View v) {
         int i = v.getId();
-    }
 
-    private void updateUI(FirebaseUser user) {
-        hideProgressDialog();
-
-    }
-
-    public void showProgressDialog() {
-        if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(this);
-            mProgressDialog.setMessage(getString(R.string.login_loading));
-            mProgressDialog.setIndeterminate(true);
+        if (i == R.id.activity_login_create_account){
+            callActivity(LoginActivity.this, CreateAccountActivity.class);
         }
 
-        mProgressDialog.show();
-    }
-
-    public void hideProgressDialog() {
-        if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.dismiss();
+        if (i == R.id.activity_login_skip){
+            callActivity(LoginActivity.this, LoginPictureActivity.class);
         }
-    }
-
-    public void showErrorSnackBar(){
-        Snackbar snackbar = Snackbar
-                .make(coordinatorLayout, getResources().getString(R.string.error), Snackbar.LENGTH_LONG);
-
-        snackbar.show();
     }
 }
