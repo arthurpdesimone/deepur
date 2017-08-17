@@ -19,12 +19,16 @@
     <!-- LOGIN -->
     <string name="activity_login_email">Email</string>
     <string name="activity_login_password">Password</string>
+    <string name="activity_login_email_text_input">Please enter a valid email</string>
+    <string name="activity_login_password_text_input">Wrong password</string>
     <string name="login_loading">Loading</string>
-    <string name="activity_login_sign_in">LOGIN FACEBOOK</string>
+    <string name="activity_login_sign_in_facebook">LOGIN FACEBOOK</string>
     <string name="activity_login_sign_out">Sign out</string>
+    <string name="activity_login_sign_in">Sign in</string>
     <string name="activity_login_verify_email">Verify</string>
-    <string name="activity_login_description">deepur requires a Facebook account</string>
+    <string name="activity_login_auth_status">Something is wrong, try again</string>
     <string name="activity_login_create_account">Create account</string>
+    <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
 
     <!-- LOGIN PICTURE -->
     <string name="activity_login_picture_title">Set profile picture</string>

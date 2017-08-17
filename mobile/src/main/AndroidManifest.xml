@@ -82,9 +82,11 @@
         <activity
             android:name=".activity.OnBoardingActivity"
             android:label="@string/title_activity_onboarding"
-            android:theme="@style/AppThemeTransparent"/>
-        <activity android:name=".activity.CreateAccountActivity"
-            android:theme="@style/AppThemeTransparent"/>
+            android:theme="@style/AppThemeTransparent" />
+        <activity
+            android:name=".activity.CreateAccountActivity"
+            android:theme="@style/AppThemeTransparent" />
+        <activity android:name=".activity.VerifyAccountActivity"></activity>
     </application>
 
 </manifest>

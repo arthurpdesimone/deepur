@@ -1,31 +1,32 @@
 package com.ruiriot.deepur.activity;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.view.ViewEvents;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
-
-import org.w3c.dom.Text;
-
 import static com.ruiriot.deepur.utils.ActivityUtils.callActivity;
+import static com.ruiriot.deepur.utils.ActivityUtils.hideProgressDialog;
+import static com.ruiriot.deepur.utils.ActivityUtils.showProgressDialog;
 
 /**
  * Created by Rui on 08/05/2017.
@@ -33,9 +34,10 @@ import static com.ruiriot.deepur.utils.ActivityUtils.callActivity;
 
 public class LoginActivity extends BaseActivity{
 
-    public ProgressDialog mProgressDialog;
+    private static final String TAG = "Firebase Login";
     CoordinatorLayout coordinatorLayout;
     public static final String PREF_USER_FIRST_TIME = "user_first_time";
+    private FirebaseAuth mAuth;
 
     @ViewEvents(clickable = true)
     @BindView(R.id.activity_login_facebook)
@@ -48,11 +50,26 @@ public class LoginActivity extends BaseActivity{
     @BindView(R.id.activity_login_relative)
     RelativeLayout blurryBg;
 
-    @BindView(R.id.activity_login_skip)
-    TextView skipToHome;
+    @BindView(R.id.activity_login_sign_in)
+    TextView loginButton;
 
     @BindView(R.id.activity_login_create_account)
     TextView createAccountButton;
+
+    @BindView(R.id.activity_login_email_edit_text)
+    EditText userEmail;
+
+    @BindView(R.id.activity_login_password_edit_text)
+    EditText userPassword;
+
+    @BindView(R.id.activity_login_status)
+    TextView authStatus;
+
+    @BindView(R.id.activity_login_email_text_input)
+    TextInputLayout emailTextInput;
+
+    @BindView(R.id.activity_login_password_text_input)
+    TextInputLayout passwordTextInput;
 
     CallbackManager callbackManager;
 
@@ -68,13 +85,18 @@ public class LoginActivity extends BaseActivity{
         findViewById(R.id.activity_login_facebook).setOnClickListener(this);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.activity_login_coordinator);
 
-        skipToHome.setOnClickListener(this);
+        mAuth = FirebaseAuth.getInstance();
+
+        loginButton.setOnClickListener(this);
         createAccountButton.setOnClickListener(this);
     }
 
     @Override
     public void onStart() {
         super.onStart();
+
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
 
     }
 
@@ -84,10 +106,87 @@ public class LoginActivity extends BaseActivity{
 
         if (i == R.id.activity_login_create_account){
             callActivity(LoginActivity.this, CreateAccountActivity.class);
+        } else if (i == R.id.activity_login_sign_in) {
+            signIn(userEmail.getText().toString(), userPassword.getText().toString());
+        } else if (i == R.id.activity_login_sign_out) {
+            signOut();
+        }
+    }
+
+    private void signIn(String email, String password) {
+        Log.d(TAG, "signIn:" + email);
+        if (!validateForm()) {
+            return;
         }
 
-        if (i == R.id.activity_login_skip){
-            callActivity(LoginActivity.this, LoginPictureActivity.class);
+        showProgressDialog(this);
+
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                            updateUI(null);
+                        }
+
+                        // [START_EXCLUDE]
+                        if (!task.isSuccessful()) {
+                            authStatus.setText(R.string.activity_login_auth_status);
+                        }
+                        hideProgressDialog(LoginActivity.this);
+                        // [END_EXCLUDE]
+                    }
+                });
+        // [END sign_in_with_email]
+    }
+
+    private void signOut() {
+        mAuth.signOut();
+        updateUI(null);
+    }
+
+    private boolean validateForm() {
+        boolean valid = true;
+
+        String email = userEmail.getText().toString();
+        if (TextUtils.isEmpty(email)) {
+            emailTextInput.setError(getResources().getString(R.string.activity_login_email_text_input));
+            valid = false;
+        } else {
+            emailTextInput.setError(null);
+        }
+
+        String password = userPassword.getText().toString();
+        if (TextUtils.isEmpty(password)) {
+            passwordTextInput.setError(getResources().getString(R.string.activity_login_password_text_input));
+            valid = false;
+        } else {
+            passwordTextInput.setError(null);
+        }
+
+        return valid;
+    }
+
+    private void updateUI(FirebaseUser user) {
+
+        hideProgressDialog(this);
+
+        if (user != null) {
+
+            findViewById(R.id.signed_in_buttons).setVisibility(View.VISIBLE);
+
+        } else {
+
+            findViewById(R.id.signed_in_buttons).setVisibility(View.GONE);
         }
     }
 }
