@@ -19,6 +19,8 @@ import org.w3c.dom.Text;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.ruiriot.deepur.utils.ActivityUtils.callActivity;
+
 public class VerifyAccountActivity extends BaseActivity {
 
     @BindView(R.id.activity_verify_account_verify_email)
@@ -51,6 +53,7 @@ public class VerifyAccountActivity extends BaseActivity {
                             Toast.makeText(VerifyAccountActivity.this,
                                     "Verification email sent to " + user.getEmail(),
                                     Toast.LENGTH_SHORT).show();
+                             callActivity(VerifyAccountActivity.this, HomeActivity.class);
                         } else {
                             Log.e(TAG, "sendEmailVerification", task.getException());
                             Toast.makeText(VerifyAccountActivity.this,

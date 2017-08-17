@@ -53,7 +53,7 @@
             android:theme="@style/AppThemeMD" />
         <activity android:name=".activity.HomeHeaderActivity" />
         <activity
-            android:name=".activity.ProfileActivity"
+            android:name=".activity.AccountActivity"
             android:label="@string/title_activity_profile"
             android:theme="@style/AppThemeMD" />
         <activity

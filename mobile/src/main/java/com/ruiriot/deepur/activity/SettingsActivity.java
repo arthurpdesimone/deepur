@@ -24,7 +24,7 @@ public class SettingsActivity extends BaseActivity {
         accountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callActivity(SettingsActivity.this, ProfileActivity.class);
+                callActivity(SettingsActivity.this, AccountActivity.class);
             }
         });
 

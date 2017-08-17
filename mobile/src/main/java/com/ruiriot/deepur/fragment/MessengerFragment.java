@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,6 +43,7 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
     MessengerAdapter mAdapter;
     FirebaseDatabase database;
     DatabaseReference myRef;
+    FirebaseAuth mAuth;
 
     private String id;
     private String userName;
@@ -63,6 +65,8 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("messenger");
+
+        mAuth = FirebaseAuth.getInstance();
 
         //userName = holder.getUserName().toString();
         //userText = holder.getUserText().toString();

@@ -104,7 +104,7 @@ public class HomeActivity extends BaseActivity {
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callActivity(getApplicationContext(), SettingsActivity.class);
+                callActivity(HomeActivity.this, SettingsActivity.class);
             }
         });
 

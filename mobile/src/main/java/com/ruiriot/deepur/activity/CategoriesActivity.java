@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,12 +19,15 @@ public class CategoriesActivity extends BaseActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     String TAG = "Firebase";
 
+    FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
 
         DatabaseReference myRef = database.getReference("categories");
+        mAuth = FirebaseAuth.getInstance();
 
         ChildEventListener childEventListener = new ChildEventListener() {
             @Override

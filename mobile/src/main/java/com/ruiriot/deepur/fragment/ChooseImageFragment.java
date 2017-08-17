@@ -11,7 +11,6 @@ import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.ActivityCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +22,7 @@ import com.ruiriot.deepur.R;
 
 import static android.support.v4.content.PermissionChecker.checkSelfPermission;
 import static com.ruiriot.deepur.Constants.PERMISSIONS_REQUEST_CAMERA;
+import static com.ruiriot.deepur.Constants.PERMISSIONS_REQUEST_STORAGE;
 
 public class ChooseImageFragment extends BottomSheetDialogFragment implements ActivityCompat.OnRequestPermissionsResultCallback {
 
@@ -58,8 +58,15 @@ public class ChooseImageFragment extends BottomSheetDialogFragment implements Ac
         permissionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("CHOOSEIMAGE", "CLICADO");
-                //requestPermission(getActivity(), PERMISSIONS_REQUEST_CAMERA, Manifest.permission.CAMERA);
+
+                if (checkSelfPermission(view.getContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                            PERMISSIONS_REQUEST_STORAGE);
+                }else{
+                    Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                    startActivityForResult(intent, PERMISSIONS_REQUEST_STORAGE);
+                }
             }
         });
 
@@ -103,9 +110,12 @@ public class ChooseImageFragment extends BottomSheetDialogFragment implements Ac
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PERMISSIONS_REQUEST_CAMERA) {
             Bitmap image = (Bitmap) data.getExtras().get("data");
-            ImageView imageview = (ImageView) getActivity().findViewById(R.id.activity_login_picture_user_image); //sets imageview as the bitmap
+            ImageView imageview = (ImageView) getActivity().findViewById(R.id.activity_account_image); //sets imageview as the bitmap
             imageview.setImageBitmap(image);
             dismiss();
+        }
+        if (requestCode == PERMISSIONS_REQUEST_STORAGE) {
+
         }
     }
 }

@@ -182,11 +182,12 @@ public class LoginActivity extends BaseActivity{
 
         if (user != null) {
 
-            findViewById(R.id.signed_in_buttons).setVisibility(View.VISIBLE);
+            callActivity(LoginActivity.this, AccountActivity.class);
+            //findViewById(R.id.signed_in_buttons).setVisibility(View.VISIBLE);
 
         } else {
 
-            findViewById(R.id.signed_in_buttons).setVisibility(View.GONE);
+            //findViewById(R.id.signed_in_buttons).setVisibility(View.GONE);
         }
     }
 }

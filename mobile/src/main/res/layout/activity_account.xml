@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.ruiriot.deepur.activity.ProfileActivity">
+    tools:context="com.ruiriot.deepur.activity.AccountActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/activity_profile_toolbar"
+        android:id="@+id/activity_account_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:contentInsetStart="0dp"
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/activity_profile_back_icon"
+                android:id="@+id/activity_account_back_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_arrow_back_white_24dp"
@@ -30,14 +30,14 @@
                 android:padding="8dp"/>
 
             <TextView
-                android:id="@+id/activity_profile_title"
+                android:id="@+id/activity_account_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/activity_settings_account_title"
                 android:textSize="24sp"
                 android:fontFamily="sans-serif-medium"
                 android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/activity_profile_back_icon"
+                android:layout_toEndOf="@id/activity_account_back_icon"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:textColor="@color/text_color_primary"/>
@@ -47,25 +47,39 @@
     </android.support.v7.widget.Toolbar>
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/activity_profile_image"
+        android:id="@+id/activity_account_image"
         android:layout_width="144dp"
         android:layout_height="144dp"
         android:layout_centerHorizontal="true"
-        android:layout_margin="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:scaleType="centerInside"
         app:civ_border_width="2dp"
-        app:civ_border_color="@color/color_accent"
-        android:layout_below="@id/activity_profile_toolbar"/>
+        app:civ_border_color="@color/color_primary_dark"
+        android:layout_below="@id/activity_account_toolbar"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/activity_account_add_picture_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/activity_account_image"
+        android:layout_toEndOf="@id/activity_account_image"
+        android:layout_marginStart="-40dp"
+        app:fabSize="mini"
+        app:backgroundTint="@color/background_card"
+        android:tint="@color/active_icon"
+        android:src="@drawable/ic_camera_alt_white_24dp"/>
 
     <RelativeLayout
-        android:id="@+id/activity_profile_ll"
+        android:id="@+id/activity_account_ll"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/activity_profile_image"
+        android:layout_below="@id/activity_account_image"
         android:background="@color/color_primary">
 
         <EditText
-            android:id="@+id/activity_profile_name"
+            android:id="@+id/activity_account_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/user_name"
@@ -84,7 +98,7 @@
             android:enabled="false"/>
 
         <ImageView
-            android:id="@+id/activity_profile_edit"
+            android:id="@+id/activity_account_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_mode_edit_white_24dp"
@@ -99,10 +113,10 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/activity_profile_email"
+        android:id="@+id/activity_account_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/activity_profile_ll"
+        android:layout_below="@id/activity_account_ll"
         android:gravity="center"
         android:text="@string/activity_login_email"
         android:textSize="14sp"
@@ -111,7 +125,7 @@
         android:fontFamily="sans-serif"/>
 
     <android.support.v7.widget.CardView
-        android:id="@+id/activity_profile_account_card"
+        android:id="@+id/activity_account_sign_out_card"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -123,14 +137,14 @@
         app:cardBackgroundColor="@color/background_card">
 
         <RelativeLayout
-            android:id="@+id/activity_profile_account_sign_out_rl"
+            android:id="@+id/activity_account_sign_out_rl"
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:background="?attr/selectableItemBackground"
             android:clickable="true">
 
             <ImageView
-                android:id="@+id/activity_profile_sign_out_icon"
+                android:id="@+id/activity_account_sign_out_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_exit_to_app_white_24dp"
@@ -141,7 +155,7 @@
                 android:padding="8dp"/>
 
             <TextView
-                android:id="@+id/activity_profile_sign_out"
+                android:id="@+id/activity_account_sign_out_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -154,7 +168,7 @@
                 android:layout_centerVertical="true"/>
 
             <ImageView
-                android:id="@+id/activity_profile_sign_out_arrow"
+                android:id="@+id/activity_account_sign_out_arrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_keyboard_arrow_right_white_24dp"
