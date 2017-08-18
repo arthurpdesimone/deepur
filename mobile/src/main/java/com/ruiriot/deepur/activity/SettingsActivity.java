@@ -1,5 +1,6 @@
 package com.ruiriot.deepur.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -24,7 +25,9 @@ public class SettingsActivity extends BaseActivity {
         accountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callActivity(SettingsActivity.this, AccountActivity.class);
+                Intent i = new Intent(SettingsActivity.this, AccountActivity.class);
+                i.putExtra("activity", "settings");
+                startActivity(i);
             }
         });
 

@@ -1,20 +1,22 @@
 <resources>
     <string name="app_name">deepur</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</string>
-    <string name="more">MORE</string>
-    <string name="options">OPTIONS</string>
-    <string name="favorite">FAVORITE</string>
+    <string name="more">More</string>
+    <string name="options">Options</string>
+    <string name="favorite">Favorite</string>
     <string name="open_camera">Open camera</string>
-    <string name="attach">ATTACH</string>
+    <string name="attach">Attach</string>
     <string name="album_permission">To share an image, give deepur access to Media</string>
-    <string name="allow">ALLOW</string>
+    <string name="allow">Allow</string>
     <string name="stories">Stories</string>
     <string name="categories">Categories</string>
     <string name="error">There is something wrong</string>
-    <string name="done">DONE</string>
+    <string name="done">Done</string>
     <string name="cancel">Cancel</string>
     <string name="user_name">User Name</string>
     <string name="skip">Skip</string>
+    <string name="create">Create</string>
+    <string name="finish">Finish</string>
 
     <!-- LOGIN -->
     <string name="activity_login_email">Email</string>

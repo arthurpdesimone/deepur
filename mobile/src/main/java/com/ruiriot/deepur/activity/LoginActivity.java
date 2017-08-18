@@ -1,5 +1,6 @@
 package com.ruiriot.deepur.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
@@ -88,6 +89,7 @@ public class LoginActivity extends BaseActivity{
         findViewById(R.id.activity_login_facebook).setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
 
         loginButton.setOnClickListener(this);
         createAccountButton.setOnClickListener(this);
@@ -182,12 +184,16 @@ public class LoginActivity extends BaseActivity{
 
         if (user != null) {
 
-            callActivity(LoginActivity.this, AccountActivity.class);
-            //findViewById(R.id.signed_in_buttons).setVisibility(View.VISIBLE);
+            Intent i = new Intent(LoginActivity.this, AccountActivity.class);
+            Bundle extras = new Bundle();
+            extras.putString("activity", "login");
+            extras.putString("email", user.getEmail());
+            i.putExtras(extras);
+            startActivity(i);
 
         } else {
-
-
+            Snackbar snackbar = Snackbar.make(coordinatorLayout, getResources().getString(R.string.error), Snackbar.LENGTH_LONG);
+            snackbar.show();
         }
     }
 }

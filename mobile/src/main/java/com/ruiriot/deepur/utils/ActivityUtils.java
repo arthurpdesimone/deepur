@@ -10,6 +10,7 @@ import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,17 +29,13 @@ public abstract class ActivityUtils {
         String userEmail;
 
         if (user != null){
-            //userEmail = user.getEmail();
+            userEmail = user.getEmail();
             Intent intent = new Intent(context, clazz);
-            //intent.putExtra(Intent.EXTRA_EMAIL, userEmail);
+            intent.putExtra(Intent.EXTRA_EMAIL, userEmail);
             context.startActivity(intent);
         }else {
-            /*Toast.makeText(context, "User not found.",
-                    Toast.LENGTH_SHORT).show();*/
-            Intent intent = new Intent(context, clazz);
-            //intent.putExtra(Intent.EXTRA_EMAIL, userEmail);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
+            Toast.makeText(context, "User not found.",
+                    Toast.LENGTH_SHORT).show();
         }
 
     }
