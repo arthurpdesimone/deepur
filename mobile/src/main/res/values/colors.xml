@@ -9,7 +9,7 @@
     <color name="color_primary_transparent">#1A000000</color>
     <color name="color_primary_dark_transparent">#4D000000</color>
 
-    <color name="background">@color/md_grey_50</color>
+    <color name="background">@color/md_grey_100</color>
     <color name="background_card">@color/md_white_1000</color>
     <color name="background_dark">#303030</color>
     <color name="active_icon">@color/color_accent</color>

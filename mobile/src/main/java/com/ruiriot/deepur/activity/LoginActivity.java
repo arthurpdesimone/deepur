@@ -3,6 +3,7 @@ package com.ruiriot.deepur.activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.text.TextUtils;
@@ -35,7 +36,6 @@ import static com.ruiriot.deepur.utils.ActivityUtils.showProgressDialog;
 public class LoginActivity extends BaseActivity{
 
     private static final String TAG = "Firebase Login";
-    CoordinatorLayout coordinatorLayout;
     public static final String PREF_USER_FIRST_TIME = "user_first_time";
     private FirebaseAuth mAuth;
 
@@ -57,10 +57,10 @@ public class LoginActivity extends BaseActivity{
     TextView createAccountButton;
 
     @BindView(R.id.activity_login_email_edit_text)
-    EditText userEmail;
+    TextInputEditText userEmail;
 
     @BindView(R.id.activity_login_password_edit_text)
-    EditText userPassword;
+    TextInputEditText userPassword;
 
     @BindView(R.id.activity_login_status)
     TextView authStatus;
@@ -70,6 +70,9 @@ public class LoginActivity extends BaseActivity{
 
     @BindView(R.id.activity_login_password_text_input)
     TextInputLayout passwordTextInput;
+
+    @BindView(R.id.activity_login_coordinator)
+    CoordinatorLayout coordinatorLayout;
 
     CallbackManager callbackManager;
 
@@ -83,7 +86,6 @@ public class LoginActivity extends BaseActivity{
         ButterKnife.bind(this);
 
         findViewById(R.id.activity_login_facebook).setOnClickListener(this);
-        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.activity_login_coordinator);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -108,8 +110,6 @@ public class LoginActivity extends BaseActivity{
             callActivity(LoginActivity.this, CreateAccountActivity.class);
         } else if (i == R.id.activity_login_sign_in) {
             signIn(userEmail.getText().toString(), userPassword.getText().toString());
-        } else if (i == R.id.activity_login_sign_out) {
-            signOut();
         }
     }
 
@@ -133,20 +133,20 @@ public class LoginActivity extends BaseActivity{
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            updateUI(null);
+                            Snackbar snackbar = Snackbar.make(coordinatorLayout, getResources().getString(R.string.error), Snackbar.LENGTH_LONG);
+                            snackbar.show();
+                            hideProgressDialog(LoginActivity.this);
                         }
 
                         // [START_EXCLUDE]
                         if (!task.isSuccessful()) {
                             authStatus.setText(R.string.activity_login_auth_status);
-                        }
-                        hideProgressDialog(LoginActivity.this);
+
+                        }else hideProgressDialog(LoginActivity.this);
                         // [END_EXCLUDE]
                     }
                 });
-        // [END sign_in_with_email]
+
     }
 
     private void signOut() {
@@ -178,7 +178,7 @@ public class LoginActivity extends BaseActivity{
 
     private void updateUI(FirebaseUser user) {
 
-        hideProgressDialog(this);
+        hideProgressDialog(LoginActivity.this);
 
         if (user != null) {
 
@@ -187,7 +187,7 @@ public class LoginActivity extends BaseActivity{
 
         } else {
 
-            //findViewById(R.id.signed_in_buttons).setVisibility(View.GONE);
+
         }
     }
 }

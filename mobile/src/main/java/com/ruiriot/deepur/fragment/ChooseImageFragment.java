@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.Manifest;
 import com.ruiriot.deepur.R;
+
+import java.io.File;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.support.v4.content.PermissionChecker.checkSelfPermission;
 import static com.ruiriot.deepur.Constants.PERMISSIONS_REQUEST_CAMERA;
@@ -64,7 +70,8 @@ public class ChooseImageFragment extends BottomSheetDialogFragment implements Ac
                     requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                             PERMISSIONS_REQUEST_STORAGE);
                 }else{
-                    Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                    Intent intent = new Intent(Intent.ACTION_PICK);
+                    intent.setType("image/*");
                     startActivityForResult(intent, PERMISSIONS_REQUEST_STORAGE);
                 }
             }
@@ -107,15 +114,23 @@ public class ChooseImageFragment extends BottomSheetDialogFragment implements Ac
         }
     }
 
+    public boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            return true;
+        }
+        return false;
+    }
+
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PERMISSIONS_REQUEST_CAMERA) {
             Bitmap image = (Bitmap) data.getExtras().get("data");
-            ImageView imageview = (ImageView) getActivity().findViewById(R.id.activity_account_image); //sets imageview as the bitmap
-            imageview.setImageBitmap(image);
+            CircleImageView userImageView = (CircleImageView) getActivity().findViewById(R.id.activity_account_image); //sets imageview as the bitmap
+            userImageView.setImageBitmap(image);
             dismiss();
         }
         if (requestCode == PERMISSIONS_REQUEST_STORAGE) {
-
+            isExternalStorageWritable();
         }
     }
 }

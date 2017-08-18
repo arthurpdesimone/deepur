@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout android:id="@+id/activity_login_coordinator"
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/activity_login_coordinator"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
@@ -32,7 +34,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@id/activity_login_deepur_logo"
             android:textColor="@color/text_color_primary"
-            android:fontFamily="sans-serif-condensed-light"/>
+            android:fontFamily="sans-serif-condensed"/>
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/activity_login_facebook"
@@ -49,6 +51,8 @@
             android:id="@+id/activity_login_email_text_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:textColorHint="@color/md_grey_500"
             android:layout_below="@id/activity_login_deepur">
 
@@ -70,6 +74,8 @@
             android:layout_height="wrap_content"
             app:errorEnabled="true"
             app:passwordToggleEnabled="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:textColorHint="@color/md_grey_500"
             app:passwordToggleDrawable="@drawable/ic_visibility_off_black_18dp"
             android:layout_below="@id/activity_login_email_text_input">
@@ -123,7 +129,6 @@
             android:text="@string/activity_login_create_account"
             android:padding="8dp"
             android:minWidth="96dp"
-            android:layout_marginTop="16dp"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
             android:layout_centerHorizontal="true"
