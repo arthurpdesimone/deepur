@@ -1,6 +1,7 @@
 package com.ruiriot.deepur.activity;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
@@ -76,6 +77,7 @@ public class LoginActivity extends BaseActivity{
     CoordinatorLayout coordinatorLayout;
 
     CallbackManager callbackManager;
+    AnimationDrawable animationDrawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +93,10 @@ public class LoginActivity extends BaseActivity{
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
 
+        animationDrawable = (AnimationDrawable) blurryBg.getBackground();
+        animationDrawable.setEnterFadeDuration(5000);
+        animationDrawable.setExitFadeDuration(2000);
+
         loginButton.setOnClickListener(this);
         createAccountButton.setOnClickListener(this);
     }
@@ -102,6 +108,20 @@ public class LoginActivity extends BaseActivity{
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (animationDrawable != null && !animationDrawable.isRunning())
+            animationDrawable.start();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (animationDrawable != null && animationDrawable.isRunning())
+            animationDrawable.stop();
     }
 
     @Override

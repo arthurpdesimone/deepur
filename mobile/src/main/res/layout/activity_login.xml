@@ -5,14 +5,14 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/activity_login_relative">
+        android:id="@+id/activity_login_relative"
+        android:background="@drawable/animation_list">
 
         <ImageView
             android:id="@+id/activity_login_deepur_logo"

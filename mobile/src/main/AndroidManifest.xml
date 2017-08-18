@@ -43,7 +43,7 @@
 
         <activity
             android:name=".activity.LoginActivity"
-            android:theme="@style/AppThemeMD"
+            android:theme="@style/AppThemeTransparent"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activity.HomeActivity"

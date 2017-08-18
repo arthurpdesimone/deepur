@@ -36,6 +36,8 @@ public abstract class ActivityUtils {
         }else {
             Toast.makeText(context, "User not found.",
                     Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(context, clazz);
+            context.startActivity(intent);
         }
 
     }
