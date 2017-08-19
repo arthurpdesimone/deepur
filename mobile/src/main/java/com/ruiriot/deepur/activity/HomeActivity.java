@@ -1,6 +1,7 @@
 package com.ruiriot.deepur.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -54,21 +55,7 @@ public class HomeActivity extends BaseActivity {
     List<NotificationHolder> notificationsList = new ArrayList<>();
     List<StoriesHolder> storiesList = new ArrayList<>();
 
-    @Nullable
-    @BindView(R.id.fragment_notifications_recycler_view)
-    RecyclerView recyclerViewNotifications;
-
-    @Nullable
-    @BindView(R.id.fragment_stories_recycler_view)
-    RecyclerView recyclerViewStories;
-
-    @Nullable
-    @BindView(R.id.fragment_notifications_item_date)
-    TextView dateNotification;
-
-    @Nullable
-    @BindView(R.id.fragment_notifications_item_description)
-    TextView descriptionNotification;
+    private Bundle extras;
 
     private int[] tabIcons = {
             R.drawable.ic_chat_white_24dp,
@@ -82,6 +69,8 @@ public class HomeActivity extends BaseActivity {
         setContentView(R.layout.activity_home);
 
         ButterKnife.bind(this);
+
+        extras = getIntent().getExtras();
 
         toolbar = (Toolbar) findViewById(R.id.activity_home_toolbar);
         setSupportActionBar(toolbar);
@@ -101,16 +90,33 @@ public class HomeActivity extends BaseActivity {
             recreate();
         }
 
+        String newString;
+
+        if (savedInstanceState == null) {
+
+            if(extras == null) {
+                newString= null;
+            } else {
+                newString= extras.getString("email");
+            }
+        } else {
+            newString= (String) savedInstanceState.getSerializable("email");
+        }
+
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callActivity(HomeActivity.this, SettingsActivity.class);
+                Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+                Bundle extrasBundle = new Bundle();
+                String userEmail = extras.getString("email");
+                String userName = extras.getString("name");
+                extras.putString("activity", "home");
+                extras.putString("email", userEmail);
+                extras.putString("name", userName);
+                intent.putExtras(extrasBundle);
+                startActivity(intent);
             }
         });
-
-        //setupRecyclerViewNotifications();
-        //setupRecyclerViewStories();
-
     }
 
     private void setupTabIcons() {
@@ -141,18 +147,6 @@ public class HomeActivity extends BaseActivity {
                 tab.getIcon().setAlpha(255);
             }
         });
-    }
-
-    private void setupRecyclerViewNotifications(){
-
-    }
-
-    private void setupRecyclerViewStories(){
-
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
-        recyclerViewStories.setLayoutManager(mLayoutManager);
-        recyclerViewStories.setItemAnimator(new DefaultItemAnimator());
-        recyclerViewStories.setAdapter(new StoriesAdapter(storiesList, context));
     }
 
     private void setupViewPager(ViewPager viewPager) {

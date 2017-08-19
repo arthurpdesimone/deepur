@@ -165,8 +165,10 @@ public class AccountActivity extends BaseActivity {
             Intent intent = new Intent(AccountActivity.this, HomeActivity.class);
             Bundle extrasBundle = new Bundle();
             String userEmail = extras.getString("email");
+            String userName = editNameText.getText().toString();
             extras.putString("activity", "account");
             extras.putString("email", userEmail);
+            extras.putString("name", userName);
             intent.putExtras(extrasBundle);
             startActivity(intent);
         }
