@@ -26,6 +26,7 @@ import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.ruiriot.deepur.utils.ActivityUtils.callActivity;
 import static com.ruiriot.deepur.utils.ActivityUtils.hideProgressDialog;
@@ -45,8 +46,8 @@ public class AccountActivity extends BaseActivity {
     @BindView(R.id.activity_account_sign_out_card)
     CardView signOutButton;
 
-    @BindView(R.id.activity_account_add_picture_fab)
-    FloatingActionButton addPictureFab;
+    @BindView(R.id.activity_account_image)
+    CircleImageView addPictureFab;
 
     @BindView(R.id.activity_account_back_icon)
     ImageView arrowBackButton;
@@ -145,7 +146,7 @@ public class AccountActivity extends BaseActivity {
             editNameButton.setVisibility(View.GONE);
             editNameTextDone.setVisibility(View.VISIBLE);
 
-        } else if(i == R.id.activity_account_add_picture_fab){
+        } else if(i == R.id.activity_account_image){
 
             BottomSheetDialogFragment bottomSheetDialogFragment = new ChooseImageFragment();
             bottomSheetDialogFragment.show(getSupportFragmentManager(), bottomSheetDialogFragment.getTag());
