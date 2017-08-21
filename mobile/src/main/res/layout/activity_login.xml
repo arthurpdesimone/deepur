@@ -53,6 +53,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:textColorHint="@color/md_grey_500"
             android:layout_below="@id/activity_login_deepur">
 
@@ -61,8 +63,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionNext"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:textSize="16sp"
                 android:textColor="@color/text_color_primary"
                 android:hint="@string/activity_login_email"/>
@@ -77,6 +77,8 @@
             app:passwordToggleEnabled="true"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:textColorHint="@color/md_grey_500"
             app:passwordToggleDrawable="@drawable/ic_visibility_off_black_18dp"
             android:layout_below="@id/activity_login_email_text_input">
@@ -85,8 +87,6 @@
                 android:id="@+id/activity_login_password_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:imeOptions="actionDone"
                 android:textSize="16sp"
                 android:inputType="textPassword"

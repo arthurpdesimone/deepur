@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.fragment.ChooseImageFragment;
+import com.ruiriot.deepur.fragment.MessengerFragment;
 
 import org.w3c.dom.Text;
 
@@ -70,6 +71,8 @@ public class AccountActivity extends BaseActivity {
 
         ButterKnife.bind(this);
 
+        mAuth = FirebaseAuth.getInstance();
+
         Intent intent = getIntent();
         String activity = intent.getStringExtra("activity");
         extras = getIntent().getExtras();
@@ -78,12 +81,26 @@ public class AccountActivity extends BaseActivity {
             arrowBackButton.setVisibility(View.VISIBLE);
             arrowBackButton.setOnClickListener(this);
             signOutButton.setVisibility(View.VISIBLE);
+
+            String newString;
+
+            if (savedInstanceState == null) {
+
+                if(extras == null) {
+                    newString= null;
+                } else {
+                    newString= extras.getString("name");
+                    editNameText.setText(newString);
+                }
+            } else {
+                newString= (String) savedInstanceState.getSerializable("name");
+                editNameText.setText(newString);
+            }
+
         }else if (activity.equals("login")){
             arrowBackButton.setVisibility(View.GONE);
             signOutButton.setVisibility(View.GONE);
         }
-
-        mAuth = FirebaseAuth.getInstance();
 
         editNameButton.setOnClickListener(this);
         signOutButton.setOnClickListener(this);
@@ -105,6 +122,7 @@ public class AccountActivity extends BaseActivity {
                     handled = true;
                     editNameButton.setVisibility(View.VISIBLE);
                     editNameTextDone.setVisibility(View.GONE);
+                    editNameText.setEnabled(false);
 
                 }
                 return handled;

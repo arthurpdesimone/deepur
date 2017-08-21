@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.ruiriot.deepur.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,10 +21,14 @@ public class SettingsActivity extends BaseActivity {
     @BindView(R.id.activity_settings_name)
     TextView userName;
 
-    @BindView(R.id.activity_settings_account_card)
-    CardView accountButton;
+    @BindView(R.id.activity_settings_account)
+    RelativeLayout accountButton;
+
+    @BindView(R.id.activity_settings_arrow)
+    ImageView arrowBackButton;
 
     Bundle extras;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,8 @@ public class SettingsActivity extends BaseActivity {
         setContentView(R.layout.activity_settings);
 
         ButterKnife.bind(this);
+
+        mAuth = FirebaseAuth.getInstance();
 
         String newNameString;
         String newEmailString;
@@ -56,7 +64,7 @@ public class SettingsActivity extends BaseActivity {
     @Override
     public void onClick(View v){
         int i = v.getId();
-        if (i == R.id.activity_settings_account_card){
+        if (i == R.id.activity_settings_account){
             Log.i("Account", "CLICOU");
             Intent intent = new Intent(SettingsActivity.this, AccountActivity.class);
             Bundle extrasBundle = new Bundle();
@@ -67,6 +75,8 @@ public class SettingsActivity extends BaseActivity {
             extrasBundle.putString("email", userEmailText);
             intent.putExtras(extrasBundle);
             startActivity(intent);
+        }else if (i == R.id.activity_settings_arrow){
+            finish();
         }
     }
 

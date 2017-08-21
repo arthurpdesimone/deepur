@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.adapter.HomeAdapter;
 import com.ruiriot.deepur.adapter.StoriesAdapter;
@@ -24,6 +26,7 @@ import com.ruiriot.deepur.adapter.holder.StoriesHolder;
 import com.ruiriot.deepur.fragment.CategoriesFragment;
 import com.ruiriot.deepur.fragment.MessengerFragment;
 import com.ruiriot.deepur.fragment.NotificationsFragment;
+import com.ruiriot.deepur.model.Messenger;
 import com.ruiriot.deepur.utils.GaussianBlurUtils;
 
 import java.util.ArrayList;
@@ -50,6 +53,11 @@ public class HomeActivity extends BaseActivity {
     @BindView(R.id.activity_main_header_settings_icon)
     ImageView settingsButton;
 
+    @BindView(R.id.activity_home_user_name)
+    TextView userName;
+
+    FirebaseAuth mAuth;
+
     Context context;
 
     List<NotificationHolder> notificationsList = new ArrayList<>();
@@ -69,6 +77,9 @@ public class HomeActivity extends BaseActivity {
         setContentView(R.layout.activity_home);
 
         ButterKnife.bind(this);
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
 
         extras = getIntent().getExtras();
 
@@ -90,33 +101,25 @@ public class HomeActivity extends BaseActivity {
             recreate();
         }
 
-        String newString;
+        String newNameString;
+        String newEmailString;
 
         if (savedInstanceState == null) {
 
             if(extras == null) {
-                newString= null;
+                newNameString = null;
+                newEmailString = null;
             } else {
-                newString= extras.getString("email");
+                newNameString = extras.getString("name");
+                newEmailString = extras.getString("email");
+                userName.setText(newNameString);
             }
         } else {
-            newString= (String) savedInstanceState.getSerializable("email");
+            newNameString= (String) savedInstanceState.getSerializable("name");
+            newEmailString = (String) savedInstanceState.getSerializable("email");
         }
 
-        settingsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
-                Bundle extrasBundle = new Bundle();
-                String userEmail = extras.getString("email");
-                String userName = extras.getString("name");
-                extras.putString("activity", "home");
-                extras.putString("email", userEmail);
-                extras.putString("name", userName);
-                intent.putExtras(extrasBundle);
-                startActivity(intent);
-            }
-        });
+        settingsButton.setOnClickListener(this);
     }
 
     private void setupTabIcons() {
@@ -157,7 +160,21 @@ public class HomeActivity extends BaseActivity {
         viewPager.setAdapter(adapter);
     }
 
-    private void applyBlur() {
-        //GaussianBlurUtils.with(this).put(dinosaurId, ivBlurredImage);
+
+    @Override
+    public void onClick(View v){
+        int i = v.getId();
+
+        if (i == R.id.activity_main_header_settings_icon){
+            Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+            Bundle extrasBundle = new Bundle();
+            String userEmail = extras.getString("email");
+            String userName = extras.getString("name");
+            extras.putString("activity", "home");
+            extras.putString("email", userEmail);
+            extras.putString("name", userName);
+            intent.putExtras(extrasBundle);
+            startActivity(intent);
+        }
     }
 }

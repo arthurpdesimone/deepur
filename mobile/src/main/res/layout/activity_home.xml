@@ -19,6 +19,12 @@
             android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|enterAlways">
 
+            <TextView
+                android:id="@+id/activity_home_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
             <ImageView
                 android:id="@+id/activity_main_header_settings_icon"
                 android:layout_width="wrap_content"
@@ -37,8 +43,7 @@
         <android.support.design.widget.TabLayout
             android:id="@+id/activity_home_tabs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
+            android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:tabMode="fixed"/>
 
