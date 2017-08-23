@@ -1,40 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/fragment_notifications_item_date"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/fragment_notifications_action_ll"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textColor="@color/red_500"
-        android:text="01/10/2018"
-        android:drawableStart="@drawable/ic_favorite_border_white_24dp"
-        android:drawablePadding="8dp"
-        android:padding="8dp"
-        android:gravity="center"
-        android:drawableTint="@color/red_500"
-        android:maxLines="1"
-        android:ellipsize="end"
-        android:fontFamily="sans-serif-condensed"/>
+        android:layout_marginEnd="56dp">
 
-    <TextView
-        android:id="@+id/fragment_notifications_item_description"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/fragment_notifications_whom_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/text_color_primary"
+            android:text="someone"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="sans-serif"/>
+
+        <TextView
+            android:id="@+id/fragment_notifications_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/text_color_secondary"
+            android:text="@string/fragment_notifications_action_like"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textColor="@color/text_color_secondary"
-        android:text="@string/lorem"
-        android:layout_gravity="center"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:maxLines="2"
-        android:ellipsize="end"
-        android:fontFamily="sans-serif"/>
+        android:layout_below="@id/fragment_notifications_action_ll">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/fragment_notifications_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/text_color_secondary"
+            android:text="Geek"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="sans-serif"
+            android:textStyle="italic"/>
+
+        <ImageView
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:background="@drawable/bg_button"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/fragment_notifications_item_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/text_color_secondary"
+            android:text="@string/minutes_ago"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="sans-serif-condensed"/>
+
+    </LinearLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/fragment_notifications_user_image"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/rui"
+        app:civ_border_color="@color/color_accent"
+        app:civ_border_width="1dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="16dp"/>
+
+</RelativeLayout>

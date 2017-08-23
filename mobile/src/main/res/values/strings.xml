@@ -17,6 +17,8 @@
     <string name="skip">Skip</string>
     <string name="create">Create</string>
     <string name="finish">Finish</string>
+    <string name="minutes_ago">minutes ago</string>
+    <string name="hours_ago">hours ago</string>
 
     <!-- LOGIN -->
     <string name="activity_login_email">Email</string>
@@ -74,5 +76,9 @@
     <string name="onboarding1">Text one</string>
     <string name="onboarding2">Text two</string>
     <string name="onboarding3">Text three</string>
+
+    <!-- NOTIFICATIONS -->
+
+    <string name="fragment_notifications_action_like">liked your post</string>
 
 </resources>

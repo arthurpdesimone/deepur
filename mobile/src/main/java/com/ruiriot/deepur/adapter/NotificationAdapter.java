@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.adapter.holder.NotificationHolder;
-import com.ruiriot.deepur.fragment.ItemNotification;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +36,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationHolder
     @Override
     public void onBindViewHolder(NotificationHolder notificationHolder, int i) {
         notificationHolder.setDateNotification(notifications.get(i).getDateNotification());
-        notificationHolder.setDescriptionNotification(notifications.get(i).getDescriptionNotification());
+        notificationHolder.setActionNotification(notifications.get(i).getActionNotification());
     }
 
     @Override

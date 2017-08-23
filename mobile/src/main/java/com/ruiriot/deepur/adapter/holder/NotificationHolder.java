@@ -13,12 +13,12 @@ import com.ruiriot.deepur.R;
 public class NotificationHolder extends RecyclerView.ViewHolder {
 
     private TextView dateNotification;
-    private TextView descriptionNotification;
+    private TextView actionNotification;
 
     public NotificationHolder(View itemView) {
         super(itemView);
         dateNotification = (TextView) itemView.findViewById(R.id.fragment_notifications_item_date);
-        descriptionNotification = (TextView) itemView.findViewById(R.id.fragment_notifications_item_description);
+        actionNotification = (TextView) itemView.findViewById(R.id.fragment_notifications_action);
     }
 
     public TextView getDateNotification() {
@@ -29,11 +29,11 @@ public class NotificationHolder extends RecyclerView.ViewHolder {
         this.dateNotification = dateNotification;
     }
 
-    public TextView getDescriptionNotification() {
-        return descriptionNotification;
+    public TextView getActionNotification() {
+        return actionNotification;
     }
 
-    public void setDescriptionNotification(TextView descriptionNotification) {
-        this.descriptionNotification = descriptionNotification;
+    public void setActionNotification(TextView actionNotification) {
+        this.actionNotification = actionNotification;
     }
 }
