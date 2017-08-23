@@ -133,4 +133,8 @@ public class ChooseImageFragment extends BottomSheetDialogFragment implements Ac
             isExternalStorageWritable();
         }
     }
+
+    public void onClick(View v){
+        int i = v.getId();
+    }
 }

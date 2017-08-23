@@ -117,6 +117,7 @@ public class HomeActivity extends BaseActivity {
         } else {
             newNameString= (String) savedInstanceState.getSerializable("name");
             newEmailString = (String) savedInstanceState.getSerializable("email");
+            userName.setText(newNameString);
         }
 
         settingsButton.setOnClickListener(this);

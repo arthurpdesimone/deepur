@@ -82,19 +82,25 @@ public class AccountActivity extends BaseActivity {
             arrowBackButton.setOnClickListener(this);
             signOutButton.setVisibility(View.VISIBLE);
 
-            String newString;
+            String newStringName;
+            String newStringEmail;
 
             if (savedInstanceState == null) {
 
                 if(extras == null) {
-                    newString= null;
+                    newStringName= null;
+                    newStringEmail = null;
                 } else {
-                    newString= extras.getString("name");
-                    editNameText.setText(newString);
+                    newStringName= extras.getString("name");
+                    newStringEmail = extras.getString("email");
+                    editNameText.setText(newStringName);
+                    userEmail.setText(newStringEmail);
                 }
             } else {
-                newString= (String) savedInstanceState.getSerializable("name");
-                editNameText.setText(newString);
+                newStringName= (String) savedInstanceState.getSerializable("name");
+                newStringEmail= (String) savedInstanceState.getSerializable("email");
+                editNameText.setText(newStringName);
+                userEmail.setText(newStringEmail);
             }
 
         }else if (activity.equals("login")){

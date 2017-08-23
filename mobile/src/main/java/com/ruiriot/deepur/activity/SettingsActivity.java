@@ -24,7 +24,7 @@ public class SettingsActivity extends BaseActivity {
     @BindView(R.id.activity_settings_account)
     RelativeLayout accountButton;
 
-    @BindView(R.id.activity_settings_arrow)
+    @BindView(R.id.activity_settings_back_icon)
     ImageView arrowBackButton;
 
     Bundle extras;
@@ -38,6 +38,7 @@ public class SettingsActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         mAuth = FirebaseAuth.getInstance();
+        extras = getIntent().getExtras();
 
         String newNameString;
         String newEmailString;
@@ -59,6 +60,7 @@ public class SettingsActivity extends BaseActivity {
         }
 
         accountButton.setOnClickListener(this);
+        arrowBackButton.setOnClickListener(this);
     }
 
     @Override
@@ -75,8 +77,9 @@ public class SettingsActivity extends BaseActivity {
             extrasBundle.putString("email", userEmailText);
             intent.putExtras(extrasBundle);
             startActivity(intent);
-        }else if (i == R.id.activity_settings_arrow){
+        }else if (i == R.id.activity_settings_back_icon){
             finish();
+            Log.i("Settings", "CLICOU");
         }
     }
 
