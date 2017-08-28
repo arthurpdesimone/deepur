@@ -104,7 +104,6 @@ public class AccountActivity extends BaseActivity {
             }
 
         }else if (activity.equals("login")){
-            arrowBackButton.setVisibility(View.GONE);
             signOutButton.setVisibility(View.GONE);
         }
 

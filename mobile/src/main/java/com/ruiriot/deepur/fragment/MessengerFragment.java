@@ -179,7 +179,8 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
         int i = v.getId();
 
         if(i == R.id.activity_messenger_fab_new_message){
-            writeNewMessenger(id, userName, userText, userImage, timeStamp, unreadMessages);
+            
+            //writeNewMessenger(id, userName, userText, userImage, timeStamp, unreadMessages);
         }
     }
 }

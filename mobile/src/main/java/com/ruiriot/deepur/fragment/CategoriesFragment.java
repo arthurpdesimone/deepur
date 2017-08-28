@@ -8,17 +8,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.adapter.CategoriesAdapter;
 import com.ruiriot.deepur.adapter.CategoriesAdapter.CategoriesItem;
 
-/**
- * A fragment representing a list of Items.
- * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
- * interface.
- */
 public class CategoriesFragment extends BaseFragment{
 
     // TODO: Customize parameter argument names
@@ -81,19 +76,9 @@ public class CategoriesFragment extends BaseFragment{
     }
 
     public void onListFragmentInteraction(CategoriesItem item) {
-
+        Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(CategoriesItem item);

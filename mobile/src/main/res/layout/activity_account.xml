@@ -26,7 +26,7 @@
                 android:tint="@color/color_accent"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
-                android:visibility="gone"
+                android:focusable="true"
                 android:layout_margin="8dp"
                 android:padding="8dp"/>
 

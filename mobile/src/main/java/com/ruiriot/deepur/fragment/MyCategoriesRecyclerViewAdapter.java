@@ -67,8 +67,8 @@ public class MyCategoriesRecyclerViewAdapter extends BaseAdapter {
         ViewHolder(View view) {
             super(view);
             mView = view;
-            categoryName = (TextView) view.findViewById(R.id.fragment_categories_name);
-            categoryImage = (ImageView) view.findViewById(R.id.fragment_categories_image);
+            categoryName = view.findViewById(R.id.fragment_categories_name);
+            categoryImage = view.findViewById(R.id.fragment_categories_image);
         }
 
         @Override

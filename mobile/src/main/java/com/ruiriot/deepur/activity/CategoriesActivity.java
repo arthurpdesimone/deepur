@@ -13,8 +13,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.adapter.CategoriesAdapter;
+import com.ruiriot.deepur.fragment.CategoriesFragment;
 
-public class CategoriesActivity extends BaseActivity {
+public class CategoriesActivity extends BaseActivity implements CategoriesFragment.OnListFragmentInteractionListener{
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     String TAG = "Firebase";
@@ -73,6 +74,5 @@ public class CategoriesActivity extends BaseActivity {
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
-
     }
 }
