@@ -13,6 +13,7 @@ public class User implements Parcelable {
     private String name;
     private String email;
     private String photoUrl;
+    private String pushToken;
 
     private boolean isAdmin;
 
@@ -89,5 +90,13 @@ public class User implements Parcelable {
 
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
+    }
+
+    public String getPushToken() {
+        return pushToken;
+    }
+
+    public void setPushToken(String pushToken) {
+        this.pushToken = pushToken;
     }
 }

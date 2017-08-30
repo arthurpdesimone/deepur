@@ -5,6 +5,7 @@
     <color name="color_accent">@color/md_red_A400</color>
     <color name="color_accent_light">@color/md_red_A200</color>
     <color name="color_accent_dark">@color/md_red_A700</color>
+    <color name="gradient_toolbar">#33000000</color>
 
     <color name="color_primary_transparent">#1A000000</color>
     <color name="color_primary_dark_transparent">#4D000000</color>

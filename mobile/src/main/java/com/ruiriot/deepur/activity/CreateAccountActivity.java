@@ -1,12 +1,15 @@
 package com.ruiriot.deepur.activity;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +38,16 @@ public class CreateAccountActivity extends BaseActivity {
     EditText userEmail;
     @BindView(R.id.activity_create_account_password_edit_text)
     EditText userPassword;
+    @BindView(R.id.activity_create_account_name_edit_text)
+    EditText userName;
+    @BindView(R.id.activity_create_account_email_text_input)
+    TextInputLayout userEmailInput;
+    @BindView(R.id.activity_create_account_password_text_input)
+    TextInputLayout userPasswordInput;
+    @BindView(R.id.activity_create_account_name_text_input)
+    TextInputLayout userNameInput;
+    @BindView(R.id.activity_create_account_image)
+    ImageView userImage;
     @BindView(R.id.activity_create_account_status)
     TextView statusCreateAccount;
     private FirebaseAuth mAuth;
@@ -68,12 +81,10 @@ public class CreateAccountActivity extends BaseActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(CreateAccountActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
@@ -89,18 +100,26 @@ public class CreateAccountActivity extends BaseActivity {
 
         String email = userEmail.getText().toString();
         if (TextUtils.isEmpty(email)) {
-            userEmail.setError("Required.");
+            userEmailInput.setError("Required.");
             valid = false;
         } else {
-            userEmail.setError(null);
+            userEmailInput.setError(null);
         }
 
         String password = userPassword.getText().toString();
         if (TextUtils.isEmpty(password)) {
-            userPassword.setError("Required.");
+            userPasswordInput.setError("Required.");
             valid = false;
         } else {
-            userPassword.setError(null);
+            userPasswordInput.setError(null);
+        }
+
+        String name = userName.getText().toString();
+        if (TextUtils.isEmpty(name)) {
+            userNameInput.setError("Required.");
+            valid = false;
+        } else {
+            userNameInput.setError(null);
         }
 
         return valid;
@@ -112,7 +131,8 @@ public class CreateAccountActivity extends BaseActivity {
 
         if (user != null) {
 
-            //findViewById(R.id.signed_in_buttons).setVisibility(View.VISIBLE);
+            Intent intent = new Intent(this, AccountActivity.class);
+            startActivity(intent);
 
         } else {
 
@@ -126,6 +146,10 @@ public class CreateAccountActivity extends BaseActivity {
 
         if (i == R.id.activity_create_account_done_button){
             createAccount(userEmail.getText().toString(), userPassword.getText().toString());
+        } else if (i == R.id.activity_create_account_cancel_button){
+            finish();
+        }else if (i == R.id.activity_create_account_arrow_back){
+            finish();
         }
     }
 }

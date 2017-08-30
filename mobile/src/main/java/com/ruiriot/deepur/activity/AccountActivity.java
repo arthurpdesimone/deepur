@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.app.Activity;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.CardView;
@@ -19,11 +20,22 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.fragment.ChooseImageFragment;
 import com.ruiriot.deepur.fragment.MessengerFragment;
+import com.ruiriot.deepur.model.User;
 
 import org.w3c.dom.Text;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,8 +73,15 @@ public class AccountActivity extends BaseActivity {
 
     FirebaseAuth mAuth;
     boolean clicked = false;
-
     private Bundle extras;
+    DatabaseReference myUserRef;
+    FirebaseDatabase database;
+    FirebaseUser user;
+    User person;
+    boolean firstVerify = true;
+    LoginActivity mActivity;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +90,11 @@ public class AccountActivity extends BaseActivity {
 
         ButterKnife.bind(this);
 
+        database = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
+        myUserRef = database.getReference("users/");
+        user = mAuth.getCurrentUser();
+        addUserFirebase();
 
         Intent intent = getIntent();
         String activity = intent.getStringExtra("activity");
@@ -195,7 +218,84 @@ public class AccountActivity extends BaseActivity {
             extras.putString("name", userName);
             intent.putExtras(extrasBundle);
             startActivity(intent);
+            sendUserInfoToFirebase();
         }
+    }
+
+    public void addUserFirebase(){
+
+        mAuth = FirebaseAuth.getInstance();
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+
+                    // User is signed in
+                    Log.d("AddUser", "onAuthStateChanged:signed_in:" +user.getUid());
+
+                    // Get instance of database
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    myUserRef = database.getReference("users/");
+
+                    // Check if info about the user already exists in the database
+                    myUserRef.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot){
+
+                            // If there is no info, create a new entry in the database
+                            if (!dataSnapshot.exists()) {
+
+                                if(firstVerify){
+                                    person = new User();
+                                    firstVerify = false;
+                                }
+
+                            }else{
+                                updatePushToken();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError error){
+                            // Failed to read value
+                            Log.w("Account","Failed to read value.",error.toException());
+                        }
+                    });
+
+                } else {
+                    // User is signed out
+                    Log.d("Account", "onAuthStateChanged:signed_out");
+                }
+            }
+        };
+    }
+
+    private void updatePushToken() {
+        Map<String, Object> childUpdates = new HashMap<>();
+
+        childUpdates.put("/" + user.getUid()+ "/pushToken/",FirebaseInstanceId.getInstance().getToken());
+        Log.d("pushtkn(already user): ", FirebaseInstanceId.getInstance().getToken());
+        myUserRef.updateChildren(childUpdates);
+    }
+
+    public void sendUserInfoToFirebase(){
+
+        Log.d("AccountUser", "New User");
+
+        // Creating new user node, which returns the unique key value
+        // new user node would be /User/$userid/
+        final String newUserId = user.getUid();
+
+        person.setEmail(user.getEmail());
+        person.setName(editNameText.getText().toString());
+        person.setPushToken(FirebaseInstanceId.getInstance().getToken());
+        person.setUid(newUserId);
+        Log.d("tokenpush: ",person.getPushToken());
+        myUserRef.child(newUserId).setValue(person);
+
     }
 
     private void signOut() {

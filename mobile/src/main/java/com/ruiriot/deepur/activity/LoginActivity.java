@@ -22,7 +22,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.ruiriot.deepur.R;
+import com.ruiriot.deepur.model.User;
 import com.ruiriot.deepur.view.ViewEvents;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -78,6 +81,7 @@ public class LoginActivity extends BaseActivity{
 
     CallbackManager callbackManager;
     AnimationDrawable animationDrawable;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,11 +95,11 @@ public class LoginActivity extends BaseActivity{
         findViewById(R.id.activity_login_facebook).setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
+        user = mAuth.getCurrentUser();
 
-        animationDrawable = (AnimationDrawable) blurryBg.getBackground();
-        animationDrawable.setEnterFadeDuration(5000);
-        animationDrawable.setExitFadeDuration(2000);
+        //animationDrawable = (AnimationDrawable) blurryBg.getBackground();
+        //animationDrawable.setEnterFadeDuration(5000);
+        //animationDrawable.setExitFadeDuration(2000);
 
         loginButton.setOnClickListener(this);
         createAccountButton.setOnClickListener(this);
@@ -150,14 +154,14 @@ public class LoginActivity extends BaseActivity{
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            user = mAuth.getCurrentUser();
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            hideProgressDialog(LoginActivity.this);
                             Snackbar snackbar = Snackbar.make(coordinatorLayout, getResources().getString(R.string.error), Snackbar.LENGTH_LONG);
                             snackbar.show();
-                            hideProgressDialog(LoginActivity.this);
                         }
 
                         // [START_EXCLUDE]
@@ -169,11 +173,6 @@ public class LoginActivity extends BaseActivity{
                     }
                 });
 
-    }
-
-    private void signOut() {
-        mAuth.signOut();
-        updateUI(null);
     }
 
     private boolean validateForm() {
