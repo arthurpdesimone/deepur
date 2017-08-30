@@ -34,7 +34,7 @@ public abstract class ActivityUtils {
             intent.putExtra(Intent.EXTRA_EMAIL, userEmail);
             context.startActivity(intent);
         }else {
-            Toast.makeText(context, "User not found.",
+            Toast.makeText(context, "UserRepository not found.",
                     Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(context, clazz);
             context.startActivity(intent);

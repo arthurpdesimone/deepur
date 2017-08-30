@@ -4,13 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatDelegate;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,14 +16,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.adapter.HomeAdapter;
-import com.ruiriot.deepur.adapter.StoriesAdapter;
 import com.ruiriot.deepur.adapter.holder.NotificationHolder;
 import com.ruiriot.deepur.adapter.holder.StoriesHolder;
 import com.ruiriot.deepur.fragment.CategoriesFragment;
 import com.ruiriot.deepur.fragment.MessengerFragment;
+import com.ruiriot.deepur.fragment.NewMessageFragment;
 import com.ruiriot.deepur.fragment.NotificationsFragment;
-import com.ruiriot.deepur.model.Messenger;
-import com.ruiriot.deepur.utils.GaussianBlurUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,11 +29,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.ruiriot.deepur.utils.ActivityUtils.callActivity;
-
 /**Receive email > Set email on TextView > getUserName > setUserName*/
 
-public class HomeActivity extends BaseActivity {
+public class HomeActivity extends BaseActivity implements MessengerFragment.OnFragmentInteractionListener{
 
     @BindView(R.id.activity_home_viewpager)
     ViewPager homeViewPager;

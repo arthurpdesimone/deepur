@@ -40,7 +40,7 @@ import java.util.List;
                                final int dxUnconsumed, final int dyUnconsumed) {
         super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
         if (dyConsumed > 0) {
-            // User scrolled down -> hide the FAB
+            // UserRepository scrolled down -> hide the FAB
             List<View> dependencies = coordinatorLayout.getDependencies(child);
             for (View view : dependencies) {
                 if (view instanceof FloatingActionButton) {
@@ -48,7 +48,7 @@ import java.util.List;
                 }
             }
         } else if (dyConsumed < 0) {
-            // User scrolled up -> show the FAB
+            // UserRepository scrolled up -> show the FAB
             List<View> dependencies = coordinatorLayout.getDependencies(child);
             for (View view : dependencies) {
                 if (view instanceof FloatingActionButton) {

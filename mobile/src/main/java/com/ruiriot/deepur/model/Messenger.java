@@ -19,7 +19,7 @@ public class Messenger {
     private String unreadMessages;
 
     public Messenger() {
-        // Default constructor required for calls to DataSnapshot.getValue(User.class)
+        // Default constructor required for calls to DataSnapshot.getValue(UserRepository.class)
     }
 
     public Messenger(String id, String username, String userText, String userImage, String timeStamp, String unreadMessages) {
