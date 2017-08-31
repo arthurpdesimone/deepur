@@ -34,6 +34,8 @@ public class CreateAccountActivity extends BaseActivity {
     TextView doneButton;
     @BindView(R.id.activity_create_account_cancel_button)
     TextView cancelButton;
+    @BindView(R.id.activity_create_account_arrow_back)
+    ImageView arrowBack;
     @BindView(R.id.activity_create_account_email_edit_text)
     EditText userEmail;
     @BindView(R.id.activity_create_account_password_edit_text)
@@ -63,6 +65,8 @@ public class CreateAccountActivity extends BaseActivity {
         mAuth = FirebaseAuth.getInstance();
 
         doneButton.setOnClickListener(this);
+        cancelButton.setOnClickListener(this);
+        arrowBack.setOnClickListener(this);
 
     }
 
@@ -132,6 +136,9 @@ public class CreateAccountActivity extends BaseActivity {
         if (user != null) {
 
             Intent intent = new Intent(this, AccountActivity.class);
+            Bundle extrasBundle = new Bundle();
+            extrasBundle.putString("activity", "settings");
+            intent.putExtras(extrasBundle);
             startActivity(intent);
 
         } else {

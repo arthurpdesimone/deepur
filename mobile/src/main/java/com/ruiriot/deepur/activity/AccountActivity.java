@@ -79,8 +79,7 @@ public class AccountActivity extends BaseActivity {
     FirebaseUser user;
     User person;
     boolean firstVerify = true;
-    LoginActivity mActivity;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+    FirebaseAuth.AuthStateListener mAuthListener;
 
 
     @Override
@@ -236,7 +235,7 @@ public class AccountActivity extends BaseActivity {
                     Log.d("AddUser", "onAuthStateChanged:signed_in:" +user.getUid());
 
                     // Get instance of database
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    database = FirebaseDatabase.getInstance();
                     myUserRef = database.getReference("users/");
 
                     // Check if info about the user already exists in the database
@@ -245,7 +244,6 @@ public class AccountActivity extends BaseActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot){
 
-                            // If there is no info, create a new entry in the database
                             if (!dataSnapshot.exists()) {
 
                                 if(firstVerify){
