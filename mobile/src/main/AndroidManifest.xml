@@ -72,7 +72,7 @@
         <activity android:name=".activity.CategoriesActivity" />
         <activity
             android:name=".activity.SplashScreenActivity"
-            android:theme="@style/AppThemeMD">
+            android:theme="@style/AppThemeMD_Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
