@@ -97,9 +97,9 @@ public class LoginActivity extends BaseActivity{
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
 
-        //animationDrawable = (AnimationDrawable) blurryBg.getBackground();
-        //animationDrawable.setEnterFadeDuration(5000);
-        //animationDrawable.setExitFadeDuration(2000);
+        animationDrawable = (AnimationDrawable) blurryBg.getBackground();
+        animationDrawable.setEnterFadeDuration(300);
+        animationDrawable.setExitFadeDuration(500);
 
         loginButton.setOnClickListener(this);
         createAccountButton.setOnClickListener(this);

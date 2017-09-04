@@ -20,6 +20,8 @@
     <color name="text_color_secondary">#8a000000</color>
     <color name="text_color_primary_black">#de000000</color>
     <color name="text_color_secondary_black">#8a000000</color>
+    <color name="text_color_primary_white">#ffffffff</color>
+    <color name="text_color_secondary_white">#b3ffffff</color>
     <color name="transparent">#00000000</color>
     <color name="facebook">#3b5998</color>
 

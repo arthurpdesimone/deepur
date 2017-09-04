@@ -11,17 +11,17 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/animation_list"
         android:id="@+id/activity_login_relative">
 
         <ImageView
             android:id="@+id/activity_login_deepur_logo"
             android:layout_width="match_parent"
             android:layout_height="144dp"
-            android:layout_margin="32dp"
-            android:visibility="invisible"
-            android:src="@drawable/autumn_logo"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:src="@drawable/ic_logo" />
 
         <TextView
             android:id="@+id/activity_login_deepur"
@@ -29,11 +29,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/activity_login_deepur_logo"
             android:layout_centerHorizontal="true"
-            android:layout_margin="16dp"
             android:fontFamily="@font/comfortaa_bold"
             android:text="@string/app_name"
-            android:textColor="@color/text_color_primary"
-            android:textSize="24sp" />
+            android:textColor="@color/md_white_1000"
+            android:textSize="34sp" />
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/activity_login_facebook"
@@ -50,11 +49,14 @@
             android:id="@+id/activity_login_email_text_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="32dp"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:textColorHint="@color/md_grey_500"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:background="@drawable/bg_edit_text"
+            android:textColorHint="@color/text_color_secondary_white"
             android:layout_below="@id/activity_login_deepur">
 
             <android.support.design.widget.TextInputEditText
@@ -62,9 +64,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
+                style="@style/AppThemeMD_Edit"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:hint="@string/activity_login_email"
                 android:imeOptions="actionNext"
-                android:textColor="@color/text_color_primary"
+                android:textColor="@color/text_color_primary_white"
                 android:textSize="16sp" />
 
         </android.support.design.widget.TextInputLayout>
@@ -73,14 +78,15 @@
             android:id="@+id/activity_login_password_text_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:errorEnabled="true"
-            app:passwordToggleEnabled="true"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:textColorHint="@color/md_grey_500"
-            app:passwordToggleDrawable="@drawable/ic_visibility_off_black_18dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:background="@drawable/bg_edit_text"
+            android:textColorHint="@color/text_color_secondary_white"
+            app:passwordToggleDrawable="@drawable/ic_visibility_off_white_18dp"
             android:layout_below="@id/activity_login_email_text_input">
 
             <android.support.design.widget.TextInputEditText
@@ -88,9 +94,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionDone"
+                style="@style/AppThemeMD_Edit"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:textSize="16sp"
                 android:inputType="textPassword"
-                android:textColor="@color/text_color_secondary"
+                android:textColor="@color/text_color_primary_white"
                 android:hint="@string/activity_login_password"/>
 
         </android.support.design.widget.TextInputLayout>
@@ -102,14 +111,16 @@
             android:layout_below="@+id/activity_login_password_text_input"
             android:text="@string/activity_login_sign_in"
             android:padding="8dp"
-            android:minWidth="96dp"
+            android:minWidth="144dp"
             android:layout_margin="16dp"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
             android:layout_centerHorizontal="true"
             android:textSize="14sp"
-            android:background="@drawable/bg_button"
-            android:textColor="@color/md_white_1000"/>
+            android:letterSpacing="0.08"
+            android:elevation="2dp"
+            android:background="@drawable/bg_button_white"
+            android:textColor="@color/color_accent"/>
 
         <TextView
             android:id="@+id/activity_login_status"
@@ -134,8 +145,9 @@
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
             android:layout_centerHorizontal="true"
-            android:textSize="14sp"
-            android:textColor="@color/text_color_primary"/>
+            android:textSize="12sp"
+            android:textAllCaps="true"
+            android:textColor="@color/md_white_1000"/>
 
         <LinearLayout
             android:id="@+id/signed_in_buttons"
