@@ -20,6 +20,8 @@
     <string name="search">Search</string>
     <string name="minutes_ago">minutes ago</string>
     <string name="hours_ago">hours ago</string>
+    <string name="email_example">email@email.com</string>
+    <string name="password_example">******</string>
 
     <!-- LOGIN -->
     <string name="activity_login_email">Email</string>
