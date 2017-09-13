@@ -60,7 +60,7 @@ public class HomeActivity extends BaseActivity implements MessengerFragment.OnFr
     private int[] tabIcons = {
             R.drawable.ic_chat_white_24dp,
             R.drawable.ic_web_white_24dp,
-            R.drawable.ic_notifications_none_white_24dp
+            R.drawable.ic_notification_none_colored
     };
 
     @Override
