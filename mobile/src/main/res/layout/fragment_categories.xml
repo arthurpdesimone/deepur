@@ -4,7 +4,7 @@
     android:layout_width="144dp"
     android:layout_height="144dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="16dp"
+    app:cardCornerRadius="8dp"
     android:elevation="1dp"
     android:layout_margin="8dp">
 
@@ -16,8 +16,7 @@
             android:id="@+id/fragment_categories_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:background="@drawable/bg_categories"/>
+            android:scaleType="centerCrop"/>
 
         <TextView
             android:id="@+id/fragment_categories_name"
@@ -30,8 +29,8 @@
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:textColor="@color/text_color_primary"
-            android:textSize="20sp"
-            android:fontFamily="sans-serif-medium"/>
+            android:textSize="16sp"
+            android:fontFamily="sans-serif"/>
 
     </RelativeLayout>
 

@@ -136,9 +136,6 @@ public class CreateAccountActivity extends BaseActivity {
         if (user != null) {
 
             Intent intent = new Intent(this, AccountActivity.class);
-            Bundle extrasBundle = new Bundle();
-            extrasBundle.putString("activity", "settings");
-            intent.putExtras(extrasBundle);
             startActivity(intent);
 
         } else {

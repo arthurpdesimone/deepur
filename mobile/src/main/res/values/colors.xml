@@ -2,19 +2,20 @@
 <resources>
     <color name="color_primary">@color/md_grey_100</color>
     <color name="color_primary_dark">@color/md_grey_300</color>
-    <color name="color_accent">@color/md_red_A400</color>
-    <color name="color_accent_light">@color/md_red_A200</color>
-    <color name="color_accent_dark">@color/md_red_A700</color>
+    <color name="color_accent">@color/md_blue_A400</color>
+    <color name="color_accent_light">@color/md_blue_A200</color>
+    <color name="color_accent_dark">@color/md_blue_A700</color>
     <color name="gradient_toolbar">#33000000</color>
+    <color name="divider">#1F000000</color>
 
-    <color name="color_primary_transparent">#1A000000</color>
-    <color name="color_primary_dark_transparent">#4D000000</color>
+    <color name="color_primary_black_transparent">#1A000000</color>
+    <color name="color_primary_dark_black_transparent">#4D000000</color>
 
-    <color name="background">@color/md_grey_100</color>
+    <color name="background">#E6FFFFFF</color>
     <color name="background_card">@color/md_white_1000</color>
     <color name="background_dark">#303030</color>
-    <color name="active_icon">@color/color_accent</color>
-    <color name="inactive_icon">#80FF1744</color>
+    <color name="active_icon">#8A000000</color>
+    <color name="inactive_icon">#61000000</color>
 
     <color name="text_color_primary">#de000000</color>
     <color name="text_color_secondary">#8a000000</color>

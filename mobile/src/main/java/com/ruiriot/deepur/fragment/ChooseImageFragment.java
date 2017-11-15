@@ -1,9 +1,11 @@
 package com.ruiriot.deepur.fragment;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
@@ -12,7 +14,6 @@ import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.ActivityCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,17 +21,35 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.Manifest;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.ruiriot.deepur.R;
 
 import java.io.File;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.support.v4.content.PermissionChecker.checkSelfPermission;
 import static com.ruiriot.deepur.Constants.PERMISSIONS_REQUEST_CAMERA;
 import static com.ruiriot.deepur.Constants.PERMISSIONS_REQUEST_STORAGE;
 
-public class ChooseImageFragment extends BottomSheetDialogFragment implements ActivityCompat.OnRequestPermissionsResultCallback {
+public class ChooseImageFragment extends BottomSheetDialogFragment implements ActivityCompat.OnRequestPermissionsResultCallback, View.OnClickListener {
+
+    @BindView(R.id.fragment_choose_image_album_button_permission)
+    TextView permissionButton;
+
+    @BindView(R.id.fragment_choose_image_camera_button)
+    LinearLayout cameraButton;
+
+    @BindView(R.id.activity_account_image)
+    CircleImageView userImageView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,39 +62,10 @@ public class ChooseImageFragment extends BottomSheetDialogFragment implements Ac
         super.onCreateView(inflater, container, savedInstanceState);
         final View view = inflater.inflate(R.layout.fragment_choose_image, container, false);
 
-        TextView permissionButton = (TextView) view.findViewById(R.id.fragment_choose_image_album_button_permission);
-        LinearLayout cameraButton = (LinearLayout) view.findViewById(R.id.fragment_choose_image_camera_button);
+        ButterKnife.bind(this, view);
 
-        cameraButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (checkSelfPermission(view.getContext(), Manifest.permission.CAMERA)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    requestPermissions(new String[]{Manifest.permission.CAMERA},
-                            PERMISSIONS_REQUEST_CAMERA);
-                }else{
-                    Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-                    startActivityForResult(intent, PERMISSIONS_REQUEST_CAMERA);
-                }
-            }
-        });
-
-        permissionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (checkSelfPermission(view.getContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                            PERMISSIONS_REQUEST_STORAGE);
-                }else{
-                    Intent intent = new Intent(Intent.ACTION_PICK);
-                    intent.setType("image/*");
-                    startActivityForResult(intent, PERMISSIONS_REQUEST_STORAGE);
-                }
-            }
-        });
+        cameraButton.setOnClickListener(this);
+        permissionButton.setOnClickListener(this);
 
         return view;
     }
@@ -125,7 +115,7 @@ public class ChooseImageFragment extends BottomSheetDialogFragment implements Ac
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PERMISSIONS_REQUEST_CAMERA) {
             Bitmap image = (Bitmap) data.getExtras().get("data");
-            CircleImageView userImageView = (CircleImageView) getActivity().findViewById(R.id.activity_account_image); //sets imageview as the bitmap
+            userImageView = getActivity().findViewById(R.id.activity_account_image); //sets imageview as the bitmap
             userImageView.setImageBitmap(image);
             dismiss();
         }
@@ -136,5 +126,31 @@ public class ChooseImageFragment extends BottomSheetDialogFragment implements Ac
 
     public void onClick(View v){
         int i = v.getId();
+
+        //Camera button
+        if(i == R.id.fragment_choose_image_camera_button){
+            if (checkSelfPermission(getContext(), Manifest.permission.CAMERA)
+                    != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.CAMERA},
+                        PERMISSIONS_REQUEST_CAMERA);
+            } else{
+                Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                startActivityForResult(intent, PERMISSIONS_REQUEST_CAMERA);
+            }
+        }
+
+        //Permission button
+        if (i == R.id.fragment_choose_image_album_button_permission){
+
+            if (checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        PERMISSIONS_REQUEST_STORAGE);
+            } else {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, PERMISSIONS_REQUEST_STORAGE);
+            }
+        }
     }
 }

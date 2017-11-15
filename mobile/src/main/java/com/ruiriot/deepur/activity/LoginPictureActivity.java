@@ -8,6 +8,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.ruiriot.deepur.ChooseImage;
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.fragment.ChooseImageFragment;
@@ -22,9 +24,7 @@ import static com.ruiriot.deepur.utils.ActivityUtils.showProgressDialog;
 
 public class LoginPictureActivity extends BaseActivity implements ChooseImage{
 
-    Intent intent;
-    String userEmail;
-    Context context;
+    private StorageReference mStorageRef;
 
     @BindView(R.id.activity_login_picture_user_email)
     TextView userEmailText;
@@ -41,9 +41,6 @@ public class LoginPictureActivity extends BaseActivity implements ChooseImage{
     @BindView(R.id.activity_login_picture_done_button)
     TextView nextButton;
 
-    private static final int TAKE_PICTURE = 1;
-    int PERMISSIONS_CODE = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,12 +48,7 @@ public class LoginPictureActivity extends BaseActivity implements ChooseImage{
 
         ButterKnife.bind(this);
 
-        intent = getIntent();
-
-        userEmail = intent.getStringExtra(Intent.EXTRA_EMAIL);
-        if (userEmail!= null){
-            userEmailText.setText(userEmail);
-        }
+        mStorageRef = FirebaseStorage.getInstance().getReference();
 
         addPicture.setOnClickListener(this);
         nextButton.setOnClickListener(this);

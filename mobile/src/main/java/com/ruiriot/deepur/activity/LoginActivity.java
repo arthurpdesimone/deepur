@@ -1,6 +1,7 @@
 package com.ruiriot.deepur.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,22 +12,16 @@ import android.support.design.widget.TextInputLayout;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-import com.facebook.CallbackManager;
-import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.ruiriot.deepur.R;
-import com.ruiriot.deepur.model.User;
-import com.ruiriot.deepur.view.ViewEvents;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -44,11 +39,6 @@ public class LoginActivity extends BaseActivity{
     public static final String PREF_USER_FIRST_TIME = "user_first_time";
     private FirebaseAuth mAuth;
 
-    @ViewEvents(clickable = true)
-    @BindView(R.id.activity_login_facebook)
-    LoginButton mSignInButton;
-
-    @ViewEvents(clickable = true)
     @BindView(R.id.activity_login_sign_out)
     TextView mSignOutButton;
 
@@ -79,7 +69,6 @@ public class LoginActivity extends BaseActivity{
     @BindView(R.id.activity_login_coordinator)
     CoordinatorLayout coordinatorLayout;
 
-    CallbackManager callbackManager;
     AnimationDrawable animationDrawable;
     FirebaseUser user;
 
@@ -87,8 +76,6 @@ public class LoginActivity extends BaseActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        callbackManager = CallbackManager.Factory.create();
 
         ButterKnife.bind(this);
 
@@ -100,6 +87,10 @@ public class LoginActivity extends BaseActivity{
         animationDrawable = (AnimationDrawable) blurryBg.getBackground();
         animationDrawable.setEnterFadeDuration(300);
         animationDrawable.setExitFadeDuration(500);
+
+//        SharedPreferences.Editor editor = getSharedPreferences("unique_name", MODE_PRIVATE).edit();
+//        editor.putInt("xp", 10);
+//        editor.commit();
 
         loginButton.setOnClickListener(this);
         createAccountButton.setOnClickListener(this);
@@ -204,10 +195,6 @@ public class LoginActivity extends BaseActivity{
         if (user != null) {
 
             Intent i = new Intent(LoginActivity.this, AccountActivity.class);
-            Bundle extras = new Bundle();
-            extras.putString("activity", "login");
-            extras.putString("email", user.getEmail());
-            i.putExtras(extras);
             startActivity(i);
 
         } else {

@@ -60,7 +60,7 @@ public class HomeActivity extends BaseActivity implements MessengerFragment.OnFr
     private int[] tabIcons = {
             R.drawable.ic_chat_white_24dp,
             R.drawable.ic_web_white_24dp,
-            R.drawable.ic_notification_none_colored
+            R.drawable.ic_notifications_none_white_24dp
     };
 
     @Override
@@ -77,7 +77,7 @@ public class HomeActivity extends BaseActivity implements MessengerFragment.OnFr
 
         toolbar = (Toolbar) findViewById(R.id.activity_home_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar();
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setTitle("");
         toolbar.setBackgroundColor(getResources().getColor(R.color.transparent));
         context = getApplication().getApplicationContext();
@@ -93,25 +93,6 @@ public class HomeActivity extends BaseActivity implements MessengerFragment.OnFr
             recreate();
         }
 
-        String newNameString;
-        String newEmailString;
-
-        if (savedInstanceState == null) {
-
-            if(extras == null) {
-                newNameString = null;
-                newEmailString = null;
-            } else {
-                newNameString = extras.getString("name");
-                newEmailString = extras.getString("email");
-                userName.setText(newNameString);
-            }
-        } else {
-            newNameString= (String) savedInstanceState.getSerializable("name");
-            newEmailString = (String) savedInstanceState.getSerializable("email");
-            userName.setText(newNameString);
-        }
-
         settingsButton.setOnClickListener(this);
     }
 
@@ -123,24 +104,27 @@ public class HomeActivity extends BaseActivity implements MessengerFragment.OnFr
         tabLayout.getTabAt(1).getIcon().setAlpha(128);
         tabLayout.getTabAt(2).getIcon().setAlpha(128);
 
-        //tabLayout.getTabAt(0).getIcon().setColorFilter(getResources().getColor(R.color.active_icon), PorterDuff.Mode.MULTIPLY);
-        //tabLayout.getTabAt(1).getIcon().setColorFilter(getResources().getColor(R.color.active_icon), PorterDuff.Mode.MULTIPLY);
-        //tabLayout.getTabAt(2).getIcon().setColorFilter(getResources().getColor(R.color.active_icon), PorterDuff.Mode.MULTIPLY);
+        tabLayout.getTabAt(0).getIcon().setColorFilter(getResources().getColor(R.color.color_accent), PorterDuff.Mode.MULTIPLY);
+        tabLayout.getTabAt(1).getIcon().setColorFilter(getResources().getColor(R.color.inactive_icon), PorterDuff.Mode.MULTIPLY);
+        tabLayout.getTabAt(2).getIcon().setColorFilter(getResources().getColor(R.color.inactive_icon), PorterDuff.Mode.MULTIPLY);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 tab.getIcon().setAlpha(255);
+                tab.getIcon().setColorFilter(getResources().getColor(R.color.color_accent), PorterDuff.Mode.MULTIPLY);
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
                 tab.getIcon().setAlpha(128);
+                tab.getIcon().setColorFilter(getResources().getColor(R.color.inactive_icon), PorterDuff.Mode.MULTIPLY);
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
                 tab.getIcon().setAlpha(255);
+                tab.getIcon().setColorFilter(getResources().getColor(R.color.color_accent), PorterDuff.Mode.MULTIPLY);
             }
         });
     }
@@ -160,13 +144,6 @@ public class HomeActivity extends BaseActivity implements MessengerFragment.OnFr
 
         if (i == R.id.activity_main_header_settings_icon){
             Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
-            Bundle extrasBundle = new Bundle();
-            String userEmail = extras.getString("email");
-            String userName = extras.getString("name");
-            extras.putString("activity", "home");
-            extras.putString("email", userEmail);
-            extras.putString("name", userName);
-            intent.putExtras(extrasBundle);
             startActivity(intent);
         }
     }
