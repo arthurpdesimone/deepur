@@ -3,6 +3,7 @@ package com.ruiriot.deepur.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
@@ -19,6 +20,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.ruiriot.deepur.R;
@@ -38,6 +40,11 @@ public class LoginActivity extends BaseActivity{
     private static final String TAG = "Firebase Login";
     public static final String PREF_USER_FIRST_TIME = "user_first_time";
     private FirebaseAuth mAuth;
+    String providerId;
+    String uid;
+    String uName;
+    String uEmail;
+    Uri uPhotoUrl;
 
     @BindView(R.id.activity_login_sign_out)
     TextView mSignOutButton;
@@ -82,7 +89,23 @@ public class LoginActivity extends BaseActivity{
         findViewById(R.id.activity_login_facebook).setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
-        user = mAuth.getCurrentUser();
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user != null) {
+            for (UserInfo profile : user.getProviderData()) {
+
+                providerId = profile.getProviderId();
+                uid = profile.getUid();
+                uName = profile.getDisplayName();
+                uEmail = profile.getEmail();
+                uPhotoUrl = profile.getPhotoUrl();
+            }
+        } else {
+            Snackbar mySnackBar = Snackbar.make(findViewById(R.id.activity_login_coordinator),
+                    R.string.activity_login_user_not_found, Snackbar.LENGTH_SHORT);
+            mySnackBar.show();
+        }
 
         animationDrawable = (AnimationDrawable) blurryBg.getBackground();
         animationDrawable.setEnterFadeDuration(300);

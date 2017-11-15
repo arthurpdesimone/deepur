@@ -69,13 +69,6 @@ public class SettingsActivity extends BaseActivity {
         if (i == R.id.activity_settings_account){
             Log.i("Account", "CLICOU");
             Intent intent = new Intent(SettingsActivity.this, AccountActivity.class);
-            Bundle extrasBundle = new Bundle();
-            String userNameText = extras.getString("name");
-            String userEmailText = extras.getString("email");
-            extrasBundle.putString("activity", "settings");
-            extrasBundle.putString("name", userNameText);
-            extrasBundle.putString("email", userEmailText);
-            intent.putExtras(extrasBundle);
             startActivity(intent);
         }else if (i == R.id.activity_settings_back_icon){
             finish();
