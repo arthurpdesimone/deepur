@@ -73,7 +73,6 @@ public class AccountActivity extends BaseActivity {
 
     FirebaseAuth mAuth;
     boolean clicked = false;
-    private Bundle extras;
     DatabaseReference myUserRef;
     FirebaseDatabase database;
     FirebaseUser user;
@@ -95,37 +94,15 @@ public class AccountActivity extends BaseActivity {
         user = mAuth.getCurrentUser();
         addUserFirebase();
 
-        Intent intent = getIntent();
-        String activity = intent.getStringExtra("activity");
-        extras = getIntent().getExtras();
-
-        if (activity.equals("settings")){
+        if (user != null){
             arrowBackButton.setVisibility(View.VISIBLE);
             arrowBackButton.setOnClickListener(this);
             signOutButton.setVisibility(View.VISIBLE);
 
-            String newStringName;
-            String newStringEmail;
+            editNameText.setText(user.getDisplayName());
+            userEmail.setText(user.getEmail());
 
-            if (savedInstanceState == null) {
-
-                if(extras == null) {
-                    newStringName= null;
-                    newStringEmail = null;
-                } else {
-                    newStringName= extras.getString("name");
-                    newStringEmail = extras.getString("email");
-                    editNameText.setText(newStringName);
-                    userEmail.setText(newStringEmail);
-                }
-            } else {
-                newStringName= (String) savedInstanceState.getSerializable("name");
-                newStringEmail= (String) savedInstanceState.getSerializable("email");
-                editNameText.setText(newStringName);
-                userEmail.setText(newStringEmail);
-            }
-
-        }else if (activity.equals("login")){
+        }else {
             signOutButton.setVisibility(View.GONE);
         }
 
@@ -155,21 +132,6 @@ public class AccountActivity extends BaseActivity {
                 return handled;
             }
         });
-
-        String newString;
-
-        if (savedInstanceState == null) {
-
-            if(extras == null) {
-                newString= null;
-            } else {
-                newString= extras.getString("email");
-                userEmail.setText(newString);
-            }
-        } else {
-            newString= (String) savedInstanceState.getSerializable("email");
-            userEmail.setText(newString);
-        }
     }
 
     @Override
@@ -209,13 +171,6 @@ public class AccountActivity extends BaseActivity {
 
         }else if(i == R.id.activity_account_finish){
             Intent intent = new Intent(AccountActivity.this, HomeActivity.class);
-            Bundle extrasBundle = new Bundle();
-            String userEmail = extras.getString("email");
-            String userName = editNameText.getText().toString();
-            extras.putString("activity", "account");
-            extras.putString("email", userEmail);
-            extras.putString("name", userName);
-            intent.putExtras(extrasBundle);
             startActivity(intent);
             sendUserInfoToFirebase();
         }
