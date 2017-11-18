@@ -1,5 +1,6 @@
 package com.ruiriot.deepur.fragment;
 
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,21 +11,16 @@ import android.widget.TextView;
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.adapter.BaseAdapter;
 import com.ruiriot.deepur.fragment.CategoriesFragment.OnListFragmentInteractionListener;
-import com.ruiriot.deepur.adapter.CategoriesAdapter.CategoriesItem;
+import com.ruiriot.deepur.model.Category;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link CategoriesItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
 public class MyCategoriesRecyclerViewAdapter extends BaseAdapter {
 
-    final List<CategoriesItem> mValues;
+    final List<Category> mValues;
     final OnListFragmentInteractionListener mListener;
 
-    public MyCategoriesRecyclerViewAdapter(List<CategoriesItem> items, OnListFragmentInteractionListener listener) {
+    public MyCategoriesRecyclerViewAdapter(List<Category> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -36,17 +32,17 @@ public class MyCategoriesRecyclerViewAdapter extends BaseAdapter {
         return new ViewHolder(view);
     }
 
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder h, int position) {
+        final ViewHolder holder = (ViewHolder) h;
         holder.mItem = mValues.get(position);
-        holder.categoryName.setText(holder.mItem.name);
-        //holder.categoryImage.setImageDrawable(mValues.get(position).name);
+        holder.categoryName.setText(holder.mItem.description);
+        holder.categoryImage.setImageDrawable(Drawable.createFromPath(mValues.get(position).image));
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
                     mListener.onListFragmentInteraction(holder.mItem);
                 }
             }
@@ -58,11 +54,11 @@ public class MyCategoriesRecyclerViewAdapter extends BaseAdapter {
         return mValues.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         final View mView;
         final TextView categoryName;
         final ImageView categoryImage;
-        CategoriesItem mItem;
+        Category mItem;
 
         ViewHolder(View view) {
             super(view);

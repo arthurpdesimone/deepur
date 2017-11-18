@@ -5,27 +5,32 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ruiriot.deepur.R;
-import com.ruiriot.deepur.adapter.CategoriesAdapter;
-import com.ruiriot.deepur.adapter.CategoriesAdapter.CategoriesItem;
+import com.ruiriot.deepur.model.Category;
+
+import java.util.ArrayList;
 
 public class CategoriesFragment extends BaseFragment{
 
-    // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+    String TAG = "Firebase";
+    public RecyclerView recyclerView;
+    public ArrayList<Category> categories = new ArrayList<>();
+    FirebaseAuth mAuth;
 
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
     public CategoriesFragment() {
     }
 
@@ -36,6 +41,56 @@ public class CategoriesFragment extends BaseFragment{
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("categories");
+        mAuth = FirebaseAuth.getInstance();
+
+        ChildEventListener childEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Category categoriesItem = dataSnapshot.getValue(Category.class);
+                Log.d(TAG, "onChildAdded: " + categoriesItem);
+                categories.add(categoriesItem);
+                recyclerView.getAdapter().notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        myRef.addChildEventListener(childEventListener);
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Category category = dataSnapshot.getValue(Category.class);
+                Log.d(TAG, "Value is: " + category);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
     }
 
     @Override
@@ -43,16 +98,15 @@ public class CategoriesFragment extends BaseFragment{
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_categories_list, container, false);
 
-        // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyCategoriesRecyclerViewAdapter(CategoriesAdapter.ITEMS, mListener));
+            recyclerView.setAdapter(new MyCategoriesRecyclerViewAdapter(categories, mListener));
         }
         return view;
     }
@@ -75,12 +129,8 @@ public class CategoriesFragment extends BaseFragment{
         mListener = null;
     }
 
-    public void onListFragmentInteraction(CategoriesItem item) {
-        Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
-    }
-
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(CategoriesItem item);
+        void onListFragmentInteraction(Category item);
     }
 }

@@ -4,7 +4,7 @@
     android:layout_width="144dp"
     android:layout_height="144dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="8dp"
+    app:cardCornerRadius="2dp"
     android:elevation="1dp"
     android:layout_margin="8dp">
 
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:text="GEEK"
-            android:paddingTop="24dp"
+            android:paddingTop="20dp"
             android:paddingBottom="16dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"

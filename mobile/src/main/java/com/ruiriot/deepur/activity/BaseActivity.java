@@ -10,10 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 
-import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.adapter.CategoriesAdapter;
 import com.ruiriot.deepur.fragment.CategoriesFragment;
 import com.ruiriot.deepur.fragment.ItemPostFragment;
+import com.ruiriot.deepur.model.Category;
 
 import static com.ruiriot.deepur.Constants.PERMISSIONS_REQUEST_CAMERA;
 
@@ -21,7 +21,9 @@ import static com.ruiriot.deepur.Constants.PERMISSIONS_REQUEST_CAMERA;
  * Created by ruiriot on 09-May-17.
  */
 
-public class BaseActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback, View.OnClickListener, ItemPostFragment.OnFragmentInteractionListener, CategoriesFragment.OnListFragmentInteractionListener, TabLayout.OnTabSelectedListener {
+public class BaseActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback,
+        View.OnClickListener, ItemPostFragment.OnFragmentInteractionListener, CategoriesFragment.OnListFragmentInteractionListener,
+        TabLayout.OnTabSelectedListener {
 
     int resourceLayout;
 
@@ -89,7 +91,7 @@ public class BaseActivity extends AppCompatActivity implements ActivityCompat.On
     }
 
     @Override
-    public void onListFragmentInteraction(CategoriesAdapter.CategoriesItem item) {
+    public void onListFragmentInteraction(Category item) {
 
     }
 

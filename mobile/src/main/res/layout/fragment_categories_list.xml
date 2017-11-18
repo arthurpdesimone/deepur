@@ -3,7 +3,7 @@
     android:id="@+id/fragment_categories_list"
     android:name="com.ruiriot.deepur.fragment.CategoriesFragment"
     android:layout_width="wrap_content"
-    android:layout_height="0dp"
+    android:layout_height="wrap_content"
     app:layoutManager="LinearLayoutManager"
     android:orientation="horizontal"
     app:reverseLayout="false"
