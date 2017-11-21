@@ -46,9 +46,6 @@ public class LoginActivity extends BaseActivity{
     String uEmail;
     Uri uPhotoUrl;
 
-    @BindView(R.id.activity_login_sign_out)
-    TextView mSignOutButton;
-
     @BindView(R.id.activity_login_relative)
     RelativeLayout blurryBg;
 
@@ -85,8 +82,6 @@ public class LoginActivity extends BaseActivity{
         setContentView(R.layout.activity_login);
 
         ButterKnife.bind(this);
-
-        findViewById(R.id.activity_login_facebook).setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
 

@@ -2,6 +2,7 @@ package com.ruiriot.deepur.activity;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,11 +19,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 import com.ruiriot.deepur.R;
+import com.ruiriot.deepur.fragment.ChooseImageFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.ruiriot.deepur.utils.ActivityUtils.callActivity;
 import static com.ruiriot.deepur.utils.ActivityUtils.hideProgressDialog;
@@ -42,17 +48,11 @@ public class CreateAccountActivity extends BaseActivity {
     EditText userPassword;
     @BindView(R.id.activity_create_account_name_edit_text)
     EditText userName;
-    @BindView(R.id.activity_create_account_email_text_input)
-    TextInputLayout userEmailInput;
-    @BindView(R.id.activity_create_account_password_text_input)
-    TextInputLayout userPasswordInput;
-    @BindView(R.id.activity_create_account_name_text_input)
-    TextInputLayout userNameInput;
     @BindView(R.id.activity_create_account_image)
-    ImageView userImage;
-    @BindView(R.id.activity_create_account_status)
-    TextView statusCreateAccount;
+    CircleImageView userImage;
     private FirebaseAuth mAuth;
+    FirebaseStorage storage;
+    private DatabaseReference ref;
     private static final String TAG = "Firebase Login";
 
     @Override
@@ -63,6 +63,8 @@ public class CreateAccountActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         mAuth = FirebaseAuth.getInstance();
+        ref = FirebaseDatabase.getInstance().getReference("users");
+        storage = FirebaseStorage.getInstance();
 
         doneButton.setOnClickListener(this);
         cancelButton.setOnClickListener(this);
@@ -78,7 +80,6 @@ public class CreateAccountActivity extends BaseActivity {
 
         showProgressDialog(this);
 
-        // [START create_user_with_email]
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -87,6 +88,9 @@ public class CreateAccountActivity extends BaseActivity {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
+                            if (user != null){
+                                ref.child(user.getUid()).setValue(String.class);
+                            }
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(CreateAccountActivity.this, "Authentication failed.",
@@ -104,26 +108,26 @@ public class CreateAccountActivity extends BaseActivity {
 
         String email = userEmail.getText().toString();
         if (TextUtils.isEmpty(email)) {
-            userEmailInput.setError("Required.");
+            userEmail.setError("Required.");
             valid = false;
         } else {
-            userEmailInput.setError(null);
+            userEmail.setError(null);
         }
 
         String password = userPassword.getText().toString();
         if (TextUtils.isEmpty(password)) {
-            userPasswordInput.setError("Required.");
+            userPassword.setError("Required.");
             valid = false;
         } else {
-            userPasswordInput.setError(null);
+            userPassword.setError(null);
         }
 
         String name = userName.getText().toString();
         if (TextUtils.isEmpty(name)) {
-            userNameInput.setError("Required.");
+            userName.setError("Required.");
             valid = false;
         } else {
-            userNameInput.setError(null);
+            userName.setError(null);
         }
 
         return valid;
@@ -150,10 +154,15 @@ public class CreateAccountActivity extends BaseActivity {
 
         if (i == R.id.activity_create_account_done_button){
             createAccount(userEmail.getText().toString(), userPassword.getText().toString());
-        } else if (i == R.id.activity_create_account_cancel_button){
+        }
+        if (i == R.id.activity_create_account_cancel_button){
             finish();
-        }else if (i == R.id.activity_create_account_arrow_back){
+        }
+        if (i == R.id.activity_create_account_arrow_back){
             finish();
+        }
+        if (i == R.id.activity_create_account_image) {
+            Log.i("CREATEACCOUNTIMAGE", "CLICOU");
         }
     }
 }

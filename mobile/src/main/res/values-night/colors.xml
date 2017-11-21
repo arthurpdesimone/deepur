@@ -3,6 +3,7 @@
     <color name="color_primary">@color/md_grey_900</color>
     <color name="color_primary_dark">@color/md_black_1000</color>
     <color name="color_accent">@color/md_blue_A400</color>
+    <color name="ripple">#422979FF</color>
     <color name="divider">#1FFFFFFF</color>
 
     <color name="text_color_primary">#ffffffff</color>

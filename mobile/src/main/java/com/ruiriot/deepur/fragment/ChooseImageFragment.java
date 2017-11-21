@@ -1,6 +1,5 @@
 package com.ruiriot.deepur.fragment;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -17,20 +16,18 @@ import android.support.v4.app.ActivityCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.Manifest;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.ruiriot.deepur.R;
 
-import java.io.File;
+import java.io.ByteArrayOutputStream;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,10 +47,16 @@ public class ChooseImageFragment extends BottomSheetDialogFragment implements Ac
 
     @BindView(R.id.activity_account_image)
     CircleImageView userImageView;
+    StorageReference userImagesRef;
+    StorageReference storageRef;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReference();
+        userImagesRef = storageRef.child("images/");
 
     }
 
@@ -114,9 +117,28 @@ public class ChooseImageFragment extends BottomSheetDialogFragment implements Ac
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PERMISSIONS_REQUEST_CAMERA) {
-            Bitmap image = (Bitmap) data.getExtras().get("data");
+            Bitmap image;
             userImageView = getActivity().findViewById(R.id.activity_account_image); //sets imageview as the bitmap
+            userImageView.setDrawingCacheEnabled(true);
+            userImageView.buildDrawingCache();
+            image = userImageView.getDrawingCache();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            byte[] dataImage = baos.toByteArray();
             userImageView.setImageBitmap(image);
+            UploadTask uploadTask = userImagesRef.putBytes(dataImage);
+            uploadTask.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    // Handle unsuccessful uploads
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                }
+            });
             dismiss();
         }
         if (requestCode == PERMISSIONS_REQUEST_STORAGE) {

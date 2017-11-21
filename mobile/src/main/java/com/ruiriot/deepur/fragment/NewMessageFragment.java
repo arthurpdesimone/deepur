@@ -6,9 +6,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ruiriot.deepur.R;
 
 /**
@@ -18,6 +24,7 @@ import com.ruiriot.deepur.R;
 public class NewMessageFragment extends DialogFragment implements View.OnClickListener{
 
     private AutoCompleteTextView autoCompleteTextView;
+    DatabaseReference database;
 
     public NewMessageFragment(){
 
@@ -36,9 +43,37 @@ public class NewMessageFragment extends DialogFragment implements View.OnClickLi
        autoCompleteTextView = rootView.findViewById(R.id.fragment_new_message_auto_complete);
        ImageView arrowBack = rootView.findViewById(R.id.fragment_new_message_arrow_back);
        ImageView clearText = rootView.findViewById(R.id.fragment_new_message_clear_input);
+
+       database = FirebaseDatabase.getInstance().getReference();
+       populateAutoCompleteTextView();
+
        clearText.setOnClickListener(this);
        arrowBack.setOnClickListener(this);
        return rootView;
+    }
+
+    public void populateAutoCompleteTextView(){
+
+        final ArrayAdapter<String> autoComplete = new ArrayAdapter<>(getActivity(), R.layout.item_new_message_users);
+
+        database.child("users").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //Basically, this says "For each DataSnapshot *Data* in dataSnapshot, do what's inside the method.
+                for (DataSnapshot suggestionSnapshot : dataSnapshot.getChildren()){
+                    //Get the suggestion by childing the key of the string you want to get.
+                    String suggestion = suggestionSnapshot.child("name").getValue(String.class);
+                    //Add the retrieved string to the list
+                    autoComplete.add(suggestion);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        autoCompleteTextView.setAdapter(autoComplete);
     }
 
     @Override

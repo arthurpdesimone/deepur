@@ -23,6 +23,9 @@
     <string name="email_example">email@email.com</string>
     <string name="password_example">******</string>
     <string name="login">LOGIN</string>
+    <string name="back">Back</string>
+    <string name="edit">Edit</string>
+    <string name="close">Close</string>
 
     <!-- LOGIN -->
     <string name="activity_login_email">Email</string>

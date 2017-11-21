@@ -80,7 +80,6 @@ public class AccountActivity extends BaseActivity {
     boolean firstVerify = true;
     FirebaseAuth.AuthStateListener mAuthListener;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
