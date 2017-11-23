@@ -26,16 +26,12 @@ public abstract class ActivityUtils {
     static public void callActivity(Context context, Class<?> clazz){
 
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String userEmail;
 
         if (user != null){
-            userEmail = user.getEmail();
             Intent intent = new Intent(context, clazz);
-            intent.putExtra(Intent.EXTRA_EMAIL, userEmail);
             context.startActivity(intent);
         }else {
-            Toast.makeText(context, "UserRepository not found.",
-                    Toast.LENGTH_SHORT).show();
+
             Intent intent = new Intent(context, clazz);
             context.startActivity(intent);
         }

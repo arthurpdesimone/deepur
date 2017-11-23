@@ -2,12 +2,8 @@ package com.ruiriot.deepur.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.app.Activity;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetDialogFragment;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -16,36 +12,25 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.fragment.ChooseImageFragment;
-import com.ruiriot.deepur.fragment.MessengerFragment;
 import com.ruiriot.deepur.model.User;
-
-import org.w3c.dom.Text;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.ruiriot.deepur.utils.ActivityUtils.callActivity;
-import static com.ruiriot.deepur.utils.ActivityUtils.hideProgressDialog;
-import static com.ruiriot.deepur.utils.ActivityUtils.showProgressDialog;
 
 public class AccountActivity extends BaseActivity {
 
@@ -73,14 +58,11 @@ public class AccountActivity extends BaseActivity {
     @BindView(R.id.activity_account_finish)
     TextView finishButton;
 
-    FirebaseAuth mAuth;
     boolean clicked = false;
     DatabaseReference myUserRef;
     FirebaseDatabase database;
-    FirebaseUser user;
-    User person;
-    boolean firstVerify = true;
-    FirebaseAuth.AuthStateListener mAuthListener;
+    public GoogleSignInClient mGoogleSignInClient;
+    public GoogleSignInAccount account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,20 +72,23 @@ public class AccountActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         database = FirebaseDatabase.getInstance();
-        mAuth = FirebaseAuth.getInstance();
         myUserRef = database.getReference("users/");
-        user = mAuth.getCurrentUser();
-        addUserFirebase();
 
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .requestProfile()
+                .build();
 
-        if (user != null){
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        account = GoogleSignIn.getLastSignedInAccount(this);
+
+        if (account != null){
             arrowBackButton.setVisibility(View.VISIBLE);
             arrowBackButton.setOnClickListener(this);
             signOutButton.setVisibility(View.VISIBLE);
 
-            editNameText.setText(user.getDisplayName());
-            userEmail.setText(user.getEmail());
+            editNameText.setText(account.getDisplayName());
+            userEmail.setText(account.getEmail());
 
         }else {
             signOutButton.setVisibility(View.GONE);
@@ -144,7 +129,7 @@ public class AccountActivity extends BaseActivity {
         if (i == R.id.activity_account_sign_out_card){
 
             callActivity(AccountActivity.this, LoginActivity.class);
-            signOut();
+            mGoogleSignInClient.signOut();
 
         } else if (i == R.id.activity_account_edit) {
 
@@ -175,87 +160,6 @@ public class AccountActivity extends BaseActivity {
         }else if(i == R.id.activity_account_finish){
             Intent intent = new Intent(AccountActivity.this, HomeActivity.class);
             startActivity(intent);
-            sendUserInfoToFirebase();
         }
     }
-
-    public void addUserFirebase(){
-
-        mAuth = FirebaseAuth.getInstance();
-
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-
-                    // User is signed in
-                    Log.d("AddUser", "onAuthStateChanged:signed_in:" +user.getUid());
-
-                    // Get instance of database
-                    database = FirebaseDatabase.getInstance();
-                    myUserRef = database.getReference("users/");
-
-                    // Check if info about the user already exists in the database
-                    myUserRef.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot){
-
-                            if (!dataSnapshot.exists()) {
-
-                                if(firstVerify){
-                                    person = new User();
-                                    firstVerify = false;
-                                }
-
-                            }else{
-                                updatePushToken();
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError error){
-                            // Failed to read value
-                            Log.w("Account","Failed to read value.",error.toException());
-                        }
-                    });
-
-                } else {
-                    // User is signed out
-                    Log.d("Account", "onAuthStateChanged:signed_out");
-                }
-            }
-        };
-    }
-
-    private void updatePushToken() {
-        Map<String, Object> childUpdates = new HashMap<>();
-
-        childUpdates.put("/" + user.getUid()+ "/pushToken/",FirebaseInstanceId.getInstance().getToken());
-        Log.d("pushtkn(already user): ", FirebaseInstanceId.getInstance().getToken());
-        myUserRef.updateChildren(childUpdates);
-    }
-
-    public void sendUserInfoToFirebase(){
-
-        Log.d("AccountUser", "New User");
-
-        // Creating new user node, which returns the unique key value
-        // new user node would be /User/$userid/
-        final String newUserId = user.getUid();
-
-        person.setEmail(user.getEmail());
-        person.setName(editNameText.getText().toString());
-        person.setPushToken(FirebaseInstanceId.getInstance().getToken());
-        person.setUid(newUserId);
-        Log.d("tokenpush: ",person.getPushToken());
-        myUserRef.child(newUserId).setValue(person);
-
-    }
-
-    private void signOut() {
-        mAuth.signOut();
-    }
-
 }

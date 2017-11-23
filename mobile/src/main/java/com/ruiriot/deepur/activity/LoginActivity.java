@@ -39,14 +39,7 @@ import static com.ruiriot.deepur.utils.ActivityUtils.showProgressDialog;
 
 public class LoginActivity extends BaseActivity{
 
-    private static final String TAG = "Firebase Login";
     public static final String PREF_USER_FIRST_TIME = "user_first_time";
-    private FirebaseAuth mAuth;
-    String providerId;
-    String uid;
-    String uName;
-    String uEmail;
-    Uri uPhotoUrl;
 
     private static final int RC_SIGN_IN = 9001;
 
@@ -70,10 +63,11 @@ public class LoginActivity extends BaseActivity{
 
     @BindView(R.id.activity_login_coordinator)
     CoordinatorLayout coordinatorLayout;
+
     public GoogleSignInClient mGoogleSignInClient;
+    public GoogleSignInAccount account;
 
     AnimationDrawable animationDrawable;
-    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,30 +76,17 @@ public class LoginActivity extends BaseActivity{
 
         ButterKnife.bind(this);
 
-        mAuth = FirebaseAuth.getInstance();
-
-        user = FirebaseAuth.getInstance().getCurrentUser();
-
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .requestProfile()
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        account = GoogleSignIn.getLastSignedInAccount(this);
 
-        if (user != null) {
-            for (UserInfo profile : user.getProviderData()) {
-
-                providerId = profile.getProviderId();
-                uid = profile.getUid();
-                uName = profile.getDisplayName();
-                uEmail = profile.getEmail();
-                uPhotoUrl = profile.getPhotoUrl();
-            }
-        } else {
-            Snackbar mySnackBar = Snackbar.make(findViewById(R.id.activity_login_coordinator),
-                    R.string.activity_login_user_not_found, Snackbar.LENGTH_SHORT);
-            mySnackBar.show();
+        if (account != null){
+            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            startActivity(intent);
         }
 
         animationDrawable = (AnimationDrawable) blurryBg.getBackground();
@@ -124,10 +105,7 @@ public class LoginActivity extends BaseActivity{
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
@@ -136,9 +114,6 @@ public class LoginActivity extends BaseActivity{
     @Override
     public void onStart() {
         super.onStart();
-
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
 
     }
 
@@ -158,12 +133,17 @@ public class LoginActivity extends BaseActivity{
 
     @Override
     public void onClick(View v) {
-        int i = v.getId();
+        switch (v.getId()) {
 
-        if (i == R.id.activity_login_create_account){
-            callActivity(LoginActivity.this, CreateAccountActivity.class);
-        } else if (i == R.id.activity_login_sign_in_google) {
-            signIn();
+            //Create account button
+            case R.id.activity_login_create_account:
+                callActivity(LoginActivity.this, CreateAccountActivity.class);
+                break;
+
+            // Google Sign in button
+            case R.id.activity_login_sign_in_google:
+                signIn();
+                break;
         }
     }
 
@@ -174,81 +154,19 @@ public class LoginActivity extends BaseActivity{
 
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
-            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-
-            // Signed in successfully, show authenticated UI.
-            //updateUI(account); TODO
+            account = completedTask.getResult(ApiException.class);
+            updateUI();
         } catch (ApiException e) {
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
-            updateUI(null);
+            Log.w("Login", "signInResult:failed code=" + e.getStatusCode());
+            updateUI();
         }
     }
 
-    /*private void signIn(String email, String password) {
-        Log.d(TAG, "signIn:" + email);
-        if (!validateForm()) {
-            return;
-        }
-
-        showProgressDialog(this);
-
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithEmail:success");
-                            user = mAuth.getCurrentUser();
-                            updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            hideProgressDialog(LoginActivity.this);
-                            Snackbar snackbar = Snackbar.make(coordinatorLayout, getResources().getString(R.string.error), Snackbar.LENGTH_LONG);
-                            snackbar.show();
-                        }
-
-                        // [START_EXCLUDE]
-                        if (!task.isSuccessful()) {
-                            authStatus.setText(R.string.activity_login_auth_status);
-
-                        }else hideProgressDialog(LoginActivity.this);
-                        // [END_EXCLUDE]
-                    }
-                });
-
-    }*/
-
-    private boolean validateForm() {
-        boolean valid = true;
-
-        String email = userEmail.getText().toString();
-        if (TextUtils.isEmpty(email)) {
-            userEmail.setError(getResources().getString(R.string.activity_login_email_text_input));
-            valid = false;
-        } else {
-            userEmail.setError(null);
-        }
-
-        String password = userPassword.getText().toString();
-        if (TextUtils.isEmpty(password)) {
-            userPassword.setError(getResources().getString(R.string.activity_login_password_text_input));
-            valid = false;
-        } else {
-            userPassword.setError(null);
-        }
-
-        return valid;
-    }
-
-    private void updateUI(FirebaseUser user) {
+    private void updateUI() {
 
         hideProgressDialog(LoginActivity.this);
 
-        if (user != null) {
+        if (account != null) {
 
             Intent i = new Intent(LoginActivity.this, AccountActivity.class);
             startActivity(i);

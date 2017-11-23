@@ -9,6 +9,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.ruiriot.deepur.R;
 import butterknife.BindView;
@@ -27,8 +31,8 @@ public class SettingsActivity extends BaseActivity {
     @BindView(R.id.activity_settings_back_icon)
     ImageView arrowBackButton;
 
-    Bundle extras;
-    FirebaseAuth mAuth;
+    public GoogleSignInClient mGoogleSignInClient;
+    public GoogleSignInAccount account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,26 +41,20 @@ public class SettingsActivity extends BaseActivity {
 
         ButterKnife.bind(this);
 
-        mAuth = FirebaseAuth.getInstance();
-        extras = getIntent().getExtras();
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .requestProfile()
+                .build();
 
-        String newNameString;
-        String newEmailString;
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        account = GoogleSignIn.getLastSignedInAccount(this);
 
-        if (savedInstanceState == null) {
+        if (account != null){
+            arrowBackButton.setVisibility(View.VISIBLE);
+            arrowBackButton.setOnClickListener(this);
 
-            if(extras == null) {
-                newNameString= null;
-                newEmailString= null;
-            } else {
-                newNameString= extras.getString("name");
-                newEmailString = extras.getString("email");
-                userName.setText(newNameString);
-            }
-        } else {
-            newNameString= (String) savedInstanceState.getSerializable("name");
-            newEmailString= (String) savedInstanceState.getSerializable("email");
-            userName.setText(newNameString);
+            userName.setText(account.getDisplayName());
+
         }
 
         accountButton.setOnClickListener(this);
@@ -66,13 +64,13 @@ public class SettingsActivity extends BaseActivity {
     @Override
     public void onClick(View v){
         int i = v.getId();
+
         if (i == R.id.activity_settings_account){
-            Log.i("Account", "CLICOU");
             Intent intent = new Intent(SettingsActivity.this, AccountActivity.class);
             startActivity(intent);
+
         }else if (i == R.id.activity_settings_back_icon){
             finish();
-            Log.i("Settings", "CLICOU");
         }
     }
 

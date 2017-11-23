@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "827955158921-0h6mvm0h5t0463lqjldvp4fldrjdu9gk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ruiriot.deepur",
+            "certificate_hash": "089cb07deef831177d7ba2aff4bee7d2a1208949"
+          }
+        },
+        {
           "client_id": "827955158921-mpg474init5j33adjnseucono9a3p6sh.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -32,8 +40,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "827955158921-mpg474init5j33adjnseucono9a3p6sh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
