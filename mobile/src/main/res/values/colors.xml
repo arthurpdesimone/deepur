@@ -2,7 +2,7 @@
 <resources>
     <color name="color_primary">@color/md_grey_100</color>
     <color name="color_primary_dark">@color/md_grey_300</color>
-    <color name="color_accent">@color/md_blue_A400</color>
+    <color name="color_accent">#8c9ae0</color>
     <color name="color_accent_light">@color/md_blue_A200</color>
     <color name="color_accent_dark">@color/md_blue_A700</color>
     <color name="gradient_toolbar">#33000000</color>
@@ -25,6 +25,7 @@
     <color name="text_color_secondary_black">#8a000000</color>
     <color name="text_color_primary_white">#ffffffff</color>
     <color name="text_color_secondary_white">#b3ffffff</color>
+    <color name="text_color_hint">#61000000</color>
     <color name="transparent">#00000000</color>
     <color name="facebook">#3b5998</color>
 

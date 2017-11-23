@@ -10,8 +10,9 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/animation_list"
-        android:id="@+id/activity_login_relative">
+        android:gravity="center"
+        android:id="@+id/activity_login_relative"
+        android:background="@drawable/animation_list">
 
         <ImageView
             android:id="@+id/activity_login_deepur_logo"
@@ -20,6 +21,7 @@
             android:contentDescription="@string/app_name"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:visibility="gone"
             android:layout_marginTop="56dp"
             android:src="@drawable/ic_logo" />
 
@@ -31,95 +33,101 @@
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/comfortaa_bold"
             android:text="@string/app_name"
-            android:textColor="@color/md_white_1000"
-            android:textSize="34sp" />
+            android:textColor="@color/active_icon"
+            android:textSize="34sp"
+            android:layout_margin="32dp"/>
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/activity_login_email_text_input"
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/activity_login_email_edit_text"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/bg_edit_text"
-            android:textColorHint="@color/text_color_secondary_white"
-            android:layout_below="@id/activity_login_deepur">
+            android:textColorHint="@color/text_color_hint"
+            android:layout_below="@id/activity_login_deepur"
+            android:fontFamily="sans-serif"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="12dp"
+            android:paddingTop="12dp"
+            android:hint="@string/activity_login_email"
+            android:imeOptions="actionNext"
+            android:textColor="@color/text_color_secondary"
+            android:textSize="14sp" />
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/activity_login_email_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/AppThemeMD_Edit"
-                android:fontFamily="sans-serif"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp"
-                android:hint="@string/activity_login_email"
-                android:imeOptions="actionNext"
-                android:textColor="@color/text_color_primary_white"
-                android:textSize="16sp" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/activity_login_password_text_input"
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/activity_login_password_edit_text"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/bg_edit_text"
-            android:textColorHint="@color/text_color_secondary_white"
-            android:layout_below="@id/activity_login_email_text_input">
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/activity_login_password_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:imeOptions="actionDone"
-                style="@style/AppThemeMD_Edit"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:textSize="16sp"
-                android:inputType="textPassword"
-                android:textColor="@color/text_color_primary_white"
-                android:hint="@string/activity_login_password"/>
-
-        </android.support.design.widget.TextInputLayout>
+            android:textColorHint="@color/text_color_hint"
+            android:layout_below="@id/activity_login_email_edit_text"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif"
+            android:inputType="textPassword"
+            android:textColor="@color/text_color_secondary"
+            android:hint="@string/activity_login_password"/>
 
         <TextView
             android:id="@+id/activity_login_sign_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/activity_login_password_text_input"
-            android:text="@string/activity_login_sign_in"
-            android:padding="8dp"
-            android:minWidth="144dp"
-            android:layout_margin="32dp"
+            android:layout_below="@+id/activity_login_password_edit_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/bg_button_stroke"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
+            android:letterSpacing="0.07"
+            android:minWidth="144dp"
+            android:padding="8dp"
+            android:text="@string/activity_login_sign_in"
+            android:textAllCaps="true"
+            android:visibility="gone"
+            android:textColor="@color/color_accent"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/activity_login_sign_in_google"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activity_login_password_edit_text"
             android:layout_centerHorizontal="true"
-            android:textSize="14sp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/bg_button_white"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
             android:letterSpacing="0.07"
             android:elevation="2dp"
-            android:background="@drawable/bg_button_white"
-            android:textColor="@color/color_accent"/>
+            android:minWidth="192dp"
+            android:padding="8dp"
+            android:text="@string/activity_login_sign_in_google"
+            android:textColor="@color/text_color_primary"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/activity_login_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/activity_login_sign_in"
+            android:layout_below="@+id/activity_login_sign_in_google"
             android:fontFamily="sans-serif-light"
             android:gravity="center"
             android:layout_centerHorizontal="true"
             android:alpha="0.6"
             android:textSize="14sp"
+            android:visibility="gone"
             android:textColor="@color/text_color_primary"/>
 
         <TextView
@@ -128,14 +136,16 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/activity_login_status"
             android:text="@string/activity_login_create_account"
+            android:visibility="gone"
             android:padding="8dp"
             android:minWidth="96dp"
-            android:fontFamily="sans-serif-medium"
+            android:layout_margin="16dp"
+            android:fontFamily="sans-serif"
             android:gravity="center"
             android:layout_centerHorizontal="true"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textAllCaps="true"
-            android:textColor="@color/md_white_1000"/>
+            android:textColor="@color/text_color_secondary"/>
 
     </RelativeLayout>
 

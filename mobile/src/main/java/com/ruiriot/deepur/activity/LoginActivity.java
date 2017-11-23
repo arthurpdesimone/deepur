@@ -1,7 +1,6 @@
 package com.ruiriot.deepur.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,20 +8,23 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.ruiriot.deepur.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,10 +48,12 @@ public class LoginActivity extends BaseActivity{
     String uEmail;
     Uri uPhotoUrl;
 
+    private static final int RC_SIGN_IN = 9001;
+
     @BindView(R.id.activity_login_relative)
     RelativeLayout blurryBg;
 
-    @BindView(R.id.activity_login_sign_in)
+    @BindView(R.id.activity_login_sign_in_google)
     TextView loginButton;
 
     @BindView(R.id.activity_login_create_account)
@@ -64,14 +68,9 @@ public class LoginActivity extends BaseActivity{
     @BindView(R.id.activity_login_status)
     TextView authStatus;
 
-    @BindView(R.id.activity_login_email_text_input)
-    TextInputLayout emailTextInput;
-
-    @BindView(R.id.activity_login_password_text_input)
-    TextInputLayout passwordTextInput;
-
     @BindView(R.id.activity_login_coordinator)
     CoordinatorLayout coordinatorLayout;
+    public GoogleSignInClient mGoogleSignInClient;
 
     AnimationDrawable animationDrawable;
     FirebaseUser user;
@@ -86,6 +85,13 @@ public class LoginActivity extends BaseActivity{
         mAuth = FirebaseAuth.getInstance();
 
         user = FirebaseAuth.getInstance().getCurrentUser();
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .requestProfile()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         if (user != null) {
             for (UserInfo profile : user.getProviderData()) {
@@ -112,6 +118,19 @@ public class LoginActivity extends BaseActivity{
 
         loginButton.setOnClickListener(this);
         createAccountButton.setOnClickListener(this);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            // The Task returned from this call is always completed, no need to attach
+            // a listener.
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
+        }
     }
 
     @Override
@@ -143,12 +162,31 @@ public class LoginActivity extends BaseActivity{
 
         if (i == R.id.activity_login_create_account){
             callActivity(LoginActivity.this, CreateAccountActivity.class);
-        } else if (i == R.id.activity_login_sign_in) {
-            signIn(userEmail.getText().toString(), userPassword.getText().toString());
+        } else if (i == R.id.activity_login_sign_in_google) {
+            signIn();
         }
     }
 
-    private void signIn(String email, String password) {
+    private void signIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+
+            // Signed in successfully, show authenticated UI.
+            //updateUI(account); TODO
+        } catch (ApiException e) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
+            updateUI(null);
+        }
+    }
+
+    /*private void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
         if (!validateForm()) {
             return;
@@ -182,25 +220,25 @@ public class LoginActivity extends BaseActivity{
                     }
                 });
 
-    }
+    }*/
 
     private boolean validateForm() {
         boolean valid = true;
 
         String email = userEmail.getText().toString();
         if (TextUtils.isEmpty(email)) {
-            emailTextInput.setError(getResources().getString(R.string.activity_login_email_text_input));
+            userEmail.setError(getResources().getString(R.string.activity_login_email_text_input));
             valid = false;
         } else {
-            emailTextInput.setError(null);
+            userEmail.setError(null);
         }
 
         String password = userPassword.getText().toString();
         if (TextUtils.isEmpty(password)) {
-            passwordTextInput.setError(getResources().getString(R.string.activity_login_password_text_input));
+            userPassword.setError(getResources().getString(R.string.activity_login_password_text_input));
             valid = false;
         } else {
-            passwordTextInput.setError(null);
+            userPassword.setError(null);
         }
 
         return valid;
