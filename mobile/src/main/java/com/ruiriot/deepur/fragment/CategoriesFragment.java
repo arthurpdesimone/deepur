@@ -1,6 +1,7 @@
 package com.ruiriot.deepur.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,11 +18,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ruiriot.deepur.R;
+import com.ruiriot.deepur.activity.CategoriesDetailActivity;
 import com.ruiriot.deepur.model.Category;
 
 import java.util.ArrayList;
 
-public class CategoriesFragment extends BaseFragment{
+public class CategoriesFragment extends BaseFragment implements View.OnClickListener{
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
@@ -108,9 +110,10 @@ public class CategoriesFragment extends BaseFragment{
             }
             recyclerView.setAdapter(new MyCategoriesRecyclerViewAdapter(categories, mListener));
         }
+
+        view.setOnClickListener(this);
         return view;
     }
-
 
     @Override
     public void onAttach(Context context) {
@@ -127,6 +130,17 @@ public class CategoriesFragment extends BaseFragment{
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.fragment_categories_list:
+                Intent intent = new Intent(getActivity(), CategoriesDetailActivity.class);
+                startActivity(intent);
+                Log.i("CATEGORY-ITEM", "FOI CLICADO");
+                break;
+        }
     }
 
     public interface OnListFragmentInteractionListener {
