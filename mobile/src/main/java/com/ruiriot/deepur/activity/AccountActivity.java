@@ -2,30 +2,33 @@ package com.ruiriot.deepur.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.fragment.ChooseImageFragment;
-import com.ruiriot.deepur.model.User;
-import java.util.HashMap;
-import java.util.Map;
+
+import org.w3c.dom.Text;
+
+import java.io.IOException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -43,20 +46,17 @@ public class AccountActivity extends BaseActivity {
     @BindView(R.id.activity_account_name)
     EditText editNameText;
 
-    @BindView(R.id.activity_account_sign_out_card)
-    CardView signOutButton;
+    @BindView(R.id.activity_account_sign_out_rl)
+    RelativeLayout signOutButton;
 
     @BindView(R.id.activity_account_image)
-    CircleImageView addPictureFab;
+    CircleImageView userImageProfile;
 
     @BindView(R.id.activity_account_back_icon)
     ImageView arrowBackButton;
 
     @BindView(R.id.activity_account_email)
     TextView userEmail;
-
-    @BindView(R.id.activity_account_finish)
-    TextView finishButton;
 
     boolean clicked = false;
     DatabaseReference myUserRef;
@@ -82,24 +82,31 @@ public class AccountActivity extends BaseActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         account = GoogleSignIn.getLastSignedInAccount(this);
 
-        if (account != null){
+        if (account != null) {
             arrowBackButton.setVisibility(View.VISIBLE);
             arrowBackButton.setOnClickListener(this);
             signOutButton.setVisibility(View.VISIBLE);
 
             editNameText.setText(account.getDisplayName());
             userEmail.setText(account.getEmail());
+            Uri personPhoto = account.getPhotoUrl();
 
-        }else {
-            signOutButton.setVisibility(View.GONE);
+            Bitmap bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), personPhoto);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            userImageProfile.setImageBitmap(bitmap);
+
         }
 
         editNameButton.setOnClickListener(this);
         signOutButton.setOnClickListener(this);
-        addPictureFab.setOnClickListener(this);
+        userImageProfile.setOnClickListener(this);
         arrowBackButton.setOnClickListener(this);
         editNameTextDone.setOnClickListener(this);
-        finishButton.setOnClickListener(this);
 
         editNameText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -126,12 +133,17 @@ public class AccountActivity extends BaseActivity {
     public void onClick(View v) {
         int i = v.getId();
 
-        if (i == R.id.activity_account_sign_out_card){
+        /*if (i == R.id.activity_account_sign_out_card){
 
             callActivity(AccountActivity.this, LoginActivity.class);
             mGoogleSignInClient.signOut();
 
-        } else if (i == R.id.activity_account_edit) {
+        }*/
+        if (i == R.id.activity_account_sign_out_rl){
+
+            callActivity(AccountActivity.this, LoginActivity.class);
+
+        }else if (i == R.id.activity_account_edit) {
 
             clicked = true;
             final InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -157,9 +169,6 @@ public class AccountActivity extends BaseActivity {
             editNameButton.setVisibility(View.VISIBLE);
             editNameTextDone.setVisibility(View.GONE);
 
-        }else if(i == R.id.activity_account_finish){
-            Intent intent = new Intent(AccountActivity.this, HomeActivity.class);
-            startActivity(intent);
         }
     }
 }

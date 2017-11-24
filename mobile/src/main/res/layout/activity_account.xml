@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/back"
                 android:src="@drawable/ic_arrow_back_white_24dp"
-                android:tint="@color/color_accent"
+                android:tint="@color/active_icon"
                 android:background="@drawable/ripple_borderless"
                 android:clickable="true"
                 android:focusable="true"
@@ -73,15 +73,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:labelFor="@id/activity_account_name"
-            android:text="@string/user_name"
-            android:textSize="20sp"
+            android:text="Rui Donizete de Mattos Oliveira Junior"
+            android:textSize="24sp"
             android:textColor="@color/text_color_primary"
             android:layout_centerVertical="true"
             android:paddingStart="16dp"
-            android:paddingEnd="64dp"
+            android:paddingEnd="72dp"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
             android:maxLines="1"
+            android:ellipsize="end"
             android:background="@color/transparent"
             android:fontFamily="sans-serif-condensed"
             android:inputType="textCapWords"
@@ -94,7 +95,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/edit"
             android:src="@drawable/ic_mode_edit_white_24dp"
-            android:tint="@color/color_accent"
+            android:tint="@color/active_icon"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:padding="8dp"
@@ -131,80 +132,45 @@
         android:layout_margin="16dp"
         android:fontFamily="sans-serif"/>
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/activity_account_sign_out_card"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:id="@+id/activity_account_sign_out_rl"
+        android:layout_width="192dp"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:cardElevation="1dp"
-        app:cardCornerRadius="1dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        app:cardBackgroundColor="@color/background_card">
-
-        <RelativeLayout
-            android:id="@+id/activity_account_sign_out_rl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ripple"
-            android:clickable="true"
-            android:focusable="true">
-
-            <ImageView
-                android:id="@+id/activity_account_sign_out_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_exit_to_app_white_24dp"
-                android:tint="@color/active_icon"
-                android:layout_centerVertical="true"
-                android:layout_margin="16dp"/>
-
-            <TextView
-                android:id="@+id/activity_account_sign_out_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/activity_login_sign_out"
-                android:textSize="16sp"
-                android:textColor="@color/text_color_primary"
-                android:layout_marginStart="72dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="sans-serif"
-                android:layout_centerVertical="true"/>
-
-            <ImageView
-                android:id="@+id/activity_account_sign_out_arrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_keyboard_arrow_right_white_24dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:padding="8dp"
-                android:tint="@color/active_icon"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"/>
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <TextView
-        android:id="@+id/activity_account_finish"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/finish"
-        android:textSize="14sp"
-        android:textColor="@color/background"
+        android:background="@color/color_accent"
+        android:elevation="1dp"
+        android:layout_gravity="end"
+        android:gravity="end"
         android:layout_margin="16dp"
-        android:minWidth="96dp"
-        android:gravity="center"
-        android:padding="8dp"
-        android:textAllCaps="true"
-        android:background="@drawable/bg_button"
-        android:fontFamily="sans-serif-medium"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"/>
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:id="@+id/activity_account_sign_out_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="@string/done"
+            android:textSize="16sp"
+            android:textColor="@color/text_color_primary"
+            android:layout_marginStart="56dp"
+            android:layout_marginEnd="56dp"
+            android:fontFamily="sans-serif"
+            android:layout_centerVertical="true"/>
+
+        <ImageView
+            android:id="@+id/activity_account_sign_out_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_arrow_right_white_24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:padding="8dp"
+            android:tint="@color/active_icon"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>

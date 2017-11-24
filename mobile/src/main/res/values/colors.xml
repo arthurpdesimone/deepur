@@ -2,11 +2,11 @@
 <resources>
     <color name="color_primary">@color/md_grey_100</color>
     <color name="color_primary_dark">@color/md_grey_300</color>
-    <color name="color_accent">#8c9ae0</color>
+    <color name="color_accent">@color/md_pink_100</color>
     <color name="color_accent_light">@color/md_blue_A200</color>
     <color name="color_accent_dark">@color/md_blue_A700</color>
     <color name="gradient_toolbar">#33000000</color>
-    <color name="ripple">#422979FF</color>
+    <color name="ripple">#42F8BBD0</color>
     <color name="divider">#1F000000</color>
 
     <color name="color_primary_black_transparent">#1A000000</color>
