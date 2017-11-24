@@ -19,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.activity.CategoriesDetailActivity;
+import com.ruiriot.deepur.adapter.CategoriesAdapter;
 import com.ruiriot.deepur.model.Category;
 
 import java.util.ArrayList;
@@ -108,7 +109,7 @@ public class CategoriesFragment extends BaseFragment implements View.OnClickList
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyCategoriesRecyclerViewAdapter(categories, mListener));
+            recyclerView.setAdapter(new CategoriesAdapter(categories, mListener));
         }
 
         view.setOnClickListener(this);

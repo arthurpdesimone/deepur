@@ -3,8 +3,6 @@ package com.ruiriot.deepur.adapter;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import com.ruiriot.deepur.fragment.MyCategoriesRecyclerViewAdapter;
-
 /**
  * Created by ruiri on 21-May-17.
  */

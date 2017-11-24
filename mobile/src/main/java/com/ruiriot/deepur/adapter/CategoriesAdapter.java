@@ -1,42 +1,76 @@
 package com.ruiriot.deepur.adapter;
 
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.ruiriot.deepur.R;
+import com.ruiriot.deepur.adapter.BaseAdapter;
+import com.ruiriot.deepur.fragment.CategoriesFragment.OnListFragmentInteractionListener;
 import com.ruiriot.deepur.model.Category;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class CategoriesAdapter {
+public class CategoriesAdapter extends BaseAdapter {
 
-    public static final List<Category> ITEMS = new ArrayList<>();
+    final List<Category> mValues;
+    final OnListFragmentInteractionListener mListener;
 
-    private static final Map<String, Category> ITEM_MAP = new HashMap<>();
+    public CategoriesAdapter(List<Category> items, OnListFragmentInteractionListener listener) {
+        mValues = items;
+        mListener = listener;
+    }
 
-    private static final int COUNT = 25;
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.fragment_categories, parent, false);
+//        view.setOnClickListener(mOnClickListener);
+        return new ViewHolder(view);
+    }
 
-    static {
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder h, int position) {
+        final ViewHolder holder = (ViewHolder) h;
+        holder.mItem = mValues.get(position);
+        holder.categoryName.setText(holder.mItem.description);
+        holder.categoryImage.setImageDrawable(Drawable.createFromPath(mValues.get(position).image));
 
-        for (int i = 1; i <= COUNT; i++) {
-            addItem(createDummyItem(i));
+        holder.mView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (null != mListener) {
+                    mListener.onListFragmentInteraction(holder.mItem);
+                }
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return mValues.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        final View mView;
+        final TextView categoryName;
+        final ImageView categoryImage;
+        Category mItem;
+
+        ViewHolder(View view) {
+            super(view);
+            mView = view;
+            categoryName = view.findViewById(R.id.fragment_categories_name);
+            categoryImage = view.findViewById(R.id.fragment_categories_image);
         }
-    }
 
-    private static void addItem(Category item) {
-        ITEMS.add(item);
-        ITEM_MAP.put(item.id, item);
-    }
-
-    private static Category createDummyItem(int position) {
-        return new Category(String.valueOf(position), "Item " + position, makeDetails(position));
-    }
-
-    private static String makeDetails(int position) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(position);
-        for (int i = 0; i < position; i++) {
-            builder.append("\nMore color information here.");
+        @Override
+        public String toString() {
+            return super.toString() + " '" + categoryName.getText() + "'";
         }
-        return builder.toString();
     }
 }

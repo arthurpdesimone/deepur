@@ -9,8 +9,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
-
-import com.ruiriot.deepur.adapter.CategoriesAdapter;
 import com.ruiriot.deepur.fragment.CategoriesFragment;
 import com.ruiriot.deepur.fragment.ItemPostFragment;
 import com.ruiriot.deepur.model.Category;
