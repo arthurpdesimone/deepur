@@ -1,13 +1,9 @@
 package com.ruiriot.deepur.activity;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.design.widget.BottomSheetDialogFragment;
-import android.support.v7.widget.CardView;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -16,6 +12,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -24,10 +22,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.fragment.ChooseImageFragment;
-
-import org.w3c.dom.Text;
-
-import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,8 +40,8 @@ public class AccountActivity extends BaseActivity {
     @BindView(R.id.activity_account_name)
     EditText editNameText;
 
-    @BindView(R.id.activity_account_sign_out_rl)
-    RelativeLayout signOutButton;
+    @BindView(R.id.activity_account_sign_out_text)
+    TextView signOutButton;
 
     @BindView(R.id.activity_account_image)
     CircleImageView userImageProfile;
@@ -89,16 +83,11 @@ public class AccountActivity extends BaseActivity {
 
             editNameText.setText(account.getDisplayName());
             userEmail.setText(account.getEmail());
-            Uri personPhoto = account.getPhotoUrl();
-
-            Bitmap bitmap = null;
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), personPhoto);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            userImageProfile.setImageBitmap(bitmap);
+            Uri imageUri = account.getPhotoUrl();
+            Glide
+                    .with(this)
+                    .load(imageUri)
+                    .into(userImageProfile);
 
         }
 
@@ -139,9 +128,9 @@ public class AccountActivity extends BaseActivity {
             mGoogleSignInClient.signOut();
 
         }*/
-        if (i == R.id.activity_account_sign_out_rl){
+        if (i == R.id.activity_account_sign_out_text){
 
-            callActivity(AccountActivity.this, LoginActivity.class);
+            callActivity(AccountActivity.this, HomeActivity.class);
 
         }else if (i == R.id.activity_account_edit) {
 

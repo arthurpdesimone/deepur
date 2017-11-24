@@ -57,7 +57,7 @@
         android:layout_marginBottom="32dp"
         android:src="@drawable/ic_photo_camera_black_image"
         app:civ_border_width="2dp"
-        app:civ_border_color="@color/color_accent"
+        app:civ_border_color="@color/text_color_hint"
         android:layout_below="@id/activity_account_toolbar"/>
 
     <RelativeLayout
@@ -132,45 +132,25 @@
         android:layout_margin="16dp"
         android:fontFamily="sans-serif"/>
 
-    <RelativeLayout
-        android:id="@+id/activity_account_sign_out_rl"
-        android:layout_width="192dp"
+    <TextView
+        android:id="@+id/activity_account_sign_out_text"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:minWidth="96dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:background="@color/color_accent"
-        android:elevation="1dp"
-        android:layout_gravity="end"
-        android:gravity="end"
+        android:background="@drawable/bg_button"
+        android:elevation="2dp"
+        android:text="@string/done"
+        android:padding="8dp"
+        android:textSize="16sp"
+        android:textColor="@color/text_color_primary"
+        android:fontFamily="sans-serif-medium"
+        android:textAllCaps="true"
+        android:layout_centerVertical="true"
         android:layout_margin="16dp"
         android:clickable="true"
-        android:focusable="true">
-
-        <TextView
-            android:id="@+id/activity_account_sign_out_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:text="@string/done"
-            android:textSize="16sp"
-            android:textColor="@color/text_color_primary"
-            android:layout_marginStart="56dp"
-            android:layout_marginEnd="56dp"
-            android:fontFamily="sans-serif"
-            android:layout_centerVertical="true"/>
-
-        <ImageView
-            android:id="@+id/activity_account_sign_out_arrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_keyboard_arrow_right_white_24dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:padding="8dp"
-            android:tint="@color/active_icon"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"/>
-
-    </RelativeLayout>
+        android:focusable="true"/>
 
 </RelativeLayout>

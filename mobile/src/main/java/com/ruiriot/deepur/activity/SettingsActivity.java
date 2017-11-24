@@ -1,24 +1,23 @@
 package com.ruiriot.deepur.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.firebase.auth.FirebaseAuth;
 import com.ruiriot.deepur.R;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static com.ruiriot.deepur.utils.ActivityUtils.callActivity;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SettingsActivity extends BaseActivity {
 
@@ -30,6 +29,9 @@ public class SettingsActivity extends BaseActivity {
 
     @BindView(R.id.activity_settings_back_icon)
     ImageView arrowBackButton;
+
+    @BindView(R.id.activity_settings_image)
+    CircleImageView userImage;
 
     public GoogleSignInClient mGoogleSignInClient;
     public GoogleSignInAccount account;
@@ -55,6 +57,11 @@ public class SettingsActivity extends BaseActivity {
 
             userName.setText(account.getDisplayName());
 
+            Uri imageUri = account.getPhotoUrl();
+            Glide
+                    .with(this)
+                    .load(imageUri)
+                    .into(userImage);
         }
 
         accountButton.setOnClickListener(this);

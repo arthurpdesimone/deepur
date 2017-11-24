@@ -69,8 +69,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_margin="16dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/rui"/>
+                android:layout_centerVertical="true"/>
 
             <TextView
                 android:id="@+id/activity_settings_name"

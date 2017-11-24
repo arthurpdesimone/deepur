@@ -7,6 +7,7 @@
         <item name="colorControlNormal">@color/md_grey_500</item>
         <item name="colorControlActivated">@color/color_accent</item>
         <item name="colorControlHighlight">@color/color_accent</item>
+        <item name="android:windowBackground">@color/background</item>
     </style>
 
     <style name="AppThemeMD" parent="AppTheme">
