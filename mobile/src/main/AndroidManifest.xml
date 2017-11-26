@@ -96,7 +96,6 @@
             android:name=".activity.CreateAccountActivity"
             android:theme="@style/AppThemeTransparent" />
         <activity android:name=".activity.VerifyAccountActivity" />
-        <activity android:name=".activity.CategoriesDetailsActivity" />
     </application>
 
 </manifest>

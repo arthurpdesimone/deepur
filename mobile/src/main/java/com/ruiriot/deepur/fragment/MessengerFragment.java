@@ -1,20 +1,15 @@
 package com.ruiriot.deepur.fragment;
 
-import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -105,16 +100,16 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.activity_messenger, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_messenger, container, false);
         rootView.setTag(TAG);
 
         context = getActivity();
-        recyclerView = rootView.findViewById(R.id.activity_messenger_recycler_view);
+        recyclerView = rootView.findViewById(R.id.fragment_messenger_recycler_view);
 
         mCurrentLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        FloatingActionButton newMessageFAB = rootView.findViewById(R.id.activity_messenger_fab_new_message);
+        FloatingActionButton newMessageFAB = rootView.findViewById(R.id.fragment_messenger_fab_new_message);
         newMessageFAB.setOnClickListener(this);
 
         mAdapter = new MessengerAdapter(messengerUser, context);
@@ -176,7 +171,7 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
     public void onClick(View v) {
         int i = v.getId();
 
-        if(i == R.id.activity_messenger_fab_new_message){
+        if(i == R.id.fragment_messenger_fab_new_message){
             NewMessageFragment dialog = new NewMessageFragment();
             dialog.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.AppTheme);
             dialog.show(getActivity().getFragmentManager(), "");

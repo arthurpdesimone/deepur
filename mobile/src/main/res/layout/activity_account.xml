@@ -11,6 +11,7 @@
         android:id="@+id/activity_account_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/color_primary"
         app:contentInsetStart="0dp"
         android:contentInsetEnd="0dp">
 
@@ -57,7 +58,7 @@
         android:layout_marginBottom="32dp"
         android:src="@drawable/ic_photo_camera_black_image"
         app:civ_border_width="2dp"
-        app:civ_border_color="@color/text_color_hint"
+        app:civ_border_color="@color/color_accent"
         android:layout_below="@id/activity_account_toolbar"/>
 
     <RelativeLayout
@@ -145,7 +146,7 @@
         android:text="@string/done"
         android:padding="8dp"
         android:textSize="16sp"
-        android:textColor="@color/text_color_primary"
+        android:textColor="@color/background"
         android:fontFamily="sans-serif-medium"
         android:textAllCaps="true"
         android:layout_centerVertical="true"

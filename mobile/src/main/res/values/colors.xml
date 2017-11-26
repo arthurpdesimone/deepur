@@ -12,7 +12,7 @@
     <color name="color_primary_black_transparent">#1A000000</color>
     <color name="color_primary_dark_black_transparent">#4D000000</color>
 
-    <color name="background">#E6FFFFFF</color>
+    <color name="background">@color/md_grey_50</color>
     <color name="background_card">@color/md_white_1000</color>
     <color name="background_chip">@color/md_grey_200</color>
     <color name="background_dark">#303030</color>

@@ -28,7 +28,7 @@ public class CategoriesAdapter extends BaseAdapter {
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_categories, parent, false);
+                .inflate(R.layout.fragment_categories_item, parent, false);
 //        view.setOnClickListener(mOnClickListener);
         return new ViewHolder(view);
     }
