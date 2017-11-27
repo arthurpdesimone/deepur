@@ -1,6 +1,7 @@
 package com.ruiriot.deepur.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,9 +25,23 @@ public class SplashScreenActivity extends AppCompatActivity {
     }
 
     private void callLoginActivity() {
-        Intent intent = new Intent(SplashScreenActivity.this,
-                OnBoardingActivity.class);
-        startActivity(intent);
-        finish();
+        SharedPreferences settings=getSharedPreferences("prefs",0);
+        boolean firstRun=settings.getBoolean("firstRun",false);
+        if(!firstRun)//if running for first time
+        //Splash will load for first time
+        {
+            SharedPreferences.Editor editor=settings.edit();
+            editor.putBoolean("firstRun",true);
+            editor.apply();
+            Intent i=new Intent(SplashScreenActivity.this, OnBoardingActivity.class);
+            startActivity(i);
+            finish();
+        }
+        else
+        {
+            Intent a = new Intent(SplashScreenActivity.this, HomeActivity.class);
+            startActivity(a);
+            finish();
+        }
     }
 }

@@ -18,7 +18,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/categories"
-            android:layout_margin="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:textSize="20sp"
             android:fontFamily="sans-serif-medium"
             android:textColor="@color/text_color_primary"/>
@@ -40,6 +43,15 @@
             android:text="@string/fragment_categories_trending_title"
             android:textSize="14sp"
             android:textColor="@color/color_accent"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/fragment_categories_trending_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layoutManager="LinearLayoutManager"
+            android:orientation="vertical"
+            app:reverseLayout="false"
+            tools:listitem="@layout/fragment_categories_trending_item"/>
 
     </LinearLayout>
 

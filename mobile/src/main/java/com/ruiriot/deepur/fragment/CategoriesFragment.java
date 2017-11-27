@@ -18,7 +18,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ruiriot.deepur.R;
-import com.ruiriot.deepur.activity.CategoriesDetailActivity;
 import com.ruiriot.deepur.adapter.CategoriesAdapter;
 import com.ruiriot.deepur.model.Category;
 
@@ -140,7 +139,7 @@ public class CategoriesFragment extends BaseFragment implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fragment_categories_list:
-                Intent intent = new Intent(getActivity(), CategoriesDetailActivity.class);
+                Intent intent = new Intent(getActivity(), CategoriesDetailFragment.class);
                 startActivity(intent);
                 Log.i("CATEGORY-ITEM", "FOI CLICADO");
                 break;

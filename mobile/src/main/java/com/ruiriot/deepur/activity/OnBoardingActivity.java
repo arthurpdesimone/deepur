@@ -32,12 +32,7 @@ public class OnBoardingActivity extends BaseActivity {
     ImageView zero, one, two;
     ImageView[] indicators;
 
-    int lastLeftValue = 0;
-
     CoordinatorLayout mCoordinator;
-
-
-    static final String TAG = "PagerActivity";
 
     int page = 0;   //  to track page position
 
@@ -56,20 +51,20 @@ public class OnBoardingActivity extends BaseActivity {
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-        nextButton = (ImageView) findViewById(R.id.activity_onboarding_next_button);
+        nextButton = findViewById(R.id.activity_onboarding_next_button);
 
-        skipButton = (TextView) findViewById(R.id.activity_onboarding_skip_button);
-        doneButton = (TextView) findViewById(R.id.activity_onboarding_done_button);
+        skipButton = findViewById(R.id.activity_onboarding_skip_button);
+        doneButton = findViewById(R.id.activity_onboarding_done_button);
 
-        zero = (ImageView) findViewById(R.id.activity_onboarding_dots_1);
-        one = (ImageView) findViewById(R.id.activity_onboarding_dots_2);
-        two = (ImageView) findViewById(R.id.activity_onboarding_dots_3);
+        zero = findViewById(R.id.activity_onboarding_dots_1);
+        one = findViewById(R.id.activity_onboarding_dots_2);
+        two = findViewById(R.id.activity_onboarding_dots_3);
 
-        mCoordinator = (CoordinatorLayout) findViewById(R.id.activity_onboarding_coordinator);
+        mCoordinator = findViewById(R.id.activity_onboarding_coordinator);
 
         indicators = new ImageView[]{zero, one, two};
 
-        mViewPager = (ViewPager) findViewById(R.id.activity_onboarding_view_pager);
+        mViewPager = findViewById(R.id.activity_onboarding_view_pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         mViewPager.setCurrentItem(page);
