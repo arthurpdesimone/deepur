@@ -65,7 +65,7 @@
                 android:layout_gravity="center"
                 android:clickable="true"
                 android:tint="@color/active_icon"
-                android:src="@drawable/ic_attach_file_white_24dp"/>
+                android:src="@drawable/ic_attach_file_24dp"/>
 
         </LinearLayout>
 

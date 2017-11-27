@@ -21,7 +21,6 @@
             android:layout_height="156dp"
             android:contentDescription="@string/activity_login_picture_user_image"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_person_white_48dp"
             app:civ_border_color="@color/color_accent"
             app:civ_border_width="2dp"/>
 
@@ -34,7 +33,7 @@
             app:fabSize="mini"
             app:backgroundTint="@color/background_card"
             android:tint="@color/active_icon"
-            android:src="@drawable/ic_camera_alt_white_24dp"/>
+            android:src="@drawable/ic_camera_alt_24dp"/>
 
     </FrameLayout>
 
@@ -64,7 +63,7 @@
         android:layout_marginRight="32dp"
         android:layout_marginBottom="8dp"
         android:textSize="20sp"
-        android:text="email"
+        android:text="@string/activity_login_email"
         android:textColor="@color/text_color_secondary"
         android:fontFamily="sans-serif-condensed-light"/>
 
@@ -80,6 +79,7 @@
         android:textColor="@color/text_color_primary"
         android:fontFamily="sans-serif-medium"
         android:clickable="true"
+        android:focusable="true"
         android:background="@drawable/bg_button_round_stroke"
         android:text="@string/done"
         android:padding="8dp"

@@ -55,11 +55,6 @@
     <string name="fragment_item_post_love">LOVE</string>
     <string name="fragment_new_item_post_edit_text">what\'s up?</string>
     <string name="fragment_new_item_post_attached_files_text">ATTACHED FILES</string>
-    <string name="fragment_stories_post_user_edit_text"></string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_profile">ProfileActivity</string>
 
     <!-- ACTIVITY SETTINGS -->
 
@@ -89,5 +84,8 @@
     <!-- NOTIFICATIONS -->
 
     <string name="fragment_notifications_action_like">liked your post</string>
+
+    <!-- CATEGORIES -->
+    <string name="fragment_categories_trending_title">Trending topics</string>
 
 </resources>

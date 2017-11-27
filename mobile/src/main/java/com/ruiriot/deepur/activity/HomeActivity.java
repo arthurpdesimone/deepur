@@ -3,6 +3,7 @@ package com.ruiriot.deepur.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -58,9 +59,9 @@ public class HomeActivity extends BaseActivity implements MessengerFragment.OnFr
     private Bundle extras;
 
     private int[] tabIcons = {
-            R.drawable.ic_chat_white_24dp,
-            R.drawable.ic_web_white_24dp,
-            R.drawable.ic_notifications_none_white_24dp
+            R.drawable.ic_chat_24dp,
+            R.drawable.ic_web_24dp,
+            R.drawable.ic_notifications_none_24dp
     };
 
     @Override
@@ -79,7 +80,6 @@ public class HomeActivity extends BaseActivity implements MessengerFragment.OnFr
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setTitle("");
-        toolbar.setBackgroundColor(getResources().getColor(R.color.transparent));
         context = getApplication().getApplicationContext();
 
         setupViewPager(homeViewPager);
@@ -146,5 +146,10 @@ public class HomeActivity extends BaseActivity implements MessengerFragment.OnFr
             Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
             startActivity(intent);
         }
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

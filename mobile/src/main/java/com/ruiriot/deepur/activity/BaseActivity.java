@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 import com.ruiriot.deepur.fragment.CategoriesFragment;
-import com.ruiriot.deepur.fragment.ItemPostFragment;
 import com.ruiriot.deepur.model.Category;
 
 import static com.ruiriot.deepur.Constants.PERMISSIONS_REQUEST_CAMERA;
@@ -20,7 +19,7 @@ import static com.ruiriot.deepur.Constants.PERMISSIONS_REQUEST_CAMERA;
  */
 
 public class BaseActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback,
-        View.OnClickListener, ItemPostFragment.OnFragmentInteractionListener, CategoriesFragment.OnListFragmentInteractionListener,
+        View.OnClickListener, CategoriesFragment.OnListFragmentInteractionListener,
         TabLayout.OnTabSelectedListener {
 
     int resourceLayout;
@@ -81,11 +80,6 @@ public class BaseActivity extends AppCompatActivity implements ActivityCompat.On
     static {
         AppCompatDelegate.setDefaultNightMode(
                 AppCompatDelegate.MODE_NIGHT_AUTO);
-    }
-
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
     }
 
     @Override

@@ -36,6 +36,6 @@
         app:fabSize="normal"
         app:backgroundTint="@color/color_accent"
         android:tint="@color/md_white_1000"
-        android:src="@drawable/ic_message_white_24dp"/>
+        android:src="@drawable/ic_message_24dp"/>
 
  </android.support.design.widget.CoordinatorLayout>

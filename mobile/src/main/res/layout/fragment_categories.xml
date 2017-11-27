@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="com.ruiriot.deepur.activity.CategoriesActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:id="@+id/activity_categories_ll"
@@ -12,8 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:background="@color/background_card">
+        android:paddingBottom="8dp">
 
         <TextView
             android:id="@+id/activity_categories_title"
@@ -21,24 +19,31 @@
             android:layout_height="wrap_content"
             android:text="@string/categories"
             android:layout_margin="16dp"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:fontFamily="sans-serif-medium"
             android:textColor="@color/text_color_primary"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/fragment_categories_list"
-            android:name="com.ruiriot.deepur.fragment.CategoriesFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layoutManager="LinearLayoutManager"
             android:orientation="horizontal"
             app:reverseLayout="false"
-            tools:context="com.ruiriot.deepur.fragment.CategoriesFragment"
-            tools:listitem="@layout/fragment_categories"
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"/>
+            tools:listitem="@layout/fragment_categories_item"/>
+
+        <TextView
+            android:id="@+id/fragment_categories_trending_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/fragment_categories_trending_title"
+            android:textSize="14sp"
+            android:textColor="@color/color_accent"/>
 
     </LinearLayout>
 
 </RelativeLayout>
+
+
+

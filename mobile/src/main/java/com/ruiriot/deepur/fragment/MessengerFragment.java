@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,6 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
     MessengerAdapter mAdapter;
     FirebaseDatabase database;
     DatabaseReference myRef;
-    FirebaseAuth mAuth;
 
     private String id;
     private String userName;
@@ -66,8 +66,6 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("messenger");
 
-        mAuth = FirebaseAuth.getInstance();
-
         //userName = holder.getUserName().toString();
         //userText = holder.getUserText().toString();
         //userImage = holder.getUserImageView().toString();
@@ -81,9 +79,7 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
                 id = dataSnapshot.getRef().getKey();
 
                 if (messenger == null){
-                    Toast.makeText(context,
-                            "Error: could not fetch user.",
-                            Toast.LENGTH_SHORT).show();
+                    Log.i("MESSENGER", "null");
                 }else {
                     writeNewMessenger(id, userName, userText, userImage, timeStamp, unreadMessages);
                 }

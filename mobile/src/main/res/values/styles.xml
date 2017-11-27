@@ -9,18 +9,5 @@
         <item name="android:windowBackground">@color/background</item>
     </style>
 
-    <style name="EditText" parent="TextAppearance.AppCompat">
-        <item name="background">@drawable/bg_edit_text</item>
-        <item name="android:colorAccent">@color/md_white_1000</item>
-        <item name="android:colorActivatedHighlight">@color/md_white_1000</item>
-        <item name="android:textColorHighlight">@color/md_white_1000</item>
-        <item name="android:colorControlHighlight">@color/md_white_1000</item>
-        <item name="android:colorFocusedHighlight">@color/md_white_1000</item>
-    </style>
-
-    <style name="AppThemeMD_Splash" parent="AppTheme">
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
-    </style>
 
 </resources>

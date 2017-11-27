@@ -24,7 +24,7 @@
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_chat_white_24dp" />
+            android:resource="@drawable/ic_chat_24dp" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/color_accent" />
@@ -64,10 +64,8 @@
         <activity
             android:name=".activity.LoginPictureActivity"
             android:theme="@style/AppThemeMD" />
-        <activity android:name=".activity.HomeHeaderActivity" />
         <activity
             android:name=".activity.AccountActivity"
-            android:label="@string/title_activity_profile"
             android:theme="@style/AppThemeMD" />
         <activity
             android:name=".activity.SettingsActivity"
@@ -78,7 +76,6 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity android:name=".activity.CategoriesActivity" />
         <activity
             android:name=".activity.SplashScreenActivity"
             android:theme="@style/AppThemeTransparent">

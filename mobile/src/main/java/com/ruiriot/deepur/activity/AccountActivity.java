@@ -88,7 +88,6 @@ public class AccountActivity extends BaseActivity {
                     .with(this)
                     .load(imageUri)
                     .into(userImageProfile);
-
         }
 
         editNameButton.setOnClickListener(this);

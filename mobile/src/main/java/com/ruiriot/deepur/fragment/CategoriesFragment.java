@@ -24,15 +24,20 @@ import com.ruiriot.deepur.model.Category;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class CategoriesFragment extends BaseFragment implements View.OnClickListener{
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
     String TAG = "Firebase";
-    public RecyclerView recyclerView;
     public ArrayList<Category> categories = new ArrayList<>();
     FirebaseAuth mAuth;
+
+    @BindView(R.id.fragment_categories_list)
+    RecyclerView recyclerView;
 
     public CategoriesFragment() {
     }
@@ -99,20 +104,18 @@ public class CategoriesFragment extends BaseFragment implements View.OnClickList
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_categories_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_categories, container, false);
 
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(new CategoriesAdapter(categories, mListener));
+        ButterKnife.bind(this, view);
+
+        Context context = view.getContext();
+        if (mColumnCount <= 1) {
+            recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+        } else {
+            recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
+        recyclerView.setAdapter(new CategoriesAdapter(categories, mListener));
 
-        view.setOnClickListener(this);
         return view;
     }
 
@@ -145,7 +148,7 @@ public class CategoriesFragment extends BaseFragment implements View.OnClickList
     }
 
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
+
         void onListFragmentInteraction(Category item);
     }
 }

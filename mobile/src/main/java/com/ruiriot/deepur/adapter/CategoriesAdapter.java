@@ -7,9 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.ruiriot.deepur.R;
-import com.ruiriot.deepur.adapter.BaseAdapter;
 import com.ruiriot.deepur.fragment.CategoriesFragment.OnListFragmentInteractionListener;
 import com.ruiriot.deepur.model.Category;
 
