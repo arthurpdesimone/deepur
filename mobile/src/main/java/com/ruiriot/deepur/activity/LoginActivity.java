@@ -17,7 +17,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.ruiriot.deepur.R;
+import com.ruiriot.deepur.model.User;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -55,6 +59,9 @@ public class LoginActivity extends BaseActivity{
     @BindView(R.id.activity_login_coordinator)
     CoordinatorLayout coordinatorLayout;
 
+    FirebaseDatabase database;
+    DatabaseReference myRef;
+
     public GoogleSignInClient mGoogleSignInClient;
     public GoogleSignInAccount account;
 
@@ -67,6 +74,9 @@ public class LoginActivity extends BaseActivity{
 
         ButterKnife.bind(this);
 
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("users");
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .requestProfile()
@@ -76,6 +86,7 @@ public class LoginActivity extends BaseActivity{
         account = GoogleSignIn.getLastSignedInAccount(this);
 
         if (account != null){
+            addUserToFirebase();
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
             startActivity(intent);
         }
@@ -136,6 +147,16 @@ public class LoginActivity extends BaseActivity{
                 signIn();
                 break;
         }
+    }
+
+    private void addUserToFirebase() {
+
+        User user = new User();
+        user.setName(account.getDisplayName());
+        user.setEmail(account.getEmail());
+        user.setPhotoUrl(account.getPhotoUrl().toString());
+        Log.i("USUARIONOVO", "PASSOU POR AQUI");
+        myRef.push().setValue(user);
     }
 
     private void signIn() {

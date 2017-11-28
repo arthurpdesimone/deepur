@@ -8,10 +8,9 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_primary"
         android:paddingTop="24dp"
-        android:elevation="6dp"
-        app:elevation="6dp"
+        android:elevation="4dp"
+        android:theme="@style/AppToolbarTheme"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <android.support.v7.widget.Toolbar
@@ -41,6 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:src="@drawable/ic_settings_24dp"
+                android:tint="@color/active_icon"
                 android:padding="8dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"

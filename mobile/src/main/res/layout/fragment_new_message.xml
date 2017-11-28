@@ -9,7 +9,8 @@
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/color_primary"
+        android:theme="@style/AppToolbarTheme"
+        android:elevation="4dp"
         app:contentInsetStart="0dp"
         app:contentInsetEnd="0dp">
 

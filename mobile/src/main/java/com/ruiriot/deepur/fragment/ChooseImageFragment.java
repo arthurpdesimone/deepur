@@ -131,27 +131,6 @@ public class ChooseImageFragment extends BottomSheetDialogFragment implements Ac
 
             uploadPhoto(image);
 
-//            final UploadTask uploadTask = userImagesRef.putBytes(dataImage);
-//            uploadTask.addOnFailureListener(new OnFailureListener() {
-//                @Override
-//                public void onFailure(@NonNull Exception exception) {
-//                    // Handle unsuccessful uploads
-//                }
-//            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                @Override
-//                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                    // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
-//                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
-//                    if (downloadUrl != null){
-//                        storageRef.putFile(downloadUrl).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-//                                Toast.makeText(getContext(), "UPOU A IMAGEM", Toast.LENGTH_LONG).show();
-//                            }
-//                        });
-//                    }
-//                }
-//            });
             dismiss();
         }
         if (requestCode == PERMISSIONS_REQUEST_STORAGE) {
