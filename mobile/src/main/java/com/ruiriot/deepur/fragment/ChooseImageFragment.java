@@ -19,9 +19,12 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.Manifest;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -42,10 +45,12 @@ public class ChooseImageFragment extends BottomSheetDialogFragment implements Ac
     @BindView(R.id.fragment_choose_image_album_button_permission)
     TextView permissionButton;
 
+    @BindView(R.id.fragment_choose_image_album_text)
+    TextView allowAccessText;
+
     @BindView(R.id.fragment_choose_image_camera_button)
     LinearLayout cameraButton;
 
-    @BindView(R.id.activity_account_image)
     CircleImageView userImageView;
     StorageReference userImagesRef;
     StorageReference storageRef;
@@ -122,28 +127,65 @@ public class ChooseImageFragment extends BottomSheetDialogFragment implements Ac
             userImageView.setDrawingCacheEnabled(true);
             userImageView.buildDrawingCache();
             image = userImageView.getDrawingCache();
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-            byte[] dataImage = baos.toByteArray();
             userImageView.setImageBitmap(image);
-            UploadTask uploadTask = userImagesRef.putBytes(dataImage);
-            uploadTask.addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    // Handle unsuccessful uploads
-                }
-            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
-                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                }
-            });
+
+            uploadPhoto(image);
+
+//            final UploadTask uploadTask = userImagesRef.putBytes(dataImage);
+//            uploadTask.addOnFailureListener(new OnFailureListener() {
+//                @Override
+//                public void onFailure(@NonNull Exception exception) {
+//                    // Handle unsuccessful uploads
+//                }
+//            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                @Override
+//                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                    // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+//                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
+//                    if (downloadUrl != null){
+//                        storageRef.putFile(downloadUrl).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+//                                Toast.makeText(getContext(), "UPOU A IMAGEM", Toast.LENGTH_LONG).show();
+//                            }
+//                        });
+//                    }
+//                }
+//            });
             dismiss();
         }
         if (requestCode == PERMISSIONS_REQUEST_STORAGE) {
             isExternalStorageWritable();
+
         }
+    }
+
+    private void uploadPhoto(Bitmap image) {
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] dataImage = baos.toByteArray();
+        final UploadTask uploadTask = userImagesRef.putBytes(dataImage);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle unsuccessful uploads
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                if (downloadUrl != null){
+                    storageRef.putFile(downloadUrl).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                            Toast.makeText(getContext(), "UPOU A IMAGEM", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+            }
+        });
     }
 
     public void onClick(View v){
@@ -155,6 +197,8 @@ public class ChooseImageFragment extends BottomSheetDialogFragment implements Ac
                     != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{Manifest.permission.CAMERA},
                         PERMISSIONS_REQUEST_CAMERA);
+                allowAccessText.setVisibility(View.GONE);
+                permissionButton.setVisibility(View.GONE);
             } else{
                 Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
                 startActivityForResult(intent, PERMISSIONS_REQUEST_CAMERA);

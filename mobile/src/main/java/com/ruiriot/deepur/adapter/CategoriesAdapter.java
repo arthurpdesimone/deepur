@@ -2,6 +2,7 @@ package com.ruiriot.deepur.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.google.firebase.storage.FirebaseStorage;
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.fragment.CategoriesFragment.OnListFragmentInteractionListener;
 import com.ruiriot.deepur.model.Category;
@@ -27,6 +29,7 @@ public class CategoriesAdapter extends BaseAdapter {
     final List<Category> mValues;
     final OnListFragmentInteractionListener mListener;
     Context context;
+    FirebaseStorage storage = FirebaseStorage.getInstance();
 
     public CategoriesAdapter(List<Category> items, OnListFragmentInteractionListener listener) {
         mValues = items;
@@ -49,6 +52,12 @@ public class CategoriesAdapter extends BaseAdapter {
         holder.categoryName.setText(holder.mItem.description);
 
         String stringCategoryImage = mValues.get(position).image;
+
+//        Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+//            public void onGenerated(Palette p) {
+//                // Use generated instance
+//            }
+//        });
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override

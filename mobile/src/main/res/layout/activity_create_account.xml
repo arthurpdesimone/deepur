@@ -25,7 +25,6 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/back"
             android:src="@drawable/ic_arrow_back_24dp"
-            android:tint="@color/active_icon"
             android:padding="8dp"
             android:layout_margin="8dp"
             android:clickable="true"
@@ -63,7 +62,6 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/user_name"
         android:src="@drawable/ic_person_24dp"
-        android:tint="@color/inactive_icon"
         android:padding="8dp"
         android:layout_margin="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/activity_create_account_name_edit_text"
@@ -94,7 +92,6 @@
         android:contentDescription="@string/activity_login_email"
         android:padding="8dp"
         android:src="@drawable/ic_email_24dp"
-        android:tint="@color/inactive_icon"
         app:layout_constraintBottom_toBottomOf="@+id/activity_create_account_email_edit_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/activity_create_account_email_edit_text" />
@@ -125,7 +122,6 @@
         android:contentDescription="@string/activity_login_password"
         android:padding="8dp"
         android:src="@drawable/ic_lock_24dp"
-        android:tint="@color/inactive_icon"
         app:layout_constraintBottom_toBottomOf="@+id/activity_create_account_password_edit_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/activity_create_account_password_edit_text" />

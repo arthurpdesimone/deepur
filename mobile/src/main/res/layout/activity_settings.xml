@@ -127,54 +127,38 @@
         android:background="@color/divider"/>
 
     <RelativeLayout
+        android:id="@+id/activity_settings_day_night"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:paddingStart="64dp"
+        android:paddingEnd="64dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginStart="64dp"
-            android:layout_marginEnd="64dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_centerVertical="true">
-
-            <TextView
-                android:id="@+id/activity_settings_day_night_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_settings_day_night_title"
-                android:textSize="14sp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:fontFamily="sans-serif"
-                android:textColor="@color/text_color_primary"/>
-
-            <TextView
-                android:id="@+id/activity_settings_day_night_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_settings_day_night_description"
-                android:textSize="14sp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="2dp"
-                android:fontFamily="sans-serif"
-                android:textColor="@color/text_color_secondary"/>
-
-        </LinearLayout>
-
-        <Switch
-            android:id="@+id/activity_settings_switch_daynight"
+        <TextView
+            android:id="@+id/activity_settings_day_night_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:padding="8dp"
-            android:elevation="1dp"
+            android:text="@string/activity_settings_day_night_title"
+            android:textSize="14sp"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"/>
+            android:layout_marginEnd="8dp"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/text_color_primary"/>
+
+        <TextView
+            android:id="@+id/activity_settings_day_night_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="On"
+            android:layout_below="@id/activity_settings_day_night_title"
+            android:textSize="14sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="2dp"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/text_color_secondary"/>
 
     </RelativeLayout>
 
