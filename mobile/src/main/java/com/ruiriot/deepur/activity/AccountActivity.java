@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetDialogFragment;
+import android.support.design.widget.FloatingActionButton;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -52,6 +53,9 @@ public class AccountActivity extends BaseActivity {
     @BindView(R.id.activity_account_email)
     TextView userEmail;
 
+    @BindView(R.id.activity_account_image_fab)
+    FloatingActionButton floatingActionButton;
+
     boolean clicked = false;
     DatabaseReference myUserRef;
     FirebaseDatabase database;
@@ -95,6 +99,7 @@ public class AccountActivity extends BaseActivity {
         userImageProfile.setOnClickListener(this);
         arrowBackButton.setOnClickListener(this);
         editNameTextDone.setOnClickListener(this);
+        floatingActionButton.setOnClickListener(this);
 
         editNameText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -141,7 +146,7 @@ public class AccountActivity extends BaseActivity {
             editNameButton.setVisibility(View.GONE);
             editNameTextDone.setVisibility(View.VISIBLE);
 
-        } else if(i == R.id.activity_account_image){
+        } else if(i == R.id.activity_account_image_fab){
 
             BottomSheetDialogFragment bottomSheetDialogFragment = new ChooseImageFragment();
             bottomSheetDialogFragment.show(getSupportFragmentManager(), bottomSheetDialogFragment.getTag());
