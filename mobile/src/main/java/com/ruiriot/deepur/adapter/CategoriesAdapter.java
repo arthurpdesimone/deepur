@@ -2,6 +2,7 @@ package com.ruiriot.deepur.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.fragment.CategoriesFragment.OnListFragmentInteractionListener;
 import com.ruiriot.deepur.model.Category;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -40,7 +42,6 @@ public class CategoriesAdapter extends BaseAdapter {
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fragment_categories_item, parent, false);
-//        view.setOnClickListener(mOnClickListener);
         context = view.getContext();
         return new ViewHolder(view);
     }
@@ -51,13 +52,15 @@ public class CategoriesAdapter extends BaseAdapter {
         holder.mItem = mValues.get(position);
         holder.categoryName.setText(holder.mItem.description);
 
-        String stringCategoryImage = mValues.get(position).image;
-
-//        Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
-//            public void onGenerated(Palette p) {
-//                // Use generated instance
-//            }
-//        });
+        Uri uriCategoryImage = Uri.parse(mValues.get(position).image);
+        InputStream image_stream = null;
+        try {
+            image_stream = context.getContentResolver().openInputStream(uriCategoryImage);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        Bitmap bitmap = BitmapFactory.decodeStream(image_stream);
+        holder.categoryImage.setImageBitmap(bitmap);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override

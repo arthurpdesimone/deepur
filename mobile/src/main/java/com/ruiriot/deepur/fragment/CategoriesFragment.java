@@ -1,7 +1,6 @@
 package com.ruiriot.deepur.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,7 +25,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CategoriesFragment extends BaseFragment implements View.OnClickListener{
+public class CategoriesFragment extends BaseFragment{
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
@@ -119,31 +118,25 @@ public class CategoriesFragment extends BaseFragment implements View.OnClickList
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        try {
+            mListener = (OnListFragmentInteractionListener) getActivity();
+        } catch (ClassCastException e) {
+            throw new ClassCastException(getActivity().toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
-        }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.fragment_categories_list:
-                Intent intent = new Intent(getActivity(), CategoriesDetailFragment.class);
-                startActivity(intent);
-                Log.i("CATEGORY-ITEM", "FOI CLICADO");
-                break;
-        }
     }
 
     public interface OnListFragmentInteractionListener {
