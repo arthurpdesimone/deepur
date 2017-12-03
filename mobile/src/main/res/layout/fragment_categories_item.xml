@@ -2,9 +2,9 @@
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="144dp"
-    android:layout_height="156dp"
-    app:cardCornerRadius="2dp"
+    android:layout_width="160dp"
+    android:layout_height="220dp"
+    app:cardCornerRadius="8dp"
     android:elevation="2dp"
     android:layout_margin="8dp">
 
@@ -16,6 +16,7 @@
             android:id="@+id/fragment_categories_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:src="@drawable/games"
             android:scaleType="centerCrop"/>
 
         <TextView
@@ -23,11 +24,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:text=""
+            android:text="Gamers"
             android:padding="16dp"
             android:textColor="@color/text_color_secondary"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif"/>
+            android:textSize="20sp"
+            android:fontFamily="sans-serif-medium"/>
 
     </RelativeLayout>
 
