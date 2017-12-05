@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.adapter.CategoriesAdapter;
+import com.ruiriot.deepur.adapter.TrendingCategoriesAdapter;
 import com.ruiriot.deepur.model.Category;
 
 import java.util.ArrayList;
@@ -35,7 +36,10 @@ public class CategoriesFragment extends BaseFragment{
     FirebaseAuth mAuth;
 
     @BindView(R.id.fragment_categories_list)
-    RecyclerView recyclerView;
+    RecyclerView recyclerViewCategories;
+
+    @BindView(R.id.fragment_categories_trending_list)
+    RecyclerView recyclerViewTrending;
 
     public CategoriesFragment() {
     }
@@ -58,7 +62,7 @@ public class CategoriesFragment extends BaseFragment{
                 Category categoriesItem = dataSnapshot.getValue(Category.class);
                 Log.d(TAG, "onChildAdded: " + categoriesItem);
                 categories.add(categoriesItem);
-                recyclerView.getAdapter().notifyDataSetChanged();
+                recyclerViewCategories.getAdapter().notifyDataSetChanged();
             }
 
             @Override
@@ -108,11 +112,12 @@ public class CategoriesFragment extends BaseFragment{
 
         Context context = view.getContext();
         if (mColumnCount <= 1) {
-            recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+            recyclerViewCategories.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         } else {
-            recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
+            recyclerViewCategories.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
-        recyclerView.setAdapter(new CategoriesAdapter(categories, mListener));
+        recyclerViewCategories.setAdapter(new CategoriesAdapter(categories, mListener));
+        recyclerViewTrending.setAdapter(new TrendingCategoriesAdapter(categories, mListener));
 
         return view;
     }

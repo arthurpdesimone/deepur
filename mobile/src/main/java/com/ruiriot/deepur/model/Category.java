@@ -1,5 +1,7 @@
 package com.ruiriot.deepur.model;
 
+import java.util.Date;
+
 /**
  * Created by ruiri on 18-Nov-17.
  */
@@ -9,6 +11,7 @@ public class Category {
     public String id;
     public String description;
     public String image;
+    public Long date;
 
     public Category() {
 
@@ -27,6 +30,8 @@ public class Category {
         this.id = id;
         this.description = description;
         this.image = image;
+
+        date = new Date().getTime();
     }
 
     public String getId() {

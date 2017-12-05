@@ -166,7 +166,7 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
 
         if(i == R.id.fragment_messenger_fab_new_message){
             NewMessageFragment dialog = new NewMessageFragment();
-            dialog.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.AppTheme);
+            dialog.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.AppThemeMD);
             dialog.show(getActivity().getFragmentManager(), "");
         }
     }
