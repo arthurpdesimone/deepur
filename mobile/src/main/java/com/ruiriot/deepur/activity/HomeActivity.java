@@ -48,15 +48,7 @@ public class HomeActivity extends BaseActivity implements MessengerFragment.OnFr
 
     @BindView(R.id.activity_home_user_name)
     TextView userName;
-
-    FirebaseAuth mAuth;
-
     Context context;
-
-    List<NotificationHolder> notificationsList = new ArrayList<>();
-    List<StoriesHolder> storiesList = new ArrayList<>();
-
-    private Bundle extras;
 
     private int[] tabIcons = {
             R.drawable.ic_chat_24dp,
@@ -71,12 +63,7 @@ public class HomeActivity extends BaseActivity implements MessengerFragment.OnFr
 
         ButterKnife.bind(this);
 
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-
-        extras = getIntent().getExtras();
-
-        toolbar = (Toolbar) findViewById(R.id.activity_home_toolbar);
+        toolbar = findViewById(R.id.activity_home_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setTitle("");

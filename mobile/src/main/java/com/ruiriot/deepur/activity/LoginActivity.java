@@ -86,7 +86,6 @@ public class LoginActivity extends BaseActivity{
         account = GoogleSignIn.getLastSignedInAccount(this);
 
         if (account != null){
-            addUserToFirebase();
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
             startActivity(intent);
         }
@@ -109,6 +108,7 @@ public class LoginActivity extends BaseActivity{
 
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            addUserToFirebase();
             handleSignInResult(task);
         }
     }
