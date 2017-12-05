@@ -36,7 +36,10 @@
             app:reverseLayout="false"
             tools:listitem="@layout/fragment_categories_item"/>
 
-
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_chevron_right_36dp"/>
 
     </RelativeLayout>
 
@@ -47,7 +50,8 @@
         android:layout_margin="16dp"
         android:text="@string/fragment_categories_trending_title"
         android:textSize="14sp"
-        android:textColor="@color/color_accent"/>
+        android:fontFamily="sans-serif"
+        android:textColor="@color/text_color_primary"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/fragment_categories_trending_list"

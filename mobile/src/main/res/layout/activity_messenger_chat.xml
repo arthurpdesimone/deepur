@@ -5,6 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/activity_messenger_chat_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -20,7 +21,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android">
 
         <EditText
-            android:id="@+id/activity_messenger_edit_text"
+            android:id="@+id/activity_messenger_chat_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/activity_messenger_edit_text"
@@ -43,16 +44,20 @@
             android:padding="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
+            android:focusable="true"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"/>
 
         <ImageView
+            android:id="@+id/activity_messenger_chat_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_send_24dp"
+            android:contentDescription="@string/back"
             android:padding="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
+            android:focusable="true"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_alignParentEnd="true"/>

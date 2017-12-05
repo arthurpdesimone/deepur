@@ -1,49 +1,37 @@
 package com.ruiriot.deepur.model;
 
+import android.net.Uri;
+
+import java.util.Date;
+
 /**
  * Created by ruiriot on 30/08/17.
  */
 
 public class MessageP2P {
-    private String id; //message id
-    private String content;
-    private int type;
+//    private String id; //message id
+//    private int type;
     private String senderId;
     private String senderName;
+    private String content;
+    private Long timestamp;
 
-    //photo url for now wont be needed
-    private String photoURL;
-    private String recieverId;
-    private Long timestamp; //timestamp of the message
-    private String senderDeleted; //receiver - could be a group
-    private String receiverDeleted;
+    private Uri photoURL;
+//    private String receiverId;
+//    private String senderDeleted; //receiver - could be a group
+//    private String receiverDeleted;
 
+    public MessageP2P (){
 
-    public MessageP2P() {
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
+    public MessageP2P(String senderId,String senderName, String content, Uri photoURL) {
+        this.senderId = senderId;
+        this.senderName = senderName;
         this.content = content;
-    }
+        this.photoURL = photoURL;
 
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
+        timestamp = new Date().getTime();
     }
 
     public String getSenderId() {
@@ -62,22 +50,6 @@ public class MessageP2P {
         this.senderName = senderName;
     }
 
-    public String getPhotoURL() {
-        return photoURL;
-    }
-
-    public void setPhotoURL(String photoURL) {
-        this.photoURL = photoURL;
-    }
-
-    public String getRecieverId() {
-        return recieverId;
-    }
-
-    public void setRecieverId(String recieverId) {
-        this.recieverId = recieverId;
-    }
-
     public Long getTimestamp() {
         return timestamp;
     }
@@ -86,19 +58,19 @@ public class MessageP2P {
         this.timestamp = timestamp;
     }
 
-    public String getSenderDeleted() {
-        return senderDeleted;
+    public Uri getPhotoURL() {
+        return photoURL;
     }
 
-    public void setSenderDeleted(String senderDeleted) {
-        this.senderDeleted = senderDeleted;
+    public void setPhotoURL(Uri photoURL) {
+        this.photoURL = photoURL;
     }
 
-    public String getReceiverDeleted() {
-        return receiverDeleted;
+    public String getContent() {
+        return content;
     }
 
-    public void setReceiverDeleted(String receiverDeleted) {
-        this.receiverDeleted = receiverDeleted;
+    public void setContent(String content) {
+        this.content = content;
     }
 }

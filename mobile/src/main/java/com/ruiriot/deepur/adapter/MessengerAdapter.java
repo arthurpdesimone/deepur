@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ruiriot.deepur.R;
-import com.ruiriot.deepur.adapter.holder.MessengerHolder;
+import com.ruiriot.deepur.adapter.holder.Messenger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,30 +16,29 @@ import java.util.List;
  * Created by ruiri on 12-Jul-17.
  */
 
-public class MessengerAdapter extends RecyclerView.Adapter<MessengerHolder> {
+public class MessengerAdapter extends RecyclerView.Adapter<Messenger> {
 
-    private List<MessengerHolder> messengerUsers = new ArrayList<>();
+    private List<Messenger> messengerUsers = new ArrayList<>();
     private Context context;
 
-    public MessengerAdapter(List<MessengerHolder> users, Context context) {
+    public MessengerAdapter(List<Messenger> users, Context context) {
         this.messengerUsers = users;
         this.context = context;
 
     }
     @Override
-    public MessengerHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public Messenger onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(context).inflate(R.layout.fragment_messenger_item, viewGroup, false);
-        return new MessengerHolder(view);
+        return new Messenger(view);
     }
 
     @Override
-    public void onBindViewHolder(MessengerHolder messengerHolder, int i) {
+    public void onBindViewHolder(Messenger messenger, int i) {
 
-        messengerHolder.setUserImageView(messengerUsers.get(i).getUserImageView());
-        messengerHolder.setUserName(messengerUsers.get(i).getUserName());
-        messengerHolder.setUserText(messengerUsers.get(i).getUserText());
-        messengerHolder.setTimeStamp(messengerUsers.get(i).getTimeStamp());
-        messengerHolder.setUnreadMessages(messengerUsers.get(i).getUnreadMessages());
+        messenger.setUserImageView(messengerUsers.get(i).getUserImageView());
+        messenger.setUserName(messengerUsers.get(i).getUserName());
+        messenger.setUserText(messengerUsers.get(i).getUserText());
+        messenger.setTimeStamp(messengerUsers.get(i).getTimeStamp());
     }
 
     @Override

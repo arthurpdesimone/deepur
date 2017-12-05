@@ -26,6 +26,7 @@
     <string name="back">Back</string>
     <string name="edit">Edit</string>
     <string name="close">Close</string>
+    <string name="send">Send</string>
 
     <!-- LOGIN -->
     <string name="activity_login_email">Email</string>

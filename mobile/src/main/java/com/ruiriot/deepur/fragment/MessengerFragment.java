@@ -11,9 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,8 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.adapter.MessengerAdapter;
-import com.ruiriot.deepur.adapter.holder.MessengerHolder;
-import com.ruiriot.deepur.model.Messenger;
+import com.ruiriot.deepur.adapter.holder.Messenger;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,7 +34,7 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
 
     private OnFragmentInteractionListener mListener;
     private RecyclerView recyclerView;
-    private List<MessengerHolder> messengerUser = new ArrayList<>();
+    private List<Messenger> messengerUser = new ArrayList<>();
     Context context;
     RecyclerView.LayoutManager mCurrentLayoutManager;
     private static final String TAG = "MessengerFragment";
@@ -51,7 +48,7 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
     private String userImage;
     private String timeStamp;
     private String unreadMessages;
-    MessengerHolder holder;
+    Messenger holder;
 
     private static final int DATASET_COUNT = 60;
 
@@ -75,7 +72,7 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Messenger messenger = dataSnapshot.getValue(Messenger.class);
+                com.ruiriot.deepur.model.Messenger messenger = dataSnapshot.getValue(com.ruiriot.deepur.model.Messenger.class);
                 id = dataSnapshot.getRef().getKey();
 
                 if (messenger == null){
@@ -152,7 +149,7 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
     }
 
     private void writeNewMessenger(String id, String userName, String userText, String userImage, String timeStamp, String unreadMessages) {
-        Messenger messengerUsers = new Messenger(id, userName, userText, userImage, timeStamp, unreadMessages);
+        com.ruiriot.deepur.model.Messenger messengerUsers = new com.ruiriot.deepur.model.Messenger(id, userName, userText, userImage, timeStamp, unreadMessages);
         myRef.child(id).setValue(messengerUsers);
 
         Map<String, Object> messengerValues = messengerUsers.toMap();
@@ -171,7 +168,6 @@ public class MessengerFragment extends BaseFragment implements View.OnClickListe
             NewMessageFragment dialog = new NewMessageFragment();
             dialog.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.AppTheme);
             dialog.show(getActivity().getFragmentManager(), "");
-            //writeNewMessenger(id, userName, userText, userImage, timeStamp, unreadMessages);
         }
     }
 }
