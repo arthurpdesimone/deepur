@@ -4,17 +4,35 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
-    android:background="@drawable/bg_button_round_stroke">
+    android:layout_marginStart="72dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp">
 
     <TextView
         android:id="@+id/fragment_messenger_message_sent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_chat"
         android:text="@string/lorem"
-        android:padding="16dp"
+        android:padding="8dp"
         android:textSize="14sp"
-        android:textColor="@color/text_color_secondary_black"
+        android:textColor="@color/text_color_secondary"
+        android:fontFamily="sans-serif"/>
+
+    <TextView
+        android:id="@+id/fragment_messenger_message_sent_timestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fragment_messenger_message_sent"
+        android:text="12h32"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:drawableStart="@drawable/ic_check_18dp"
+        android:drawablePadding="4dp"
+        android:textSize="12sp"
+        android:textColor="@color/text_color_secondary"
         android:fontFamily="sans-serif"/>
 
 </RelativeLayout>
