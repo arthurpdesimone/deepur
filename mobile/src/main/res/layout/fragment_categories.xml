@@ -37,9 +37,17 @@
             tools:listitem="@layout/fragment_categories_item"/>
 
         <ImageView
+            android:id="@+id/fragment_categories_list_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_chevron_right_48dp"/>
+            android:src="@drawable/ic_chevron_right_48dp"
+            android:background="@drawable/bg_round_white"
+            android:visibility="gone"
+            android:elevation="6dp"
+            android:layout_margin="16dp"
+            android:padding="8dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"/>
 
     </RelativeLayout>
 
