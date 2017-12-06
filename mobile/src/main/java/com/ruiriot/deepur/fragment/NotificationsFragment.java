@@ -20,14 +20,26 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ruiriot.deepur.R;
+import com.ruiriot.deepur.adapter.NotificationAdapter;
+import com.ruiriot.deepur.adapter.holder.NotificationHolder;
+import com.ruiriot.deepur.model.Category;
 import com.ruiriot.deepur.model.Messenger;
 import com.ruiriot.deepur.model.Notification;
+
+import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 public class NotificationsFragment extends BaseFragment{
 
     private OnFragmentInteractionListener mListener;
-    private RecyclerView recyclerView;
+
+    @BindView(R.id.fragment_notifications_recycler_view)
+    RecyclerView recyclerView;
+
+    public ArrayList<Notification> notifications = new ArrayList<>();
 
     FirebaseDatabase database;
     DatabaseReference myRef;
@@ -80,7 +92,13 @@ public class NotificationsFragment extends BaseFragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notifications, container, false);
+        View view = inflater.inflate(R.layout.fragment_notifications, container, false);
+
+        ButterKnife.bind(this, view);
+
+        recyclerView.setAdapter(new NotificationAdapter(notifications, (Context) mListener));
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -102,15 +120,27 @@ public class NotificationsFragment extends BaseFragment{
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        try {
+            mListener = (OnFragmentInteractionListener) getActivity();
+        } catch (ClassCastException e) {
+            throw new ClassCastException(getActivity().toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
 
-    private void writeNewNotification(String userId, String whom, String action, String category, String date, String image) {
+    private void writeNewNotification(String userId, String whom, String action, String category, String image) {
 
         String key = myRef.child("notification").push().getKey();
-        Notification notification = new Notification(userId, whom, action, category, date, image);
+        Notification notification = new Notification(userId, whom, action, category, image);
         myRef.child("notification").child(userId).setValue(notification);
     }
+
 }

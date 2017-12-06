@@ -6,7 +6,8 @@
     android:layout_height="120dp"
     app:cardCornerRadius="8dp"
     android:elevation="2dp"
-    android:layout_margin="8dp">
+    app:cardUseCompatPadding="true"
+    android:layout_margin="4dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,7 +17,6 @@
             android:id="@+id/fragment_categories_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/games"
             android:scaleType="centerCrop"/>
 
         <TextView

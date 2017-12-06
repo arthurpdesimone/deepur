@@ -19,7 +19,7 @@
             android:id="@+id/fragment_categories_trending_item_settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_more_vert_24dp"
+            android:src="@drawable/ic_favorite_border_24dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="8dp"
