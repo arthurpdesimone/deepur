@@ -1,37 +1,22 @@
 package com.ruiriot.deepur.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by ruiri on 18-Nov-17.
  */
 
-public class Category {
+public class Category implements Serializable {
 
-    public String id;
-    public String description;
-    public String image;
-    public Long date;
+    private String id;
+    private String name;
+    private String description;
+    private String image;
+    private Long timestamp;
 
     public Category() {
 
-    }
-
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id='" + id + '\'' +
-                ", description='" + description + '\'' +
-                ", image='" + image + '\'' +
-                '}';
-    }
-
-    public Category(String id, String description, String image) {
-        this.id = id;
-        this.description = description;
-        this.image = image;
-
-        date = new Date().getTime();
     }
 
     public String getId() {
@@ -56,5 +41,32 @@ public class Category {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public Long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", image='" + image + '\'' +
+                ", timestamp=" + timestamp +
+                '}';
     }
 }

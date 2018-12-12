@@ -40,9 +40,6 @@ public class HomeActivity extends BaseActivity implements MessengerFragment.OnFr
     @BindView(R.id.activity_home_toolbar)
     Toolbar toolbar;
 
-    @BindView(R.id.activity_home_tabs)
-    TabLayout tabLayout;
-
     @BindView(R.id.activity_main_header_settings_icon)
     ImageView settingsButton;
 
@@ -70,8 +67,8 @@ public class HomeActivity extends BaseActivity implements MessengerFragment.OnFr
         context = getApplication().getApplicationContext();
 
         setupViewPager(homeViewPager);
-        tabLayout.setupWithViewPager(homeViewPager);
-        setupTabIcons();
+//        tabLayout.setupWithViewPager(homeViewPager);
+////        setupTabIcons();
 
         if (savedInstanceState == null) {
             // Set the local night mode to some value
@@ -83,44 +80,44 @@ public class HomeActivity extends BaseActivity implements MessengerFragment.OnFr
         settingsButton.setOnClickListener(this);
     }
 
-    private void setupTabIcons() {
-        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
-        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
-        tabLayout.getTabAt(2).setIcon(tabIcons[2]);
-
-        tabLayout.getTabAt(1).getIcon().setAlpha(128);
-        tabLayout.getTabAt(2).getIcon().setAlpha(128);
-
-        tabLayout.getTabAt(0).getIcon().setColorFilter(getResources().getColor(R.color.color_accent), PorterDuff.Mode.MULTIPLY);
-        tabLayout.getTabAt(1).getIcon().setColorFilter(getResources().getColor(R.color.inactive_icon), PorterDuff.Mode.MULTIPLY);
-        tabLayout.getTabAt(2).getIcon().setColorFilter(getResources().getColor(R.color.inactive_icon), PorterDuff.Mode.MULTIPLY);
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                tab.getIcon().setAlpha(255);
-                tab.getIcon().setColorFilter(getResources().getColor(R.color.color_accent), PorterDuff.Mode.MULTIPLY);
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-                tab.getIcon().setAlpha(128);
-                tab.getIcon().setColorFilter(getResources().getColor(R.color.inactive_icon), PorterDuff.Mode.MULTIPLY);
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-                tab.getIcon().setAlpha(255);
-                tab.getIcon().setColorFilter(getResources().getColor(R.color.color_accent), PorterDuff.Mode.MULTIPLY);
-            }
-        });
-    }
-
+//    private void setupTabIcons() {
+//        tabLayout.getTabAt(0).setIcon(tabIcons[0]);
+//        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
+//        tabLayout.getTabAt(2).setIcon(tabIcons[2]);
+//
+//        tabLayout.getTabAt(1).getIcon().setAlpha(128);
+//        tabLayout.getTabAt(2).getIcon().setAlpha(128);
+//
+//        tabLayout.getTabAt(0).getIcon().setColorFilter(getResources().getColor(R.color.color_accent), PorterDuff.Mode.MULTIPLY);
+//        tabLayout.getTabAt(1).getIcon().setColorFilter(getResources().getColor(R.color.inactive_icon), PorterDuff.Mode.MULTIPLY);
+//        tabLayout.getTabAt(2).getIcon().setColorFilter(getResources().getColor(R.color.inactive_icon), PorterDuff.Mode.MULTIPLY);
+//
+//        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tab) {
+//                tab.getIcon().setAlpha(255);
+//                tab.getIcon().setColorFilter(getResources().getColor(R.color.color_accent), PorterDuff.Mode.MULTIPLY);
+//            }
+//
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) {
+//                tab.getIcon().setAlpha(128);
+//                tab.getIcon().setColorFilter(getResources().getColor(R.color.inactive_icon), PorterDuff.Mode.MULTIPLY);
+//            }
+//
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) {
+//                tab.getIcon().setAlpha(255);
+//                tab.getIcon().setColorFilter(getResources().getColor(R.color.color_accent), PorterDuff.Mode.MULTIPLY);
+//            }
+//        });
+//    }
+//
     private void setupViewPager(ViewPager viewPager) {
         HomeAdapter adapter = new HomeAdapter(getSupportFragmentManager());
-        adapter.addFragment(new MessengerFragment(), getResources().getString(R.string.title_activity_messenger));
+//        adapter.addFragment(new MessengerFragment(), getResources().getString(R.string.title_activity_messenger));
         adapter.addFragment(new CategoriesFragment(), getResources().getString(R.string.categories));
-        adapter.addFragment(new NotificationsFragment(), getResources().getString(R.string.activity_settings_notification_title));
+//        adapter.addFragment(new NotificationsFragment(), getResources().getString(R.string.activity_settings_notification_title));
         viewPager.setAdapter(adapter);
     }
 

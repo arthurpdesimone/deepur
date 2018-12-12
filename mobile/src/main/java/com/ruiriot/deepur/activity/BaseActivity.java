@@ -19,7 +19,7 @@ import static com.ruiriot.deepur.Constants.PERMISSIONS_REQUEST_CAMERA;
  */
 
 public class BaseActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback,
-        View.OnClickListener, CategoriesFragment.OnListFragmentInteractionListener,
+        View.OnClickListener,
         TabLayout.OnTabSelectedListener {
 
     int resourceLayout;
@@ -80,11 +80,6 @@ public class BaseActivity extends AppCompatActivity implements ActivityCompat.On
     static {
         AppCompatDelegate.setDefaultNightMode(
                 AppCompatDelegate.MODE_NIGHT_AUTO);
-    }
-
-    @Override
-    public void onListFragmentInteraction(Category item) {
-
     }
 
     @Override

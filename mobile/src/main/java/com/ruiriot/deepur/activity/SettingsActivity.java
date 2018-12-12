@@ -39,9 +39,6 @@ public class SettingsActivity extends BaseActivity {
     @BindView(R.id.activity_settings_image)
     CircleImageView userImage;
 
-    @BindView(R.id.activity_settings_day_night)
-    RelativeLayout dayNight;
-
     public GoogleSignInClient mGoogleSignInClient;
     public GoogleSignInAccount account;
 
@@ -76,7 +73,6 @@ public class SettingsActivity extends BaseActivity {
 
         accountButton.setOnClickListener(this);
         arrowBackButton.setOnClickListener(this);
-        dayNight.setOnClickListener(this);
     }
 
     @Override
@@ -89,10 +85,13 @@ public class SettingsActivity extends BaseActivity {
 
         }else if (i == R.id.activity_settings_back_icon){
             finish();
-        }else if(i == R.id.activity_settings_day_night){
-            Intent intent = new Intent(SettingsActivity.this, DayNightModeActivity.class);
-            startActivity(intent);
+        }else if (i == R.id.activity_settings_account_logout){
+            signOut();
         }
+    }
+
+    private void signOut() {
+        mGoogleSignInClient.signOut();
     }
 
 }

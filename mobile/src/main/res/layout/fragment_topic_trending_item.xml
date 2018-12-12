@@ -16,7 +16,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/fragment_categories_trending_item_settings"
+            android:id="@+id/fragment_topic_trending_item_settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_favorite_border_24dp"
@@ -26,7 +26,7 @@
             android:padding="8dp"/>
 
         <ImageView
-            android:id="@+id/fragment_categories_trending_item_image"
+            android:id="@+id/fragment_topic_trending_item_image"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:scaleType="centerCrop"
@@ -37,7 +37,7 @@
             android:layout_margin="16dp"/>
 
         <TextView
-            android:id="@+id/fragment_categories_trending_item_title"
+            android:id="@+id/fragment_topic_trending_item_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="For Gamers"
@@ -52,7 +52,7 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
-            android:id="@+id/fragment_categories_trending_item_timestamp"
+            android:id="@+id/fragment_topic_trending_item_timestamp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nov 27, 2017 * By Rui Donizete"
@@ -62,7 +62,7 @@
             android:layout_marginStart="72dp"
             android:layout_marginEnd="72dp"
             android:layout_marginTop="4dp"
-            app:layout_constraintTop_toBottomOf="@id/fragment_categories_trending_item_title"
+            app:layout_constraintTop_toBottomOf="@id/fragment_topic_trending_item_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 

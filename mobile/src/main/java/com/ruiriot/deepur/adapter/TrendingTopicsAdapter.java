@@ -1,33 +1,26 @@
 package com.ruiriot.deepur.adapter;
+
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.storage.FirebaseStorage;
 import com.ruiriot.deepur.R;
-import com.ruiriot.deepur.fragment.CategoriesFragment.OnListFragmentInteractionListener;
-import com.ruiriot.deepur.model.Category;
+import com.ruiriot.deepur.adapter.holder.callback.OnItemSelected;
+import com.ruiriot.deepur.model.Topic;
 
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.Calendar;
 import java.util.List;
 
-public class TrendingCategoriesAdapter extends BaseAdapter {
+public class TrendingTopicsAdapter extends BaseAdapter {
 
-    final List<Category> mValues;
-    final OnListFragmentInteractionListener mListener;
-    Context context;
-    FirebaseStorage storage = FirebaseStorage.getInstance();
+    private final List<Topic> mValues;
+    private final OnItemSelected<Topic> mListener;
+    private Context context;
 
-    public TrendingCategoriesAdapter(List<Category> items, OnListFragmentInteractionListener listener) {
+    public TrendingTopicsAdapter(List<Topic> items, OnItemSelected<Topic> listener) {
         mValues = items;
         mListener = listener;
     }
@@ -35,7 +28,7 @@ public class TrendingCategoriesAdapter extends BaseAdapter {
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_categories_trending_item, parent, false);
+                .inflate(R.layout.fragment_topic_trending_item, parent, false);
         context = view.getContext();
         return new ViewHolder(view);
     }
@@ -44,24 +37,24 @@ public class TrendingCategoriesAdapter extends BaseAdapter {
     public void onBindViewHolder(RecyclerView.ViewHolder h, int position) {
         final ViewHolder holder = (ViewHolder) h;
         holder.mItem = mValues.get(position);
-        holder.categoryName.setText(holder.mItem.description);
+        holder.TopicName.setText(holder.mItem.getName());
 
         Calendar instance = Calendar.getInstance();
-        if (holder.mItem.date != null) {
+        if (holder.mItem.getTimestamp() != null) {
 
-            instance.setTimeInMillis(holder.mItem.date);
+            instance.setTimeInMillis(holder.mItem.getTimestamp());
             int hours = instance.get(Calendar.HOUR_OF_DAY);
             int minutes = instance.get(Calendar.MINUTE);
             String output = String.format("%02d:%02d", hours, minutes);
 
-            holder.categoryTimestamp.setText(output);
+            holder.TopicTimestamp.setText(output);
         }
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (null != mListener) {
-                    mListener.onListFragmentInteraction(holder.mItem);
+                    mListener.onItemSelected(holder.mItem);
                 }
             }
         });
@@ -74,22 +67,22 @@ public class TrendingCategoriesAdapter extends BaseAdapter {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         final View mView;
-        final TextView categoryName;
-        final TextView categoryTimestamp;
-//        final ImageView categoryImage;
-        Category mItem;
+        final TextView TopicName;
+        final TextView TopicTimestamp;
+//        final ImageView TopicImage;
+        Topic mItem;
 
         ViewHolder(View view) {
             super(view);
             mView = view;
-            categoryName = view.findViewById(R.id.fragment_categories_trending_item_title);
-//            categoryImage = view.findViewById(R.id.fragment_categories_image);
-            categoryTimestamp = view.findViewById(R.id.fragment_categories_trending_item_timestamp);
+            TopicName = view.findViewById(R.id.fragment_topic_trending_item_title);
+//            TopicImage = view.findViewById(R.id.fragment_categories_image);
+            TopicTimestamp = view.findViewById(R.id.fragment_topic_trending_item_timestamp);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + categoryName.getText() + "'";
+            return super.toString() + " '" + TopicName.getText() + "'";
         }
     }
 }

@@ -1,10 +1,12 @@
 package com.ruiriot.deepur.activity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.graphics.Palette;
+import android.view.View;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -17,7 +19,7 @@ import java.io.InputStream;
  * Created by ruiri on 03-Dec-17.
  */
 
-public class CategoriesDetailActivity extends BaseActivity {
+public class CategoriesDetailActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,5 +44,14 @@ public class CategoriesDetailActivity extends BaseActivity {
             }
         });*/
 
+    }
+
+    @Override
+    public void onClick(View v){
+        int i = v.getId();
+
+        if (i == R.id.activity_categories_detail_back){
+            finish();
+        }
     }
 }

@@ -56,8 +56,8 @@
         android:text="@string/activity_settings_account_title"
         android:textSize="12sp"
         android:textColor="@color/color_accent"
-        android:layout_marginStart="72dp"
-        android:layout_marginEnd="72dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="sans-serif"/>
@@ -84,8 +84,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginStart="72dp"
-            android:layout_marginEnd="72dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_centerVertical="true">
 
             <TextView
@@ -113,95 +113,18 @@
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/activity_settings_arrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/activity_settings_account_title"
-            android:src="@drawable/ic_keyboard_arrow_right_24dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:padding="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"/>
-
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/divider"/>
-
-    <RelativeLayout
-        android:id="@+id/activity_settings_day_night"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/activity_settings_account_logout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground"
-        android:paddingStart="64dp"
-        android:paddingEnd="64dp"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp">
-
-        <TextView
-            android:id="@+id/activity_settings_day_night_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/activity_settings_day_night_title"
-            android:textSize="14sp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/text_color_primary"/>
-
-        <TextView
-            android:id="@+id/activity_settings_day_night_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="On"
-            android:layout_below="@id/activity_settings_day_night_title"
-            android:textSize="14sp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="2dp"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/text_color_secondary"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="@drawable/ripple">
-
-        <TextView
-            android:id="@+id/activity_settings_notification_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/activity_settings_notification_title"
-            android:textSize="14sp"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/text_color_primary"
-            android:layout_marginStart="72dp"
-            android:layout_marginEnd="64dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_centerVertical="true"/>
-
-        <Switch
-            android:id="@+id/activity_settings_switch_notifications"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:padding="8dp"
-            android:elevation="1dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"/>
-
-    </RelativeLayout>
+        android:fontFamily="sans-serif"
+        android:text="Logout"
+        android:textColor="@color/text_color_secondary"
+        android:textSize="14sp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:padding="16dp"/>
 
 </LinearLayout>

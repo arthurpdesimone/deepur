@@ -1,9 +1,10 @@
 package com.ruiriot.deepur.adapter;
+
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,29 +12,24 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.transition.Transition;
 import com.google.firebase.storage.FirebaseStorage;
 import com.ruiriot.deepur.R;
-import com.ruiriot.deepur.fragment.CategoriesFragment.OnListFragmentInteractionListener;
+import com.ruiriot.deepur.activity.CategoriesDetailActivity;
+import com.ruiriot.deepur.adapter.holder.callback.OnItemSelected;
 import com.ruiriot.deepur.model.Category;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.List;
 
 public class CategoriesAdapter extends BaseAdapter {
 
-    final List<Category> mValues;
-    final OnListFragmentInteractionListener mListener;
-    Context context;
+    private final List<Category> mValues;
+    private final OnItemSelected<Category> mListener;
+    private Context context;
     FirebaseStorage storage = FirebaseStorage.getInstance();
 
-    public CategoriesAdapter(List<Category> items, OnListFragmentInteractionListener listener) {
+    public CategoriesAdapter(List<Category> items, OnItemSelected<Category> listener) {
         mValues = items;
         mListener = listener;
     }
@@ -50,23 +46,24 @@ public class CategoriesAdapter extends BaseAdapter {
     public void onBindViewHolder(RecyclerView.ViewHolder h, int position) {
         final ViewHolder holder = (ViewHolder) h;
         holder.mItem = mValues.get(position);
-        holder.categoryName.setText(holder.mItem.description);
+        holder.categoryName.setText(holder.mItem.getDescription());
 
-        Uri uriCategoryImage = Uri.parse(mValues.get(position).image);
-        InputStream image_stream = null;
-        try {
-            image_stream = context.getContentResolver().openInputStream(uriCategoryImage);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        Bitmap bitmap = BitmapFactory.decodeStream(image_stream);
-        holder.categoryImage.setImageBitmap(bitmap);
+//        Uri uriCategoryImage = Uri.parse(mValues.get(position).getImage());
+//        InputStream image_stream = null;
+//        try {
+//            image_stream = context.getContentResolver().openInputStream(uriCategoryImage);
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        Bitmap bitmap = BitmapFactory.decodeStream(image_stream);
+//        holder.categoryImage.setImageBitmap(bitmap);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (null != mListener) {
-                    mListener.onListFragmentInteraction(holder.mItem);
+                    Intent goToDetails = new Intent(context, CategoriesDetailActivity.class);
+                    context.startActivity(goToDetails);
                 }
             }
         });

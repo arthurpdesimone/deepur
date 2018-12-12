@@ -5,23 +5,22 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
 import com.ruiriot.deepur.R;
 import com.ruiriot.deepur.adapter.CategoriesAdapter;
-import com.ruiriot.deepur.adapter.TrendingCategoriesAdapter;
+import com.ruiriot.deepur.adapter.TrendingTopicsAdapter;
+import com.ruiriot.deepur.adapter.holder.callback.OnItemSelected;
 import com.ruiriot.deepur.model.Category;
+import com.ruiriot.deepur.model.Topic;
+import com.ruiriot.deepur.repository.CategoryRepository;
+import com.ruiriot.deepur.repository.TopicRepository;
+import com.ruiriot.deepur.repository.callback.OnDataFetchCallBack;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,10 +29,13 @@ public class CategoriesFragment extends BaseFragment{
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
-    private OnListFragmentInteractionListener mListener;
     String TAG = "Firebase";
+    private OnItemSelected<Topic> mTopicSelectionListener;
+    private OnItemSelected<Category> mCategorySelectionListener;
     public ArrayList<Category> categories = new ArrayList<>();
-    FirebaseAuth mAuth;
+    public ArrayList<Topic> trendingTopics = new ArrayList<>();
+    public CategoryRepository categoryRepository = new CategoryRepository();
+    public TopicRepository topicRepository = new TopicRepository();
 
     @BindView(R.id.fragment_categories_list)
     RecyclerView recyclerViewCategories;
@@ -42,6 +44,19 @@ public class CategoriesFragment extends BaseFragment{
     RecyclerView recyclerViewTrending;
 
     public CategoriesFragment() {
+        mTopicSelectionListener = new OnItemSelected<Topic>() {
+            @Override
+            public void onItemSelected(Topic item) {
+
+            }
+        };
+
+        mCategorySelectionListener = new OnItemSelected<Category>() {
+            @Override
+            public void onItemSelected(Category item) {
+
+            }
+        };
     }
 
     @Override
@@ -52,55 +67,37 @@ public class CategoriesFragment extends BaseFragment{
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("categories");
-        mAuth = FirebaseAuth.getInstance();
-
-        ChildEventListener childEventListener = new ChildEventListener() {
+        categoryRepository.getAll(new OnDataFetchCallBack<List<Category>>() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Category categoriesItem = dataSnapshot.getValue(Category.class);
-                Log.d(TAG, "onChildAdded: " + categoriesItem);
-                categories.add(categoriesItem);
-                recyclerViewCategories.getAdapter().notifyDataSetChanged();
+            public void onFetch(List<Category> data) {
+                if (data != null) {
+                    categories.addAll(data);
+                    recyclerViewCategories.getAdapter().notifyDataSetChanged();
+                }
             }
 
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+            public void onError(Exception e) {
 
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        };
-        myRef.addChildEventListener(childEventListener);
-
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                Category category = dataSnapshot.getValue(Category.class);
-                Log.d(TAG, "Value is: " + category);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
+
+        topicRepository.getAllTrending(new OnDataFetchCallBack<List<Topic>>() {
+            @Override
+            public void onFetch(List<Topic> data) {
+                if (data != null) {
+                    trendingTopics.addAll(data);
+                    recyclerViewTrending.getAdapter().notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onError(Exception e) {
+
+            }
+        });
+
+
     }
 
     @Override
@@ -116,36 +113,9 @@ public class CategoriesFragment extends BaseFragment{
         } else {
             recyclerViewCategories.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
-        recyclerViewCategories.setAdapter(new CategoriesAdapter(categories, mListener));
-        recyclerViewTrending.setAdapter(new TrendingCategoriesAdapter(categories, mListener));
+        recyclerViewCategories.setAdapter(new CategoriesAdapter(categories, mCategorySelectionListener));
+        recyclerViewTrending.setAdapter(new TrendingTopicsAdapter(trendingTopics, mTopicSelectionListener));
 
         return view;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        try {
-            mListener = (OnListFragmentInteractionListener) getActivity();
-        } catch (ClassCastException e) {
-            throw new ClassCastException(getActivity().toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    public interface OnListFragmentInteractionListener {
-
-        void onListFragmentInteraction(Category item);
     }
 }
